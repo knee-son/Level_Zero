@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "739134874866",
+    "project_id": "greeniq-ce821",
+    "storage_bucket": "greeniq-ce821.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739134874866:android:1a96e0f001711f4fbe1c6b",
+        "android_client_info": {
+          "package_name": "com.level_zero.greeniq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "739134874866-e8ioupncujpvu5nh297uth2303p9fg95.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZqPq9TmuUbSBTctg387e-kNrRXEHuj-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "739134874866-e8ioupncujpvu5nh297uth2303p9fg95.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
