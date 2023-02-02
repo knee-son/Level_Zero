@@ -1,4 +1,4 @@
-package com.example.greeniq;
+package com.level_zero.greeniq;
 
 import org.junit.Test;
 

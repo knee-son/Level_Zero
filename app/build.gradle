@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.greeniq'
+    namespace 'com.level_zero.greeniq'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.greeniq"
+        applicationId "com.level_zero.greeniq"
         minSdk 24
         targetSdk 33
         versionCode 1

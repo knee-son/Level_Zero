@@ -1,4 +1,4 @@
-package com.example.greeniq.ui.notifications;
+package com.level_zero.greeniq.ui.notifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.greeniq.databinding.FragmentNotificationsBinding;
+import com.level_zero.greeniq.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {
 

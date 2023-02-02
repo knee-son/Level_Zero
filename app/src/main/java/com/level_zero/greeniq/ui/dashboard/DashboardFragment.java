@@ -1,4 +1,4 @@
-package com.example.greeniq.ui.dashboard;
+package com.level_zero.greeniq.ui.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.greeniq.databinding.FragmentDashboardBinding;
+import com.level_zero.greeniq.databinding.FragmentDashboardBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class DashboardFragment extends Fragment {
