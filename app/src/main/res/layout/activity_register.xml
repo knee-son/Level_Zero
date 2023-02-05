@@ -24,13 +24,21 @@
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="0dp"
-            android:text="Create New Account"
+            android:text="Welcome, new user!"
             android:textColor="@color/common_google_signin_btn_text_light_default"
             android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Enter Google email and password:"
+            android:textColor="@color/common_google_signin_btn_text_light_default"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -39,10 +47,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:hint="EMAIL"
+            android:id="@+id/userEmail"
             app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/userEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -54,11 +62,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:hint="PASSWORD"
+            android:id="@+id/userPassword"
             app:passwordToggleEnabled="true"
             app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/userPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
