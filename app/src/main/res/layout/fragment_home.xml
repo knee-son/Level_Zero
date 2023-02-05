@@ -8,71 +8,15 @@
     android:orientation="horizontal"
     tools:context=".ui.home.HomeFragment">
 
-
-    <LinearLayout
-        android:id="@+id/details"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:orientation="vertical"
-        android:padding="25dp">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/regfullName"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:hint="EMAIL"
-            app:startIconDrawable="@drawable/ic_email">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/regPhoneNumber"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:hint="PASSWORD"
-            app:startIconDrawable="@drawable/ic_baseline_lock_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/createButton"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/common_google_signin_btn_icon_light"
-            android:backgroundTint="@color/neutral_mild"
-            android:text="SIGN UP"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#633527"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
 
         android:layout_height="wrap_content"
-        android:layout_above="@+id/details"
         android:layout_gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="0dp"
-        android:text="Create New Account"
+        android:text="GIBALHIN NAKO SA REGISTER"
         android:textColor="@color/common_google_signin_btn_text_light_default"
         android:textSize="30sp"
         android:textStyle="bold" />
