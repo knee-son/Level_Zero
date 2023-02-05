@@ -22,11 +22,10 @@ import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
 
-//    private TextInputLayout email, password;
+    private TextInputLayout email, password;
     private AppCompatButton signUp;
     private FirebaseAuth mAuth;
-    private FirebaseUser mUser;
-
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,39 +36,40 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         System.out.println("wazzap");
 
-        findViewById(R.id.signupButton).setOnClickListener(view -> {
-            // TODO: 05/02/2023 shortify this thing: 
-            String email = Objects.requireNonNull(binding.userEmail.getEditText().getText()).toString();
-            String password = Objects.requireNonNull(binding.userPassword.getEditText().getText()).toString();
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
 
-            mAuth = FirebaseAuth.getInstance();
-            mUser = mAuth.getCurrentUser();
+        email = findViewById(R.id.userEmail);
+        password = findViewById(R.id.userPassword);
+        signUp = findViewById(R.id.signupButton);
 
-            System.out.println("*click*");
-            System.out.println("email: " + email);
-            System.out.println("password: " + password);
-
-            registerUser(email, password);
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registerUser();
+            }
         });
     }
 
-    private void registerUser(String email, String password) {
-//        String userEmail = email.toString().trim();
-//        String userPass = password.toString().trim();
+    private void registerUser() {
+       String userEmail = email.getEditText().getText().toString();
+       String userPass = password.getEditText().getText().toString();
 
-        try{
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(getApplicationContext(),"Registration is Complete", Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(getApplicationContext(),"Registration is not Complete", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }catch(IllegalArgumentException e){
-            Toast.makeText(getApplicationContext(),e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+       mAuth.createUserWithEmailAndPassword(userEmail, userPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+           @Override
+           public void onComplete(@NonNull Task<AuthResult> task) {
+               if(task.isSuccessful()){
+                   Toast.makeText(getApplicationContext(),"Registration is Complete", Toast.LENGTH_SHORT).show();
+               }else {
+                   Toast.makeText(getApplicationContext(),"Registration is not Complete", Toast.LENGTH_SHORT).show();
+               }
+           }
+       });
+
+    }
+
+    public void openLogin(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

@@ -85,6 +85,17 @@
             android:textColor="#633527"
             android:textSize="15sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/loginAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Already Have an Account?"
+            android:textColor="@color/common_google_signin_btn_text_light_default"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:onClick="openLogin"/>
     </LinearLayout>
 
 
