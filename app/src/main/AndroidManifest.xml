@@ -24,7 +24,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.dashboard.DashboardFragment"
+            android:name=".DashboardFragment"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
