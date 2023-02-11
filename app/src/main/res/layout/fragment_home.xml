@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/neutral"
     android:orientation="horizontal"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".HomeFragment">
 
     <TextView
         android:id="@+id/title"
