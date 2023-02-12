@@ -16,6 +16,12 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private AppCompatButton login;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
+    private DatabaseReference reference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
+
+        reference = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User");
 
         email = findViewById(R.id.userEmailLog);
         password = findViewById(R.id.userPasswordLog);
@@ -47,6 +56,33 @@ public class LoginActivity extends AppCompatActivity {
         String userEmailLog = email.getEditText().getText().toString();
         String userPassLog = password.getEditText().getText().toString();
 
+        Query user = reference.orderByChild("id").equalTo(currentUser.getUid());
+
+        user.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    String emailDB = snapshot.child(currentUser.getUid()).child("email").getValue(String.class);
+                    String locationDB = snapshot.child(currentUser.getUid()).child("location").getValue(String.class);
+                    String phoneNumberDB = snapshot.child(currentUser.getUid()).child("phoneNumber").getValue(String.class);
+                    String userNameDB = snapshot.child(currentUser.getUid()).child("userName").getValue(String.class);
+
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+
+                    intent.putExtra("email", emailDB);
+                    intent.putExtra("location", locationDB);
+                    intent.putExtra("phoneNumber", phoneNumberDB);
+                    intent.putExtra("userName", userNameDB);
+
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         mAuth.signInWithEmailAndPassword(userEmailLog, userPassLog).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
