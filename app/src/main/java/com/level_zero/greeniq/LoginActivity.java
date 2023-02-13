@@ -38,8 +38,6 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
-        reference = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User");
-
         email = findViewById(R.id.userEmailLog);
         password = findViewById(R.id.userPasswordLog);
         login = findViewById(R.id.loginButton);
@@ -55,38 +53,40 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUser() {
         String userEmailLog = email.getEditText().getText().toString();
         String userPassLog = password.getEditText().getText().toString();
+        String currentUserId = currentUser.getUid();
+        System.out.println(currentUserId);
 
-        Query user = reference.orderByChild("id").equalTo(currentUser.getUid());
-
-        user.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    String emailDB = snapshot.child(currentUser.getUid()).child("email").getValue(String.class);
-                    String locationDB = snapshot.child(currentUser.getUid()).child("location").getValue(String.class);
-                    String phoneNumberDB = snapshot.child(currentUser.getUid()).child("phoneNumber").getValue(String.class);
-                    String userNameDB = snapshot.child(currentUser.getUid()).child("userName").getValue(String.class);
-
-                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-
-                    intent.putExtra("email", emailDB);
-                    intent.putExtra("location", locationDB);
-                    intent.putExtra("phoneNumber", phoneNumberDB);
-                    intent.putExtra("userName", userNameDB);
-
-                    startActivity(intent);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         mAuth.signInWithEmailAndPassword(userEmailLog, userPassLog).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    reference = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User");
+                    Query user = reference.orderByChild("id").equalTo(currentUserId);
+                    user.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()){
+                                String emailDB = snapshot.child(currentUserId).child("email").getValue(String.class);
+                                String locationDB = snapshot.child(currentUserId).child("location").getValue(String.class);
+                                String phoneNumberDB = snapshot.child(currentUserId).child("phoneNumber").getValue(String.class);
+                                String userNameDB = snapshot.child(currentUserId).child("userName").getValue(String.class);
+
+                                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+
+                                intent.putExtra("email", emailDB);
+                                intent.putExtra("location", locationDB);
+                                intent.putExtra("phoneNumber", phoneNumberDB);
+                                intent.putExtra("userName", userNameDB);
+
+                                startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Toast.makeText(getApplicationContext(),"Login is Complete", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(getApplicationContext(),"Login is not Complete", Toast.LENGTH_SHORT).show();

@@ -15,6 +15,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.level_zero.greeniq.databinding.ActivityMainBinding;
 import com.level_zero.greeniq.databinding.ActivityRegisterBinding;
@@ -25,9 +26,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     private TextInputLayout email, password, userName, location, phoneNumber;
     private AppCompatButton signUp;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth firebaseAuth;
     private FirebaseUser currentUser;
-    private FirebaseDatabase database;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +38,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_register);
 
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        databaseReference = firebaseDatabase.getReference("User");
 
         email = findViewById(R.id.userEmail);
         password = findViewById(R.id.userPassword);
@@ -60,14 +64,14 @@ public class RegisterActivity extends AppCompatActivity {
        String userUserName = userName.getEditText().getText().toString();
        String userPhoneNumber = phoneNumber.getEditText().getText().toString();
        String userLocation = location.getEditText().getText().toString();
-       String userId = currentUser.getUid();
 
-       mAuth.createUserWithEmailAndPassword(userEmail, userPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+       firebaseAuth.createUserWithEmailAndPassword(userEmail, userPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
            @Override
            public void onComplete(@NonNull Task<AuthResult> task) {
                if(task.isSuccessful()){
-                   database.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User/").child(userId)
-                           .setValue(new Profile(userUserName, userPhoneNumber, "", userLocation, userEmail, userPass, userId));
+                   FirebaseUser user = task.getResult().getUser();
+                   String userId = user.getUid();
+                   databaseReference.child(userId).setValue(new Profile(userUserName, userPhoneNumber, "", userLocation, userEmail, userPass, userId));
                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                    Toast.makeText(getApplicationContext(),"Registration is Complete", Toast.LENGTH_SHORT).show();
                }else {
