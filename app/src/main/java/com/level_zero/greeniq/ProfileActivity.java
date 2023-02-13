@@ -73,7 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
         phone.setText(userPhone);
         location.setText(userLocation);
 
-        Glide.with(this).load(userAvatar).into(avatar);
+        Glide.with(this).load(userAvatar).error(R.drawable.defaultpfp).placeholder(R.drawable.defaultpfp).into(avatar);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
