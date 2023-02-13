@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextInputLayout email, password;
     private AppCompatButton login;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth firebaseAuth;
     private FirebaseUser currentUser;
     private DatabaseReference reference;
     @Override
@@ -35,8 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         email = findViewById(R.id.userEmailLog);
         password = findViewById(R.id.userPasswordLog);
@@ -53,23 +52,24 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUser() {
         String userEmailLog = email.getEditText().getText().toString();
         String userPassLog = password.getEditText().getText().toString();
-        String currentUserId = currentUser.getUid();
-        System.out.println(currentUserId);
 
-        mAuth.signInWithEmailAndPassword(userEmailLog, userPassLog).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithEmailAndPassword(userEmailLog, userPassLog).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    FirebaseUser firebaseUser = task.getResult().getUser();
+                    String userId = firebaseUser.getUid();
                     reference = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User");
-                    Query user = reference.orderByChild("id").equalTo(currentUserId);
+                    Query user = reference.orderByChild("id").equalTo(userId);
                     user.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot.exists()){
-                                String emailDB = snapshot.child(currentUserId).child("email").getValue(String.class);
-                                String locationDB = snapshot.child(currentUserId).child("location").getValue(String.class);
-                                String phoneNumberDB = snapshot.child(currentUserId).child("phoneNumber").getValue(String.class);
-                                String userNameDB = snapshot.child(currentUserId).child("userName").getValue(String.class);
+                                String emailDB = snapshot.child(userId).child("email").getValue(String.class);
+                                String locationDB = snapshot.child(userId).child("location").getValue(String.class);
+                                String phoneNumberDB = snapshot.child(userId).child("phoneNumber").getValue(String.class);
+                                String userNameDB = snapshot.child(userId).child("userName").getValue(String.class);
+                                String profileDB = snapshot.child(userId).child("profilePicture").getValue(String.class);
 
                                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
 
@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.putExtra("location", locationDB);
                                 intent.putExtra("phoneNumber", phoneNumberDB);
                                 intent.putExtra("userName", userNameDB);
+                                intent.putExtra("profilePicture", profileDB);
 
                                 startActivity(intent);
                             }
