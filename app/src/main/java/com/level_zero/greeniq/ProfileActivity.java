@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -35,7 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private TextView email, username, phone, location;
     private ImageView avatar;
-    private AppCompatButton logout, save;
+    private AppCompatButton logout, save, dashboard;
     private Uri imagePath;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -59,6 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         logout = findViewById(R.id.logoutButton);
         save = findViewById(R.id.saveButton);
+        dashboard = findViewById(R.id.dashboardButton);
 
         Intent intent = getIntent();
 
@@ -97,6 +100,14 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveImage();
+            }
+        });
+
+        dashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+                startActivity(intent);
             }
         });
     }

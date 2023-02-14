@@ -79,7 +79,7 @@
             android:layout_marginTop="3dp"
             android:hint="USERNAME"
             android:id="@+id/userUserName"
-            app:startIconDrawable="@drawable/ic_baseline_lock_24">
+            app:startIconDrawable="@drawable/user">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -94,7 +94,7 @@
             android:layout_marginTop="3dp"
             android:hint="PHONE NUMBER"
             android:id="@+id/userPhoneNumber"
-            app:startIconDrawable="@drawable/ic_baseline_lock_24">
+            app:startIconDrawable="@drawable/phone">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -109,7 +109,7 @@
             android:layout_marginTop="3dp"
             android:hint="LOCATION"
             android:id="@+id/userLocation"
-            app:startIconDrawable="@drawable/ic_baseline_lock_24">
+            app:startIconDrawable="@drawable/location">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

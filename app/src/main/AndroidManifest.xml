@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GreenIQ"
         tools:targetApi="31">
+        <activity
+            android:name=".WasteManagement.WasteScheduleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AirQuality.AirQualityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CarbonFootprint.CarbonFootprintActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WasteManagement.WasteManagementActivity"
+            android:exported="false" />
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
@@ -28,9 +43,6 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DashboardFragment"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

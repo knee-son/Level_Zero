@@ -76,4 +76,20 @@
         android:textSize="15sp"
         android:textStyle="bold" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/dashboardButton"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/common_google_signin_btn_icon_light"
+        android:backgroundTint="@color/neutral_mild"
+        android:text="DASHBOARD"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#633527"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+
+
 </LinearLayout>

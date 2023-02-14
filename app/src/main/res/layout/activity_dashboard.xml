@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/neutral"
-    tools:context=".DashboardFragment">
+    tools:context=".DashboardActivity">
 
     <GridLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:layout_margin="13dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp"
-            android:onClick="openAbout">
+            android:onClick="openRecycling">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,7 +65,7 @@
             android:layout_margin="13dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp"
-            android:onClick="openAbout">
+            android:onClick="openAirQuality">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -106,7 +106,7 @@
             android:layout_margin="13dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp"
-            android:onClick="openAbout">
+            android:onClick="openCarbon">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -130,4 +130,5 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </GridLayout>
+
 </LinearLayout>
