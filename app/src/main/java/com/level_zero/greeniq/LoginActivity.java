@@ -81,9 +81,9 @@ public class LoginActivity extends AppCompatActivity {
 
                         }
                     });
-                    Toast.makeText(getApplicationContext(),"Login is Complete", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Login success!", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(getApplicationContext(),"Login is not Complete", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Login failed!", Toast.LENGTH_SHORT).show();
                 }
             });
 
