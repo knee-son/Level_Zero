@@ -25,10 +25,8 @@ import java.util.Objects;
 public class RegisterActivity extends AppCompatActivity {
 
     private TextInputLayout email, password, userName, location, phoneNumber;
-    private AppCompatButton signUp;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser currentUser;
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,47 +38,49 @@ public class RegisterActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("User");
 
         email = findViewById(R.id.userEmail);
         password = findViewById(R.id.userPassword);
-        signUp = findViewById(R.id.signupButton);
+        AppCompatButton signUp = findViewById(R.id.signupButton);
         userName = findViewById(R.id.userUserName);
         phoneNumber = findViewById(R.id.userPhoneNumber);
         location = findViewById(R.id.userLocation);
 
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                registerUser();
-            }
-        });
+        signUp.setOnClickListener(view -> registerUser());
+    }
+
+    private String safeFetch (TextInputLayout l){
+        return Objects.requireNonNull(l.getEditText()).getText().toString();
     }
 
     private void registerUser() {
-       String userEmail = email.getEditText().getText().toString();
-       String userPass = password.getEditText().getText().toString();
-       String userUserName = userName.getEditText().getText().toString();
-       String userPhoneNumber = phoneNumber.getEditText().getText().toString();
-       String userLocation = location.getEditText().getText().toString();
+        try {
+            String userEmail = safeFetch(email);
+            String userPass = safeFetch(password);
+            String userUserName = safeFetch(userName);
+            String userPhoneNumber = safeFetch(phoneNumber);
+            String userLocation = safeFetch(location);
 
-       firebaseAuth.createUserWithEmailAndPassword(userEmail, userPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-           @Override
-           public void onComplete(@NonNull Task<AuthResult> task) {
-               if(task.isSuccessful()){
-                   FirebaseUser user = task.getResult().getUser();
-                   String userId = user.getUid();
-                   String defaultProfile = "https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/images%2F1e98af88-102c-4ffd-a85c-c450162cd7d7?alt=media&token=d1d09296-b020-422b-a584-2fb40719bb66";
-                   databaseReference.child(userId).setValue(new Profile(userUserName, userPhoneNumber, defaultProfile, userLocation, userEmail, userPass, userId));
-                   startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                   Toast.makeText(getApplicationContext(),"Registration is Complete", Toast.LENGTH_SHORT).show();
-               }else {
-                   Toast.makeText(getApplicationContext(),"Registration is not Complete", Toast.LENGTH_SHORT).show();
-               }
-           }
-       });
+            firebaseAuth.createUserWithEmailAndPassword(userEmail, userPass).addOnCompleteListener(task -> {
+                if(task.isSuccessful()){
+                    FirebaseUser user = task.getResult().getUser();
+                    String userId = Objects.requireNonNull(user).getUid();
+                    String defaultProfile = "https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/images%2F1e98af88-102c-4ffd-a85c-c450162cd7d7?alt=media&token=d1d09296-b020-422b-a584-2fb40719bb66";
+                    databaseReference.child(userId).setValue(new Profile(userUserName, userPhoneNumber, defaultProfile, userLocation, userEmail, userPass, userId));
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    Toast.makeText(getApplicationContext(),"Registration is Complete", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getApplicationContext(),"Registration is not Complete", Toast.LENGTH_SHORT).show();
+                }
+            });
 
+        } catch (NullPointerException e){
+            Toast.makeText(getApplicationContext(),e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+        } catch (IllegalArgumentException e){
+            Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void openLogin(View view) {

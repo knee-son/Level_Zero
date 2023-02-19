@@ -7,13 +7,17 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_waste_management"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:title="@string/waste_info" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_carbon_footprint"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:title="@string/carbon_footprint" />
 
+    <item
+        android:id="@+id/navigation_air_quality"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/air_quality" />
 </menu>

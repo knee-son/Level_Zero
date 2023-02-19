@@ -8,22 +8,21 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.level_zero.greeniq.Fragments.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_dashboard"
-            app:destination="@id/navigation_dashboard" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.level_zero.greeniq.Fragments.HomeFragment"
         android:label="home"
         tools:layout="@layout/fragment_home" />
-
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_waste_management"
         android:name="com.level_zero.greeniq.Fragments.WasteManagementFragment"
         android:label="waste management"
         tools:layout="@layout/fragment_waste_management" />
+    <fragment
+        android:id="@+id/navigation_air_quality"
+        android:name="com.level_zero.greeniq.Fragments.AirQualityFragment"
+        android:label="fragment_air_quality"
+        tools:layout="@layout/fragment_air_quality" />
+    <fragment
+        android:id="@+id/navigation_carbon_footprint"
+        android:name="com.level_zero.greeniq.Fragments.CarbonFootprintFragment"
+        android:label="fragment_carbon_footprint"
+        tools:layout="@layout/fragment_carbon_footprint" />
 </navigation>
