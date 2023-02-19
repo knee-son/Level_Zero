@@ -1,25 +1,18 @@
-package com.level_zero.greeniq;
+package com.level_zero.greeniq.Fragments;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentHomeBinding;
 
-public class HomeFragment extends Fragment {
+public class AirQualityFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     public View onCreateView(@NonNull LayoutInflater inflater,

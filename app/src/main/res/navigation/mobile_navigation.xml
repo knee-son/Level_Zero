@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.level_zero.greeniq.HomeFragment"
+        android:name="com.level_zero.greeniq.Fragments.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,13 +17,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.level_zero.greeniq.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="com.level_zero.greeniq.Fragments.HomeFragment"
+        android:label="home"
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.level_zero.greeniq.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="com.level_zero.greeniq.Fragments.WasteManagementFragment"
+        android:label="waste management"
+        tools:layout="@layout/fragment_waste_management" />
 </navigation>
