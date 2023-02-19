@@ -10,15 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.level_zero.greeniq.R;
-import com.level_zero.greeniq.databinding.FragmentHomeBinding;
+import com.level_zero.greeniq.databinding.FragmentCarbonFootprintBinding;
 
 public class CarbonFootprintFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentCarbonFootprintBinding binding;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentCarbonFootprintBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 

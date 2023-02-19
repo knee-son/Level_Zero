@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.level_zero.greeniq.databinding.ActivityMainBinding;
 import com.level_zero.greeniq.databinding.ActivityRegisterBinding;
 
 import java.util.Objects;
@@ -51,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         signUp.setOnClickListener(view -> registerUser());
     }
 
-    private String safeFetch (TextInputLayout l){
+    public static String safeFetch(TextInputLayout l){
         return Objects.requireNonNull(l.getEditText()).getText().toString();
     }
 
@@ -71,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                     databaseReference.child(userId).setValue(new Profile(userUserName, userPhoneNumber, defaultProfile, userLocation, userEmail, userPass, userId));
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     Toast.makeText(getApplicationContext(),"Registration is Complete", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(),"Registration is not Complete", Toast.LENGTH_SHORT).show();
                 }
             });

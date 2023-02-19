@@ -10,15 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.level_zero.greeniq.R;
-import com.level_zero.greeniq.databinding.FragmentHomeBinding;
+import com.level_zero.greeniq.databinding.FragmentAirQualityBinding;
 
 public class AirQualityFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentAirQualityBinding binding;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentAirQualityBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 

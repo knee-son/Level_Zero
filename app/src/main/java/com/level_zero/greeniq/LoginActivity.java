@@ -26,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity {
 
     private TextInputLayout email, password;
-    private AppCompatButton login;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser currentUser;
     private DatabaseReference reference;
@@ -39,23 +38,17 @@ public class LoginActivity extends AppCompatActivity {
 
         email = findViewById(R.id.userEmailLog);
         password = findViewById(R.id.userPasswordLog);
-        login = findViewById(R.id.loginButton);
+        AppCompatButton login = findViewById(R.id.loginButton);
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loginUser();
-            }
-        });
+        login.setOnClickListener(view -> loginUser());
     }
 
     private void loginUser() {
-        String userEmailLog = email.getEditText().getText().toString();
-        String userPassLog = password.getEditText().getText().toString();
+        try {
+            String userEmailLog = RegisterActivity.safeFetch(email);
+            String userPassLog = RegisterActivity.safeFetch(password);
 
-        firebaseAuth.signInWithEmailAndPassword(userEmailLog, userPassLog).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+            firebaseAuth.signInWithEmailAndPassword(userEmailLog, userPassLog).addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
                     FirebaseUser firebaseUser = task.getResult().getUser();
                     String userId = firebaseUser.getUid();
@@ -71,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String userNameDB = snapshot.child(userId).child("userName").getValue(String.class);
                                 String profileDB = snapshot.child(userId).child("profilePicture").getValue(String.class);
 
-                                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
 
                                 intent.putExtra("email", emailDB);
                                 intent.putExtra("location", locationDB);
@@ -92,8 +85,13 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(getApplicationContext(),"Login is not Complete", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
+            });
+
+        } catch (NullPointerException e){
+            Toast.makeText(getApplicationContext(),e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+        } catch (IllegalArgumentException e){
+            Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void openRegister(View view) {
