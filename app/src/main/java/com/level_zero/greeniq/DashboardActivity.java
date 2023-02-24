@@ -41,26 +41,4 @@ public class DashboardActivity extends AppCompatActivity {
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
-
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_dashboard);
-//    }
-//
-//    public void openRecycling(View view) {
-//        Intent intent = new Intent(getApplicationContext(), WasteManagementActivity.class);
-//        startActivity(intent);
-//    }
-//
-//    public void openAirQuality(View view) {
-//        Intent intent = new Intent(getApplicationContext(), AirQualityActivity.class);
-//        startActivity(intent);
-//    }
-//
-//    public void openCarbon(View view) {
-//        Intent intent = new Intent(getApplicationContext(), CarbonFootprintActivity.class);
-//        startActivity(intent);
-//    }
 }

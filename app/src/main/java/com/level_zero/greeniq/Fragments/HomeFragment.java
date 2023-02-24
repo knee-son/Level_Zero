@@ -1,5 +1,6 @@
 package com.level_zero.greeniq.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,20 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        String userEmail = getArguments().getString("email");
+        String userUserName = getArguments().getString("userName");
+        String userPhone = getArguments().getString("phoneNumber");
+        String userLocation = getArguments().getString("location");
+        String userAvatar = getArguments().getString("profilePicture");
+//
+//        System.out.println(userEmail);
+//        System.out.println(userUserName);
+//        System.out.println(userPhone);
+//        System.out.println(userLocation);
+//        System.out.println(userAvatar);
+
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+
         return binding.getRoot();
     }
 
