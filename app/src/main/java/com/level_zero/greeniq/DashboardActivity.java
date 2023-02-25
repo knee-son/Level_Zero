@@ -24,21 +24,24 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        for (String s : new String[]{"email", "userName", "phoneNumber", "location", "profilePicture"})
+//            System.out.println(getIntent().getExtras().getString(s));
+
         com.level_zero.greeniq.databinding.ActivityDashboardBinding binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-            R.id.navigation_home,
-            R.id.navigation_waste_management,
-            R.id.navigation_carbon_footprint,
-            R.id.navigation_air_quality)
-            .build();
-
         NavController navController = findNavController(this, R.id.nav_host_fragment_activity_dashboard);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 }
