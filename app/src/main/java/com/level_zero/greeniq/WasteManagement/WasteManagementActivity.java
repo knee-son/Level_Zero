@@ -16,8 +16,8 @@ public class WasteManagementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_waste_management);
     }
 
-    public void openSchedule(View view) {
-        Intent intent = new Intent(getApplicationContext(), WasteScheduleActivity.class);
-        startActivity(intent);
-    }
+//    public void openSchedule(View view) {
+//        Intent intent = new Intent(getApplicationContext(), WasteScheduleActivity.class);
+//        startActivity(intent);
+//    }
 }

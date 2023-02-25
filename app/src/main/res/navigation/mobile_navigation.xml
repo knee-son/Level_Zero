@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/homeFragment">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/homeFragment"
         android:name="com.level_zero.greeniq.Fragments.HomeFragment"
         android:label="home"
         tools:layout="@layout/fragment_home" >
@@ -25,18 +25,27 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/navigation_waste_management"
+        android:id="@+id/wasteManagementFragment"
         android:name="com.level_zero.greeniq.Fragments.WasteManagementFragment"
         android:label="waste management"
-        tools:layout="@layout/fragment_waste_management" />
+        tools:layout="@layout/fragment_waste_management" >
+        <action
+            android:id="@+id/action_navigation_waste_management_to_wasteScheduleFragment"
+            app:destination="@id/wasteScheduleFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/navigation_air_quality"
+        android:id="@+id/airQualityFragment"
         android:name="com.level_zero.greeniq.Fragments.AirQualityFragment"
         android:label="fragment_air_quality"
         tools:layout="@layout/fragment_air_quality" />
     <fragment
-        android:id="@+id/navigation_carbon_footprint"
+        android:id="@+id/carbonFootprintFragment"
         android:name="com.level_zero.greeniq.Fragments.CarbonFootprintFragment"
         android:label="fragment_carbon_footprint"
         tools:layout="@layout/fragment_carbon_footprint" />
+    <fragment
+        android:id="@+id/wasteScheduleFragment"
+        android:name="com.level_zero.greeniq.Fragments.WasteScheduleFragment"
+        android:label="fragment_waste_schedule"
+        tools:layout="@layout/fragment_waste_schedule" />
 </navigation>

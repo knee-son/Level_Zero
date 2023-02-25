@@ -2,7 +2,6 @@ package com.level_zero.greeniq.Fragments;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,7 +20,6 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
@@ -34,9 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
-import com.level_zero.greeniq.DashboardActivity;
 import com.level_zero.greeniq.LoginActivity;
-import com.level_zero.greeniq.ProfileActivity;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentHomeBinding;
 
@@ -49,7 +45,7 @@ public class HomeFragment extends Fragment {
 
     private TextView email, username, phone, location;
     private ImageView avatar;
-    private AppCompatButton logout, save, dashboard;
+    private AppCompatButton logout, save;
     private Uri imagePath;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -87,85 +83,46 @@ public class HomeFragment extends Fragment {
 
         Glide.with(this).load(userAvatar).error(R.drawable.defaultpfp).placeholder(R.drawable.defaultpfp).into(avatar);
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
-            }
+        logout.setOnClickListener(view -> {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getActivity(),LoginActivity.class)
+                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
         });
-        avatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent pictureIntent = new Intent(Intent.ACTION_PICK);
-//                pictureIntent.setType("image/*");
-//                startActivityForResult(pictureIntent, 1);
-
-                Intent pictureIntent = new Intent(Intent.ACTION_PICK);
-                pictureIntent.setType("image/*");
-                getResult.launch(pictureIntent);
-            }
+        avatar.setOnClickListener(view -> {
+            Intent pictureIntent = new Intent(Intent.ACTION_PICK);
+            pictureIntent.setType("image/*");
+            getResult.launch(pictureIntent);
         });
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveImage();
-            }
-        });
+        save.setOnClickListener(view -> saveImage());
 
         return binding.getRoot();
     }
 
     private void saveImage() {
         ProgressDialog progressDialog = ProgressDialog.show(
-                getActivity(),
-                "Saving image...",
-                "Please wait...",
-                true);
+            getActivity(),"Saving image...","Please wait...",true);
 
         FirebaseStorage.getInstance().getReference("images/"+ UUID.randomUUID().toString())
-                .putFile(imagePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        if(task.isSuccessful()){
-                            task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Uri> task) {
-                                    if(task.isSuccessful()){
-                                        savedImage(task.getResult().toString());
-                                    }
-                                }
-                            });
-                            Toast.makeText(getActivity(),"Saved Image", Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(getActivity(),"Failed to Save Image", Toast.LENGTH_SHORT).show();
-                        }
-                        progressDialog.dismiss();
-                    }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                        double progress = 100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount();
-                        progressDialog.setMessage(" Uploading " +(int)progress+"%");
-
-                    }
-                });
+            .putFile(imagePath).addOnCompleteListener(task -> {
+                if(task.isSuccessful()){
+                    task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(t -> {
+                        if(t.isSuccessful()){savedImage(t.getResult().toString());}
+                    });
+                    Toast.makeText(getActivity(),"Saved Image", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    Toast.makeText(getActivity(),"Failed to Save Image", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            })
+            .addOnProgressListener(snapshot -> {
+                double progress = 100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount();
+                progressDialog.setMessage(" Uploading " +(int)progress+"%");
+            });
     }
 
     private void savedImage(String url) {
         databaseReference.child(firebaseAuth.getCurrentUser().getUid()+"/profilePicture").setValue(url);
     }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if(requestCode == 1 && resultCode == RESULT_OK && data != null){
-//            imagePath = data.getData();
-//            getImage();
-//            System.out.println(imagePath);
-//        }
-//    }
 
     ActivityResultLauncher<Intent> getResult = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(),
@@ -185,9 +142,7 @@ public class HomeFragment extends Fragment {
         Bitmap bitmap = null;
         try{
             bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imagePath);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+        }catch (IOException e){e.printStackTrace();}
         avatar.setImageBitmap(bitmap);
     }
 
