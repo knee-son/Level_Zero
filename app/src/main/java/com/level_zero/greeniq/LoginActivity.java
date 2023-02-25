@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     FirebaseUser firebaseUser = task.getResult().getUser();
                     String userId = firebaseUser.getUid();
+                    System.out.println(userId);
                     reference = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User");
                     Query user = reference.orderByChild("id").equalTo(userId);
                     user.addListenerForSingleValueEvent(new ValueEventListener() {
