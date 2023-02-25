@@ -45,49 +45,46 @@ public class RegisterActivity extends AppCompatActivity {
 
         //signUp.setOnClickListener(view -> registerUser());
 
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(validateField(email)){
-                    email.setError("Field must have information");
-                    Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
-                }else{
-                    email.setError(null);
-                    email.setErrorEnabled(false);
-                    registerUser();
-                }
-                if(validateField(password)){
-                    password.setError("Field must have information");
-                    Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
-                }else{
-                    password.setError(null);
-                    password.setErrorEnabled(false);
-                    registerUser();
-                }
-                if(validateField(userName)){
-                    userName.setError("Field must have information");
-                    Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
-                }else{
-                    userName.setError(null);
-                    userName.setErrorEnabled(false);
-                    registerUser();
-                }
-                if(validateField(location)){
-                    location.setError("Field must have information");
-                    Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
-                }else{
-                    location.setError(null);
-                    location.setErrorEnabled(false);
-                    registerUser();
-                }
-                if(validateField(phoneNumber)){
-                    phoneNumber.setError("Field must have information");
-                    Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
-                }else{
-                    phoneNumber.setError(null);
-                    phoneNumber.setErrorEnabled(false);
-                    registerUser();
-                }
+        signUp.setOnClickListener(view -> {
+            if(validateField(email)){
+                email.setError("Field must have information");
+                Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+            }else{
+                email.setError(null);
+                email.setErrorEnabled(false);
+                registerUser();
+            }
+            if(validateField(password)){
+                password.setError("Field must have information");
+                Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+            }else{
+                password.setError(null);
+                password.setErrorEnabled(false);
+                registerUser();
+            }
+            if(validateField(userName)){
+                userName.setError("Field must have information");
+                Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+            }else{
+                userName.setError(null);
+                userName.setErrorEnabled(false);
+                registerUser();
+            }
+            if(validateField(location)){
+                location.setError("Field must have information");
+                Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+            }else{
+                location.setError(null);
+                location.setErrorEnabled(false);
+                registerUser();
+            }
+            if(validateField(phoneNumber)){
+                phoneNumber.setError("Field must have information");
+                Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+            }else{
+                phoneNumber.setError(null);
+                phoneNumber.setErrorEnabled(false);
+                registerUser();
             }
         });
     }
