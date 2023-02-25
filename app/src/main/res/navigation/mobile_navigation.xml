@@ -9,7 +9,21 @@
         android:id="@+id/navigation_home"
         android:name="com.level_zero.greeniq.Fragments.HomeFragment"
         android:label="home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <argument android:name="email"
+            app:argType="string" />
+        <argument android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+        <argument
+            android:name="location"
+            app:argType="string" />
+        <argument
+            android:name="profilePicture"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_waste_management"
         android:name="com.level_zero.greeniq.Fragments.WasteManagementFragment"
