@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.level_zero.greeniq.Fragments.HomeFragment;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -67,11 +68,26 @@ public class LoginActivity extends AppCompatActivity {
 
                                 Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
 
-                                intent.putExtra("email", emailDB);
-                                intent.putExtra("location", locationDB);
-                                intent.putExtra("phoneNumber", phoneNumberDB);
-                                intent.putExtra("userName", userNameDB);
-                                intent.putExtra("profilePicture", profileDB);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("email", emailDB);
+                                bundle.putString("location", locationDB);
+                                bundle.putString("phoneNumber", phoneNumberDB);
+                                bundle.putString("userName", userNameDB);
+                                bundle.putString("profilePicture", profileDB);
+
+//                                for (String s : new String[]{emailDB, locationDB, phoneNumberDB, userNameDB, profileDB})
+//                                    System.out.println(s);
+
+//                                HomeFragment fragobj = new HomeFragment();
+//                                fragobj.setArguments(bundle);
+
+                                intent.putExtras(bundle);
+
+//                                intent.putExtra("email", emailDB);
+//                                intent.putExtra("location", locationDB);
+//                                intent.putExtra("phoneNumber", phoneNumberDB);
+//                                intent.putExtra("userName", userNameDB);
+//                                intent.putExtra("profilePicture", profileDB);
 
                                 startActivity(intent);
                             }
