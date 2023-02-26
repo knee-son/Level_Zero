@@ -50,6 +50,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+    implementation 'com.android.volley:volley:1.2.1'
 
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:31.2.0')
