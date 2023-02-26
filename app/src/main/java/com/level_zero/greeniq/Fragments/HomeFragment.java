@@ -2,6 +2,7 @@ package com.level_zero.greeniq.Fragments;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,6 +21,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -33,8 +35,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
+import com.level_zero.greeniq.DashboardActivity;
+import com.level_zero.greeniq.LoginActivity;
+import com.level_zero.greeniq.ProfileActivity;
 import com.level_zero.greeniq.R;
-import com.level_zero.greeniq.SettingsFragment;
 import com.level_zero.greeniq.databinding.FragmentHomeBinding;
 
 import java.io.IOException;
@@ -44,9 +48,9 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
-    private TextView email, username, phone, location, toolbar_title;
+    private TextView email, username, phone, location;
     private ImageView avatar, settings;
-    private AppCompatButton logout, save, dashboard;
+    private AppCompatButton save, dashboard;
     private Uri imagePath;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -82,6 +86,13 @@ public class HomeFragment extends Fragment {
         phone.setText(userPhone);
         location.setText(userLocation);
 
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_navigation_home_to_settingsFragment);
+            }
+        });
+
         Glide.with(this).load(userAvatar).error(R.drawable.defaultpfp).placeholder(R.drawable.defaultpfp).into(avatar);
 
         avatar.setOnClickListener(new View.OnClickListener() {
@@ -100,13 +111,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 saveImage();
-            }
-        });
-
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_navigation_home_to_settingsFragment);
             }
         });
 

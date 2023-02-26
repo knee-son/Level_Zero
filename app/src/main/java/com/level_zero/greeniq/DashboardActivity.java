@@ -24,24 +24,10 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        for (String s : new String[]{"email", "userName", "phoneNumber", "location", "profilePicture"})
-//            System.out.println(getIntent().getExtras().getString(s));
-
         com.level_zero.greeniq.databinding.ActivityDashboardBinding binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         NavController navController = findNavController(this, R.id.nav_host_fragment_activity_dashboard);
         NavigationUI.setupWithNavController(binding.navView, navController);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
     }
 }

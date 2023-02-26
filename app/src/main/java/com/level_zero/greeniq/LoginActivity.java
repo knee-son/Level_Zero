@@ -24,6 +24,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.level_zero.greeniq.Fragments.HomeFragment;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
 
     private TextInputLayout email, password;
@@ -41,7 +43,26 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.userPasswordLog);
         AppCompatButton login = findViewById(R.id.loginButton);
 
-        login.setOnClickListener(view -> loginUser());
+        //login.setOnClickListener(view -> loginUser());
+
+        login.setOnClickListener(view -> {
+            if(!validateEmail()){
+                email.setError("Field must have information");
+                Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+            }else{
+                email.setError(null);
+                email.setErrorEnabled(false);
+                loginUser();
+            }
+            if(!validatePassword()){
+                password.setError("Field must have information");
+                Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+            }else{
+                password.setError(null);
+                password.setErrorEnabled(false);
+                loginUser();
+            }
+        });
     }
 
     private void loginUser() {
@@ -114,5 +135,22 @@ public class LoginActivity extends AppCompatActivity {
     public void openRegister(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
+    }
+
+    private boolean validatePassword(){
+        String val = password.getEditText().getText().toString();
+
+        return !val.isEmpty();
+    }//end of the method
+
+    //validate user name or email
+    private boolean validateEmail(){
+        String val = Objects.requireNonNull(email.getEditText()).getText().toString();
+
+        if(val.isEmpty()) {
+            return false;
+        }else{
+            return true;
+        }
     }
 }

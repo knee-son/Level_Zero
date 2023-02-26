@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/neutral"
     android:orientation="vertical"
-    tools:context=".SettingActivity">
+    tools:context=".SettingsFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
