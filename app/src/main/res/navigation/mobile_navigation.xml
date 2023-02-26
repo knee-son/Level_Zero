@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/homeFragment">
+    app:startDestination="@+id/navigation_home">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/navigation_home"
         android:name="com.level_zero.greeniq.Fragments.HomeFragment"
         android:label="home"
         tools:layout="@layout/fragment_home" >
@@ -23,29 +23,31 @@
         <argument
             android:name="profilePicture"
             app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_home_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/wasteManagementFragment"
+        android:id="@+id/navigation_waste_management"
         android:name="com.level_zero.greeniq.Fragments.WasteManagementFragment"
         android:label="waste management"
-        tools:layout="@layout/fragment_waste_management" >
-        <action
-            android:id="@+id/action_navigation_waste_management_to_wasteScheduleFragment"
-            app:destination="@id/wasteScheduleFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_waste_management" />
     <fragment
-        android:id="@+id/airQualityFragment"
+        android:id="@+id/navigation_air_quality"
         android:name="com.level_zero.greeniq.Fragments.AirQualityFragment"
         android:label="fragment_air_quality"
         tools:layout="@layout/fragment_air_quality" />
     <fragment
-        android:id="@+id/carbonFootprintFragment"
+        android:id="@+id/navigation_carbon_footprint"
         android:name="com.level_zero.greeniq.Fragments.CarbonFootprintFragment"
         android:label="fragment_carbon_footprint"
         tools:layout="@layout/fragment_carbon_footprint" />
     <fragment
-        android:id="@+id/wasteScheduleFragment"
-        android:name="com.level_zero.greeniq.Fragments.WasteScheduleFragment"
-        android:label="fragment_waste_schedule"
-        tools:layout="@layout/fragment_waste_schedule" />
+        android:id="@+id/settingsFragment"
+        android:name="com.level_zero.greeniq.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>
