@@ -7,4 +7,5 @@
     <color name="theme_dark">#2A782D</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorAccent">#09FF15</color>
 </resources>
