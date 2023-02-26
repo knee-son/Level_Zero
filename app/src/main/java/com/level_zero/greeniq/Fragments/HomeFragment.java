@@ -27,6 +27,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.bumptech.glide.Glide;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,16 +45,19 @@ import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentHomeBinding;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
-    private TextView email, username, phone, location;
+    private TextView email, username, phone, location, coin;
     private ImageView avatar, settings;
     private AppCompatButton save, dashboard;
     private Uri imagePath;
+    private ImageSlider imageSlider;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
@@ -73,6 +79,8 @@ public class HomeFragment extends Fragment {
         avatar = binding.avatarIV;
         save = binding.saveButton;
         settings = binding.settings;
+        coin = binding.coinTV;
+        imageSlider = binding.imageSlider;
 
         Bundle bundle = getActivity().getIntent().getExtras();
         String userEmail = bundle.getString("email");
@@ -80,11 +88,20 @@ public class HomeFragment extends Fragment {
         String userPhone = bundle.getString("phoneNumber");
         String userLocation = bundle.getString("location");
         String userAvatar = bundle.getString("profilePicture");
+        String userCoin = bundle.getString("coin");
 
         email.setText(userEmail);
         username.setText(userUserName);
         phone.setText(userPhone);
         location.setText(userLocation);
+        coin.setText(userCoin);
+
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/certificate%2F2.jpg?alt=media&token=07a27b5a-dd15-478f-82d3-ab65eb4fb53f", null, ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/certificate%2FUntitled-1.jpg?alt=media&token=8b4c31e3-1ccd-4647-88a0-ba911108fc09", null, ScaleTypes.CENTER_CROP));
+
+        imageSlider.setImageList(slideModels,ScaleTypes.CENTER_CROP);
+
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

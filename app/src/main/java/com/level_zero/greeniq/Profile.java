@@ -8,8 +8,9 @@ public class Profile {
     private String email;
     private String password;
     private String id;
+    private String coin;
 
-    public Profile(String userName, String phoneNumber, String profilePicture, String location, String email, String password, String id) {
+    public Profile(String userName, String phoneNumber, String profilePicture, String location, String email, String password, String id, String coin) {
         this.userName = userName;
         this.phoneNumber = phoneNumber;
         this.profilePicture = profilePicture;
@@ -17,6 +18,7 @@ public class Profile {
         this.email = email;
         this.password = password;
         this.id = id;
+        this.coin = coin;
     }
 
     public String getUserName() {
@@ -73,5 +75,13 @@ public class Profile {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCoin() {
+        return coin;
+    }
+
+    public void setCoin(String coin) {
+        this.coin = coin;
     }
 }

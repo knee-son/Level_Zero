@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_navigation_home_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <argument
+            android:name="coin"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/navigation_waste_management"
@@ -50,4 +53,9 @@
             android:id="@+id/action_settingsFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/wasteScheduleFragment"
+        android:name="com.level_zero.greeniq.Fragments.WasteScheduleFragment"
+        android:label="fragment_waste_schedule"
+        tools:layout="@layout/fragment_waste_schedule" />
 </navigation>

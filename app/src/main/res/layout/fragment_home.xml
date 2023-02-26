@@ -43,38 +43,61 @@
             android:scaleType="centerCrop"/>
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="EMAIL"
-        android:id="@+id/emailTV"
-        android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginTop="15sp"
+            android:textSize="16sp"
+            android:text="COIN"
+            android:id="@+id/coinTV"
+            android:layout_gravity="center"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="USERNAME"
-        android:id="@+id/userNameTV"
-        android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="USERNAME"
+            android:id="@+id/userNameTV"
+            android:layout_gravity="center"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="PHONE NUMBER"
-        android:id="@+id/phoneNumberTV"
-        android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="EMAIL"
+            android:id="@+id/emailTV"
+            android:layout_gravity="center"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="LOCATION"
-        android:id="@+id/locationTV"
-        android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="PHONE NUMBER"
+            android:id="@+id/phoneNumberTV"
+            android:layout_gravity="center"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="LOCATION"
+            android:id="@+id/locationTV"
+            android:layout_gravity="center"/>
+
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/image_slider"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        app:iss_auto_cycle="true"
+        app:iss_period="3000"
+        app:iss_delay="0"
+        app:iss_corner_radius="20"
+        app:iss_placeholder="@color/black"
+        app:iss_error_image="@color/neutral"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/saveButton"

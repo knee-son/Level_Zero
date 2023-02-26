@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.WasteManagement.WasteScheduleActivity;
@@ -21,6 +22,7 @@ import com.level_zero.greeniq.databinding.FragmentWasteManagementBinding;
 public class WasteManagementFragment extends Fragment {
 
     private FragmentWasteManagementBinding binding;
+    private ImageView wasteSchedule;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -40,4 +42,8 @@ public class WasteManagementFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    /*public void openSchedule(View view) {
+        NavHostFragment.findNavController(WasteManagementFragment.this).navigate(R.id.action_navigation_waste_management_to_wasteScheduleFragment);
+    }*/
 }

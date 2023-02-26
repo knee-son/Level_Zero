@@ -60,4 +60,6 @@ dependencies {
     // https://firebase.google.com/docs/android/setup#available-libraries
 
     implementation 'com.facebook.android:facebook-login:latest.release'
+
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 }
