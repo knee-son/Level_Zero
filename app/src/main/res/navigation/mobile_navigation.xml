@@ -23,6 +23,9 @@
         <argument
             android:name="profilePicture"
             app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_home_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_waste_management"
@@ -39,4 +42,12 @@
         android:name="com.level_zero.greeniq.Fragments.CarbonFootprintFragment"
         android:label="fragment_carbon_footprint"
         tools:layout="@layout/fragment_carbon_footprint" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.level_zero.greeniq.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>

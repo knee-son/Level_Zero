@@ -2,7 +2,6 @@ package com.level_zero.greeniq.Fragments;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,9 +20,9 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,10 +33,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
-import com.level_zero.greeniq.DashboardActivity;
-import com.level_zero.greeniq.LoginActivity;
-import com.level_zero.greeniq.ProfileActivity;
 import com.level_zero.greeniq.R;
+import com.level_zero.greeniq.SettingsFragment;
 import com.level_zero.greeniq.databinding.FragmentHomeBinding;
 
 import java.io.IOException;
@@ -47,8 +44,8 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
-    private TextView email, username, phone, location;
-    private ImageView avatar;
+    private TextView email, username, phone, location, toolbar_title;
+    private ImageView avatar, settings;
     private AppCompatButton logout, save, dashboard;
     private Uri imagePath;
     private FirebaseDatabase firebaseDatabase;
@@ -70,8 +67,8 @@ public class HomeFragment extends Fragment {
         phone = binding.phoneNumberTV;
         location = binding.locationTV;
         avatar = binding.avatarIV;
-        logout = binding.logoutButton;
         save = binding.saveButton;
+        settings = binding.settings;
 
         Bundle bundle = getActivity().getIntent().getExtras();
         String userEmail = bundle.getString("email");
@@ -87,13 +84,6 @@ public class HomeFragment extends Fragment {
 
         Glide.with(this).load(userAvatar).error(R.drawable.defaultpfp).placeholder(R.drawable.defaultpfp).into(avatar);
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
-            }
-        });
         avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,6 +100,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 saveImage();
+            }
+        });
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_navigation_home_to_settingsFragment);
             }
         });
 
