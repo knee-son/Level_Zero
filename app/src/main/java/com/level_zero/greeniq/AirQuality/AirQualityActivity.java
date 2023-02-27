@@ -7,12 +7,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.Request;
+/*import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.Volley;*/
 import com.level_zero.greeniq.R;
 
 import org.json.JSONException;
@@ -30,7 +30,7 @@ TextView tv;
     }
 
     public void get(View v){
-        String apikey="28b92be4-41a2-4905-983f-280e20cef31a";
+        /*String apikey="28b92be4-41a2-4905-983f-280e20cef31a";
         String url="https://api.airvisual.com/v2/nearest_city?key=28b92be4-41a2-4905-983f-280e20cef31a";
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
@@ -51,6 +51,6 @@ TextView tv;
                 Toast.makeText(AirQualityActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         });
-        queue.add(request);
+        queue.add(request);*/
     }
 }

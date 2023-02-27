@@ -1,4 +1,4 @@
-package com.level_zero.greeniq.WasteManagement;
+package com.level_zero.greeniq;
 
 public class Certificate {
     private String userId, urlCert;

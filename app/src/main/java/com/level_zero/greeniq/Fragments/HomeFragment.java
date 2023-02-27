@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_navigation_home_to_settingsFragment);
+               NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_homeFragment_to_settingsFragment2);
             }
         });
 
