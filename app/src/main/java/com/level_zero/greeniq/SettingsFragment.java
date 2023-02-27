@@ -56,7 +56,7 @@ public class SettingsFragment extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(SettingsFragment.this).navigate(R.id.action_settingsFragment_to_navigation_home);
+//                NavHostFragment.findNavController(SettingsFragment.this).navigate(R.id.action_settingsFragment_to_navigation_home);
             }
         });
     }

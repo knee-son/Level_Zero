@@ -24,7 +24,6 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="13dp"
-            android:onClick="openSchedule"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp">
 

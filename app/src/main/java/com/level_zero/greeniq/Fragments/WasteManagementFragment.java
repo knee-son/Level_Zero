@@ -31,9 +31,9 @@ public class WasteManagementFragment extends Fragment {
 //        adding one more cardview:
 //        binding.griddy.addView(new CardView(getActivity()));
 
-       /* binding.griddy.getChildAt(0).setOnClickListener(view ->
+       binding.griddy.getChildAt(0).setOnClickListener(view ->
                 NavHostFragment.findNavController(WasteManagementFragment.this)
-                .navigate(R.id.action_navigation_waste_management_to_wasteScheduleFragment));*/
+                .navigate(R.id.action_navigation_waste_management_to_wasteScheduleFragment));
 
         return binding.getRoot();
     }
