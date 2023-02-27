@@ -29,7 +29,7 @@ TextView tv;
 
     }
 
-    public void get(View v){
+    public void getAQI(View v){
         String apikey="28b92be4-41a2-4905-983f-280e20cef31a";
         String url="https://api.airvisual.com/v2/nearest_city?key=28b92be4-41a2-4905-983f-280e20cef31a";
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
