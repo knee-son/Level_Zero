@@ -7,7 +7,6 @@
     tools:context=".AirQuality.AirQualityActivity"
     android:orientation="vertical"
     android:padding="20dp">
-
     <TextView
         android:id="@+id/textView"
         style="@style/TextAppearance.AppCompat.Large"
@@ -50,6 +49,7 @@
         android:textColor="@color/colorAccent"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:text=" click button to get nearest city"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
         app:layout_constraintVertical_bias="0.171" />
 
     <TextView
-        android:id="@+id/tv"
+        android:id="@+id/AQItv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -80,6 +80,7 @@
         android:textColor="@color/colorAccent"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:text="click button to get air quality"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,6 +101,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.48" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AQItv" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
