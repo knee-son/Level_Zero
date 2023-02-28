@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String phoneNumberDB = snapshot.child(userId).child("phoneNumber").getValue(String.class);
                                 String userNameDB = snapshot.child(userId).child("userName").getValue(String.class);
                                 String profileDB = snapshot.child(userId).child("profilePicture").getValue(String.class);
-                                String coinDB = snapshot.child(userId).child("coin").getValue(String.class);
+//                                String coinDB = snapshot.child(userId).child("coin").getValue(String.class);
 
                                 Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
 
@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                                 bundle.putString("phoneNumber", phoneNumberDB);
                                 bundle.putString("userName", userNameDB);
                                 bundle.putString("profilePicture", profileDB);
-                                bundle.putString("coin", coinDB);
+//                                bundle.putString("coin", coinDB);
 
 //                                for (String s : new String[]{emailDB, locationDB, phoneNumberDB, userNameDB, profileDB})
 //                                    System.out.println(s);
