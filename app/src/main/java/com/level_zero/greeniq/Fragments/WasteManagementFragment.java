@@ -55,6 +55,20 @@ public class WasteManagementFragment extends Fragment {
            public void onMapReady(GoogleMap googleMap) {
                mMap = googleMap;
                // Add your map customization and marker placement code here
+               LatLng cebu = new LatLng(10.2954233,123.9017223);
+               LatLng talisay = new LatLng(10.2732741,123.857236);
+               LatLng lapulapu = new LatLng(10.2921273,123.9591187);
+               mMap.addMarker(new MarkerOptions()
+                       .position(cebu)
+                       .title("Waste Center in Cebu City"));
+               mMap.addMarker(new MarkerOptions()
+                       .position(talisay)
+                       .title("Waste Center in Talisay City"));
+               mMap.addMarker(new MarkerOptions()
+                       .position(lapulapu)
+                       .title("Waste Center in LapuLapu City"));
+               mMap.moveCamera(CameraUpdateFactory.newLatLng(cebu));
+               mMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) );
            }
        });
 
