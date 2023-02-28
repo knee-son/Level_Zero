@@ -15,14 +15,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.WasteManagement.WasteScheduleActivity;
 import com.level_zero.greeniq.databinding.FragmentWasteManagementBinding;
+
+import com.google.android.gms.maps.SupportMapFragment;
 
 public class WasteManagementFragment extends Fragment {
 
     private FragmentWasteManagementBinding binding;
     private ImageView wasteSchedule;
+    private GoogleMap mMap;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -35,15 +44,26 @@ public class WasteManagementFragment extends Fragment {
                 NavHostFragment.findNavController(WasteManagementFragment.this)
                 .navigate(R.id.action_navigation_waste_management_to_wasteScheduleFragment));
 
+       SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+       if (mapFragment == null) {
+           mapFragment = SupportMapFragment.newInstance();
+           getChildFragmentManager().beginTransaction().add(R.id.map, mapFragment).commit();
+       }
+
+       mapFragment.getMapAsync(new OnMapReadyCallback() {
+           @Override
+           public void onMapReady(GoogleMap googleMap) {
+               mMap = googleMap;
+               // Add your map customization and marker placement code here
+           }
+       });
+
         return binding.getRoot();
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
-
-    /*public void openSchedule(View view) {
-        NavHostFragment.findNavController(WasteManagementFragment.this).navigate(R.id.action_navigation_waste_management_to_wasteScheduleFragment);
-    }*/
 }

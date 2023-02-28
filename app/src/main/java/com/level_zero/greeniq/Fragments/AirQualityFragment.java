@@ -128,31 +128,31 @@ public class AirQualityFragment extends Fragment {
                 BarDataSet sundayDataSet = new BarDataSet(Arrays.asList(sundayEntry), "Sunday");
 
                 // Customize the appearance of the BarDataSets
-                mondayDataSet.setColor(Color.GREEN);
+                mondayDataSet.setColor(Color.CYAN);
                 mondayDataSet.setValueTextColor(Color.BLACK);
                 mondayDataSet.setValueTextSize(12f);
 
-                tuesdayDataSet.setColor(Color.GREEN);
+                tuesdayDataSet.setColor(Color.CYAN);
                 tuesdayDataSet.setValueTextColor(Color.BLACK);
                 tuesdayDataSet.setValueTextSize(12f);
 
-                wednesdayDataSet.setColor(Color.GREEN);
+                wednesdayDataSet.setColor(Color.CYAN);
                 wednesdayDataSet.setValueTextColor(Color.BLACK);
                 wednesdayDataSet.setValueTextSize(12f);
 
-                thursdayDataSet.setColor(Color.GREEN);
+                thursdayDataSet.setColor(Color.CYAN);
                 thursdayDataSet.setValueTextColor(Color.BLACK);
                 thursdayDataSet.setValueTextSize(12f);
 
-                fridayDataSet.setColor(Color.GREEN);
+                fridayDataSet.setColor(Color.CYAN);
                 fridayDataSet.setValueTextColor(Color.BLACK);
                 fridayDataSet.setValueTextSize(12f);
 
-                saturdayDataSet.setColor(Color.GREEN);
+                saturdayDataSet.setColor(Color.CYAN);
                 saturdayDataSet.setValueTextColor(Color.BLACK);
                 saturdayDataSet.setValueTextSize(12f);
 
-                sundayDataSet.setColor(Color.GREEN);
+                sundayDataSet.setColor(Color.CYAN);
                 sundayDataSet.setValueTextColor(Color.BLACK);
                 sundayDataSet.setValueTextSize(12f);
 
