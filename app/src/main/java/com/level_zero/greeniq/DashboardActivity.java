@@ -13,9 +13,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.level_zero.greeniq.AirQuality.AirQualityActivity;
-import com.level_zero.greeniq.CarbonFootprint.CarbonFootprintActivity;
-import com.level_zero.greeniq.WasteManagement.WasteManagementActivity;
 import com.level_zero.greeniq.databinding.ActivityDashboardBinding;
 
 public class DashboardActivity extends AppCompatActivity {

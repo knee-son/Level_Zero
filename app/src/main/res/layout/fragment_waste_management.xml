@@ -9,22 +9,49 @@
     android:orientation="vertical"
     tools:context=".Fragments.WasteManagementFragment">
 
-    <FrameLayout
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="331dp"
-        android:layout_marginTop="20dp"
-        tools:context=".MapsActivity" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="328dp"
+        android:layout_height="58dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="0dp"
+        app:cardBackgroundColor="@color/neutral_heavy"
+        app:cardCornerRadius="15dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Recycling sites near you:"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="8dp">
+        <FrameLayout
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="331dp"
+            tools:context=".MapsActivity" />
+    </androidx.cardview.widget.CardView>
 
     <GridLayout
         android:id="@+id/griddy"
-        android:layout_width="match_parent"
+        android:layout_width="381dp"
         android:layout_height="wrap_content"
         android:alignmentMode="alignMargins"
         android:columnCount="1"
         android:columnOrderPreserved="false"
-        android:rowCount="1">
+        android:rowCount="1"
+        android:layout_gravity="center">
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -33,7 +60,7 @@
             android:layout_columnWeight="1"
             android:layout_margin="13dp"
             app:cardCornerRadius="12dp"
-            app:cardElevation="6dp">
+            app:cardElevation="3dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,7 +73,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TODAY'S SCHEDULE"
-                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -54,7 +80,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="THIRD SHIFT"
-                    android:textColor="#000000"
                     android:textSize="16sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

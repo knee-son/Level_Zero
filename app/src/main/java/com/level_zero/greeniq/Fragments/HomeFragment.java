@@ -83,7 +83,7 @@ public class HomeFragment extends Fragment {
         String userPhone = bundle.getString("phoneNumber");
         String userLocation = bundle.getString("location");
         String userAvatar = bundle.getString("profilePicture");
-        String userCoin = bundle.getString("coin");
+        String userCoin = bundle.getString("coin") + " coins";
 
         email.setText(userEmail);
         username.setText(userUserName);
