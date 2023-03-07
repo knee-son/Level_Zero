@@ -2,7 +2,6 @@ package com.level_zero.greeniq.Fragments;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,7 +20,6 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -38,9 +36,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
-import com.level_zero.greeniq.DashboardActivity;
-import com.level_zero.greeniq.LoginActivity;
-import com.level_zero.greeniq.ProfileActivity;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentHomeBinding;
 

@@ -1,13 +1,9 @@
 package com.level_zero.greeniq.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -21,7 +17,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.level_zero.greeniq.R;
-import com.level_zero.greeniq.WasteManagement.WasteScheduleActivity;
 import com.level_zero.greeniq.databinding.FragmentWasteManagementBinding;
 
 import com.google.android.gms.maps.SupportMapFragment;

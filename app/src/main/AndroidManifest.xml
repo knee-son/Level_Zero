@@ -19,22 +19,7 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".WasteManagement.WasteScheduleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DashboardActivity"
-            android:exported="false" />
-        <activity
             android:name=".AirQuality.AirQualityActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CarbonFootprint.CarbonFootprintActivity"
-            android:exported="false" />
-        <activity
-            android:name=".WasteManagement.WasteManagementActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"

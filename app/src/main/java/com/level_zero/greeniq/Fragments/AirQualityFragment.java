@@ -78,17 +78,14 @@ public class AirQualityFragment extends Fragment {
 
                     JSONObject current = data.getJSONObject("current");
                     JSONObject pollution = current.getJSONObject("pollution");
+
                     int aqius = pollution.getInt("aqius");
+                    String[] levels = {"Good", "Moderate", "Alarming", "Unhealthy", "Very Unhealthy", "Hazardous"};
+                    int levelIndex = Math.min(aqius / 50, levels.length - 1);
+                    String level = aqius + " - " + levels[levelIndex];
 
-                    String quality;
-                    if (aqius <= 50) quality = "GOOD";
-                    else if (aqius <= 100) quality = "MODERATE";
-                    else if (aqius <= 150) quality = "TAKE CAUTION";
-                    else if (aqius <= 200) quality = "UNHEALTHY";
-                    else if (aqius <= 300) quality = "VERY UNHEALTHY";
-                    else quality = "HAZARDOUS";
+                    AQI.setText(level);
 
-                    AQI.setText(String.valueOf(aqius) + " - " + quality);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
