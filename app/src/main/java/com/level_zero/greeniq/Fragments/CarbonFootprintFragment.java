@@ -39,31 +39,31 @@ public class CarbonFootprintFragment extends Fragment {
 
         if (choiceValue.equals("Transport")) {
             if (typeValue.equals("Private")) {
-                carbonFootprint = amount * 2.5;
+                carbonFootprint = amount * 5.8/100 * 2.3035;
             } else if (typeValue.equals("Public")) {
-                carbonFootprint = amount * 1.0;
+                carbonFootprint = amount * 18.181818182/100 * 2.3035;
             } else if (typeValue.equals("Motorcycle")) {
-                carbonFootprint = amount * 1.2;
+                carbonFootprint = amount * 1.8867924528/100 * 2.3035;
             }
         } else if (choiceValue.equals("Food")) {
             if (typeValue.equals("Pork")) {
-                carbonFootprint = amount * 3.5;
+                carbonFootprint = amount * 7.6;
             } else if (typeValue.equals("Poultry")) {
-                carbonFootprint = amount * 2.5;
+                carbonFootprint = amount * 6.9;
             } else if (typeValue.equals("Beef")) {
-                carbonFootprint = amount * 7.0;
+                carbonFootprint = amount * 27;
             } else if (typeValue.equals("Fish")) {
-                carbonFootprint = amount * 1.8;
+                carbonFootprint = amount * 11;
             } else if (typeValue.equals("Vegetables")) {
-                carbonFootprint = amount * 0.5;
+                carbonFootprint = amount * 2;
             }
         } else if (choiceValue.equals("Electricity")) {
             if (typeValue.equals("Low Usage")) {
-                carbonFootprint = amount * 0.5;
+                carbonFootprint = amount * 1.35;
             } else if (typeValue.equals("Medium Usage")) {
-                carbonFootprint = amount * 1.0;
+                carbonFootprint = amount * 5;
             } else if (typeValue.equals("High Usage")) {
-                carbonFootprint = amount * 1.5;
+                carbonFootprint = amount * 17;
             }
         }
 
