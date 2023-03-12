@@ -13,10 +13,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentCarbonFootprintBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CarbonFootprintFragment extends Fragment {
 
@@ -24,6 +34,10 @@ public class CarbonFootprintFragment extends Fragment {
     private Spinner choiceSpinner;
     private Spinner typeSpinner;
     private Button calculateButton;
+    private PieChart pieChart;
+    double footprintTransport = 0.0;
+    double footprintFood = 0.0;
+    double footprintElectricity = 0.0;
 
     private EditText amountEditText;
     String choiceValue, typeValue;
@@ -31,46 +45,6 @@ public class CarbonFootprintFragment extends Fragment {
     String[] transportType = {"Private", "Public", "Motorcycle"};
     String[] foodType = {"Pork", "Poultry", "Beef", "Fish", "Vegetables"};
     String[] electricityType= {"Low Usage","Medium Usage","High Usage"};
-
-
-    private void calculateCarbonFootprint() {
-        double carbonFootprint = 0.0;
-        double amount = Double.parseDouble(amountEditText.getText().toString());
-
-        if (choiceValue.equals("Transport")) {
-            if (typeValue.equals("Private")) {
-                carbonFootprint = amount * 5.8/100 * 2.3035;
-            } else if (typeValue.equals("Public")) {
-                carbonFootprint = amount * 18.181818182/100 * 2.3035;
-            } else if (typeValue.equals("Motorcycle")) {
-                carbonFootprint = amount * 1.8867924528/100 * 2.3035;
-            }
-        } else if (choiceValue.equals("Food")) {
-            if (typeValue.equals("Pork")) {
-                carbonFootprint = amount * 7.6;
-            } else if (typeValue.equals("Poultry")) {
-                carbonFootprint = amount * 6.9;
-            } else if (typeValue.equals("Beef")) {
-                carbonFootprint = amount * 27;
-            } else if (typeValue.equals("Fish")) {
-                carbonFootprint = amount * 11;
-            } else if (typeValue.equals("Vegetables")) {
-                carbonFootprint = amount * 2;
-            }
-        } else if (choiceValue.equals("Electricity")) {
-            if (typeValue.equals("Low Usage")) {
-                carbonFootprint = amount * 1.35;
-            } else if (typeValue.equals("Medium Usage")) {
-                carbonFootprint = amount * 5;
-            } else if (typeValue.equals("High Usage")) {
-                carbonFootprint = amount * 17;
-            }
-        }
-
-        // Display the result to the user
-        String result = String.format("Your carbon footprint is %.2f kg CO2e.", carbonFootprint);
-        Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -81,9 +55,12 @@ public class CarbonFootprintFragment extends Fragment {
         typeSpinner = binding.typeSpinner;
         calculateButton =binding.calculateButton;
         amountEditText = binding.amountValue;
+        pieChart = binding.piechart;
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, type);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
 
         choiceSpinner.setAdapter(adapter);
         choiceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -134,6 +111,56 @@ public class CarbonFootprintFragment extends Fragment {
         return binding.getRoot();
     }
 
+    private void calculateCarbonFootprint() {
+        double amount = Double.parseDouble(amountEditText.getText().toString());
+
+        if (choiceValue.equals("Transport")) {
+            if (typeValue.equals("Private")) {
+                footprintTransport = amount * 5.8/100 * 2.3035;
+            } else if (typeValue.equals("Public")) {
+                footprintTransport = amount * 18.181818182/100 * 2.3035;
+            } else if (typeValue.equals("Motorcycle")) {
+                footprintTransport = amount * 1.8867924528/100 * 2.3035;
+            }
+        } else if (choiceValue.equals("Food")) {
+            if (typeValue.equals("Pork")) {
+                footprintFood = amount * 7.6;
+            } else if (typeValue.equals("Poultry")) {
+                footprintFood = amount * 6.9;
+            } else if (typeValue.equals("Beef")) {
+                footprintFood = amount * 27;
+            } else if (typeValue.equals("Fish")) {
+                footprintFood = amount * 11;
+            } else if (typeValue.equals("Vegetables")) {
+                footprintFood = amount * 2;
+            }
+        } else{
+            if (typeValue.equals("Low Usage")) {
+                footprintElectricity = amount * 1.35;
+            } else if (typeValue.equals("Medium Usage")) {
+                footprintElectricity = amount * 5;
+            } else if (typeValue.equals("High Usage")) {
+                footprintElectricity = amount * 17;
+            }
+        }
+
+        List<PieEntry> entries = new ArrayList<>();
+
+        entries.add(new PieEntry((float) footprintTransport, "Transport"));
+        entries.add(new PieEntry((float) footprintFood, "Food"));
+        entries.add(new PieEntry((float) footprintElectricity, "Electricity"));
+
+        PieDataSet pieDataSet = new PieDataSet(entries, "Carbon");
+        pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+
+        PieData pieData = new PieData(pieDataSet);
+
+        pieChart.setData(pieData);
+        pieChart.invalidate();
+
+        double total = footprintTransport + footprintElectricity + footprintFood;
+        // Display the result to the user
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
