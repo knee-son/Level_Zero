@@ -3,7 +3,9 @@ package com.level_zero.greeniq.Fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,98 +47,94 @@ public class CarbonFootprintFragment extends Fragment {
     private Button calculateButton;
     private PieChart pieChart;
     private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference, databaseReferenceData;
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
     private ListView listView;
+    private CardView cardView1, cardView2, cardView3;
 
     private EditText amountEditText;
     private ArrayList<String> dataList;
-    String choiceValue, typeValue, currentUser;
-    double footprintTransport = 0.0;
-    double footprintFood = 0.0;
-    double footprintElectricity = 0.0;
-    String[] type = {"Transport", "Food","Electricity" };
-    String[] transportType = {"Private", "Public", "Motorcycle"};
-    String[] foodType = {"Pork", "Poultry", "Beef", "Fish", "Vegetables"};
-    String[] electricityType= {"Low Usage","Medium Usage","High Usage"};
+    String currentUser;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentCarbonFootprintBinding.inflate(inflater, container, false);
-        choiceSpinner = binding.choiceSpinner;
-        typeSpinner = binding.typeSpinner;
-        calculateButton =binding.calculateButton;
-        amountEditText = binding.amountValue;
         pieChart = binding.piechart;
         listView = binding.listviewHistory;
+        cardView1 = binding.cardView1;
+        cardView2 = binding.cardView2;
+        cardView3 = binding.cardView3;
 
         Bundle bundle = getActivity().getIntent().getExtras();
         currentUser = bundle.getString("id");
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("Carbon History");
+        databaseReferenceData = firebaseDatabase.getReference("Carbon Data");
 
         calendar = Calendar.getInstance();
         simpleDateFormat = new SimpleDateFormat("EEE, MMMM d, yyyy");
 
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, type);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
-        choiceSpinner.setAdapter(adapter);
-        choiceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String value = parent.getItemAtPosition(position).toString();
-                choiceValue = value;
-
-                // set the adapter of typeSpinner based on the selected value of choiceSpinner
-                if(choiceValue.equals("Transport")){
-                    ArrayAdapter<String> transportAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, transportType);
-                    typeSpinner.setAdapter(transportAdapter);
-                } else if (choiceValue.equals("Food")) {
-                    ArrayAdapter<String> foodAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, foodType);
-                    typeSpinner.setAdapter(foodAdapter);
-                } else if (choiceValue.equals("Electricity")) {
-                    ArrayAdapter<String> electricityAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, electricityType);
-                    typeSpinner.setAdapter(electricityAdapter);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
-
-
-        typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String value = parent.getItemAtPosition(position).toString();
-                typeValue = value;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
-        calculateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calculateCarbonFootprint();
-                addHistory();
-            }
-        });
-
+        displayPieChart();
         displayDataHistory();
 
+        cardView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(CarbonFootprintFragment.this).navigate(R.id.action_carbonFootprintFragment_to_carbonTransportFragment);
+            }
+        });
+
+        cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(CarbonFootprintFragment.this).navigate(R.id.action_carbonFootprintFragment_to_carbonFoodFragment);
+            }
+        });
+
+        cardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(CarbonFootprintFragment.this).navigate(R.id.action_carbonFootprintFragment_to_carbonElectricityFragment);
+            }
+        });
+
         return binding.getRoot();
+    }
+
+    private void displayPieChart() {
+        databaseReferenceData.child(currentUser).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String transportData = snapshot.child("transportTotal").getValue(String.class);
+                String foodData = snapshot.child("foodTotal").getValue(String.class);
+                String electricityData = snapshot.child("electricityTotal").getValue(String.class);
+
+                List<PieEntry> entries = new ArrayList<>();
+
+                entries.add(new PieEntry(Float.parseFloat(transportData), "Transport"));
+                entries.add(new PieEntry(Float.parseFloat(foodData), "Food"));
+                entries.add(new PieEntry(Float.parseFloat(electricityData), "Electricity"));
+
+                PieDataSet pieDataSet = new PieDataSet(entries, "Carbon");
+                pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+
+                PieData pieData = new PieData(pieDataSet);
+
+                pieChart.getDescription().setEnabled(false);
+
+                pieChart.setData(pieData);
+                pieChart.invalidate();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void displayDataHistory() {
@@ -156,8 +154,7 @@ public class CarbonFootprintFragment extends Fragment {
                     dataList.add(date + " - Total Carbon: " + totalCarbon);
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
-                        android.R.layout.simple_list_item_1, dataList);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, dataList);
                 listView.setAdapter(adapter);
             }
 
@@ -168,63 +165,6 @@ public class CarbonFootprintFragment extends Fragment {
         });
     }
 
-    private void calculateCarbonFootprint() {
-        double amount = Double.parseDouble(amountEditText.getText().toString());
-
-        if (choiceValue.equals("Transport")) {
-            if (typeValue.equals("Private")) {
-                footprintTransport = amount * 5.8/100 * 2.3035;
-            } else if (typeValue.equals("Public")) {
-                footprintTransport = amount * 18.181818182/100 * 2.3035;
-            } else if (typeValue.equals("Motorcycle")) {
-                footprintTransport = amount * 1.8867924528/100 * 2.3035;
-            }
-        } else if (choiceValue.equals("Food")) {
-            if (typeValue.equals("Pork")) {
-                footprintFood = amount * 7.6;
-            } else if (typeValue.equals("Poultry")) {
-                footprintFood = amount * 6.9;
-            } else if (typeValue.equals("Beef")) {
-                footprintFood = amount * 27;
-            } else if (typeValue.equals("Fish")) {
-                footprintFood = amount * 11;
-            } else if (typeValue.equals("Vegetables")) {
-                footprintFood = amount * 2;
-            }
-        } else{
-            if (typeValue.equals("Low Usage")) {
-                footprintElectricity = amount * 1.35;
-            } else if (typeValue.equals("Medium Usage")) {
-                footprintElectricity = amount * 5;
-            } else if (typeValue.equals("High Usage")) {
-                footprintElectricity = amount * 17;
-            }
-        }
-
-        List<PieEntry> entries = new ArrayList<>();
-
-        entries.add(new PieEntry((float) footprintTransport, "Transport"));
-        entries.add(new PieEntry((float) footprintFood, "Food"));
-        entries.add(new PieEntry((float) footprintElectricity, "Electricity"));
-
-        PieDataSet pieDataSet = new PieDataSet(entries, "Carbon");
-        pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
-
-        PieData pieData = new PieData(pieDataSet);
-
-        pieChart.getDescription().setEnabled(false);
-
-        pieChart.setData(pieData);
-        pieChart.invalidate();
-    }
-
-    private void addHistory() {
-        String currentDate = simpleDateFormat.format(calendar.getTime());
-        double total = footprintTransport + footprintElectricity + footprintFood;
-
-        History history = new History(currentDate, String.valueOf(total));
-        databaseReference.child(currentUser).child("testDate").setValue(history);
-    }
 
     @Override
     public void onDestroyView() {

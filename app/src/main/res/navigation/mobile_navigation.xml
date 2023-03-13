@@ -45,7 +45,17 @@
         android:id="@+id/carbonFootprintFragment"
         android:name="com.level_zero.greeniq.Fragments.CarbonFootprintFragment"
         android:label="fragment_carbon_footprint"
-        tools:layout="@layout/fragment_carbon_footprint" />
+        tools:layout="@layout/fragment_carbon_footprint" >
+        <action
+            android:id="@+id/action_carbonFootprintFragment_to_carbonTransportFragment"
+            app:destination="@id/carbonTransportFragment" />
+        <action
+            android:id="@+id/action_carbonFootprintFragment_to_carbonFoodFragment"
+            app:destination="@id/carbonFoodFragment" />
+        <action
+            android:id="@+id/action_carbonFootprintFragment_to_carbonElectricityFragment"
+            app:destination="@id/carbonElectricityFragment" />
+    </fragment>
     <fragment
         android:id="@+id/wasteScheduleFragment"
         android:name="com.level_zero.greeniq.Fragments.WasteScheduleFragment"
@@ -60,4 +70,19 @@
             android:id="@+id/action_settingsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/carbonTransportFragment"
+        android:name="com.level_zero.greeniq.Fragments.CarbonTransportFragment"
+        android:label="fragment_carbon_transport"
+        tools:layout="@layout/fragment_carbon_transport" />
+    <fragment
+        android:id="@+id/carbonFoodFragment"
+        android:name="com.level_zero.greeniq.Fragments.CarbonFoodFragment"
+        android:label="fragment_carbon_food"
+        tools:layout="@layout/fragment_carbon_food" />
+    <fragment
+        android:id="@+id/carbonElectricityFragment"
+        android:name="com.level_zero.greeniq.Fragments.CarbonElectricityFragment"
+        android:label="fragment_carbon_electricity"
+        tools:layout="@layout/fragment_carbon_electricity" />
 </navigation>

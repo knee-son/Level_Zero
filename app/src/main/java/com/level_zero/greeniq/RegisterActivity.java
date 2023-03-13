@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputLayout email, password, userName, location, phoneNumber;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser currentUser;
-    private DatabaseReference databaseReference, datebaseReferenceCertificate;
+    private DatabaseReference databaseReference, databaseReferenceCarbon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("User");
-        datebaseReferenceCertificate = firebaseDatabase.getReference("Certificate");
+        databaseReferenceCarbon = firebaseDatabase.getReference("Carbon Data");
 
         email = findViewById(R.id.userEmail);
         password = findViewById(R.id.userPassword);
@@ -108,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                     String userId = Objects.requireNonNull(user).getUid();
                     String defaultProfile = "https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/images%2F1e98af88-102c-4ffd-a85c-c450162cd7d7?alt=media&token=d1d09296-b020-422b-a584-2fb40719bb66";
                     databaseReference.child(userId).setValue(new Profile(userUserName, userPhoneNumber, defaultProfile, userLocation, userEmail, userPass, userId, "0"));
-                    //datebaseReferenceCertificate.child(userId).child();
+                    databaseReferenceCarbon.child(userId).setValue(new CarbonData("1", "1", "1"));
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     Toast.makeText(getApplicationContext(),"You are now registered, "+userUserName+"!", Toast.LENGTH_SHORT).show();
                 } else {
