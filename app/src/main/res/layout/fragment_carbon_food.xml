@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/black"
-            android:text="amount of food cooked"
+            android:text="amount of food cooked in kg"
             android:layout_toEndOf="@id/amountValueFood"
             android:layout_alignBottom="@id/amountValueFood"
             android:layout_marginBottom="5dp"/>
