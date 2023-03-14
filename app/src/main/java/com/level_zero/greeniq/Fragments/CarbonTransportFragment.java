@@ -2,11 +2,13 @@ package com.level_zero.greeniq.Fragments;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +17,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +32,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.level_zero.greeniq.History;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentCarbonTransportBinding;;import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class CarbonTransportFragment extends Fragment {
 
@@ -37,6 +46,8 @@ public class CarbonTransportFragment extends Fragment {
     private Spinner typeSpinner;
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
+    private ImageSlider imageSlider;
+    private ImageView back;
     String typeValue, currentUser;
     double footprintValue;
 
@@ -50,6 +61,8 @@ public class CarbonTransportFragment extends Fragment {
         typeSpinner = binding.typeSpinnerTransport;
         amountEditText = binding.amountValueTransport;
         button = binding.calculateButtonTransport;
+        imageSlider = binding.imageTransport;
+        back = binding.back1;
 
         Bundle bundle = getActivity().getIntent().getExtras();
         currentUser = bundle.getString("id");
@@ -59,6 +72,12 @@ public class CarbonTransportFragment extends Fragment {
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("Carbon Data");
+
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/infomercial%2F336184726_126461133555598_279106848359392906_n.png?alt=media&token=f15ef79b-02ba-48fd-9c18-10de6a7c06e1", null, ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/infomercial%2F336226796_670980624799049_635249469790701069_n.png?alt=media&token=5a9f5492-6918-483f-bcdb-c5f1f561dfe8", null, ScaleTypes.CENTER_CROP));
+
+        imageSlider.setImageList(slideModels,ScaleTypes.CENTER_CROP);
 
         ArrayAdapter<String> transportAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, transportType);
         typeSpinner.setAdapter(transportAdapter);
@@ -84,6 +103,13 @@ public class CarbonTransportFragment extends Fragment {
             }
         });
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(CarbonTransportFragment.this).navigate(R.id.action_carbonTransportFragment_to_carbonFootprintFragment);
+            }
+        });
+
         return binding.getRoot();
     }
 
@@ -101,6 +127,8 @@ public class CarbonTransportFragment extends Fragment {
 
                 double total = valueTransport + valueFood + valueElectricity;
                 String currentDate = simpleDateFormat.format(calendar.getTime());
+
+                Toast.makeText(getActivity(), "Your transport carbon footprint is " + valueTransport + " Kg CO", Toast.LENGTH_SHORT).show();
 
                 History history = new History(currentDate, String.valueOf(total));
 

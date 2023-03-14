@@ -74,15 +74,27 @@
         android:id="@+id/carbonTransportFragment"
         android:name="com.level_zero.greeniq.Fragments.CarbonTransportFragment"
         android:label="fragment_carbon_transport"
-        tools:layout="@layout/fragment_carbon_transport" />
+        tools:layout="@layout/fragment_carbon_transport" >
+        <action
+            android:id="@+id/action_carbonTransportFragment_to_carbonFootprintFragment"
+            app:destination="@id/carbonFootprintFragment" />
+    </fragment>
     <fragment
         android:id="@+id/carbonFoodFragment"
         android:name="com.level_zero.greeniq.Fragments.CarbonFoodFragment"
         android:label="fragment_carbon_food"
-        tools:layout="@layout/fragment_carbon_food" />
+        tools:layout="@layout/fragment_carbon_food" >
+        <action
+            android:id="@+id/action_carbonFoodFragment_to_carbonFootprintFragment"
+            app:destination="@id/carbonFootprintFragment" />
+    </fragment>
     <fragment
         android:id="@+id/carbonElectricityFragment"
         android:name="com.level_zero.greeniq.Fragments.CarbonElectricityFragment"
         android:label="fragment_carbon_electricity"
-        tools:layout="@layout/fragment_carbon_electricity" />
+        tools:layout="@layout/fragment_carbon_electricity" >
+        <action
+            android:id="@+id/action_carbonElectricityFragment_to_carbonFootprintFragment"
+            app:destination="@id/carbonFootprintFragment" />
+    </fragment>
 </navigation>

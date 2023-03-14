@@ -42,9 +42,6 @@ import java.util.List;
 public class CarbonFootprintFragment extends Fragment {
 
     private FragmentCarbonFootprintBinding binding;
-    private Spinner choiceSpinner;
-    private Spinner typeSpinner;
-    private Button calculateButton;
     private PieChart pieChart;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference, databaseReferenceData;
@@ -52,8 +49,6 @@ public class CarbonFootprintFragment extends Fragment {
     private SimpleDateFormat simpleDateFormat;
     private ListView listView;
     private CardView cardView1, cardView2, cardView3;
-
-    private EditText amountEditText;
     private ArrayList<String> dataList;
     String currentUser;
 

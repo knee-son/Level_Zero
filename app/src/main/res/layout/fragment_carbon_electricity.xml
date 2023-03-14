@@ -3,8 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".Fragments.CarbonElectricityFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_dark"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="11dp">
+
+            <ImageView
+                android:id="@+id/back2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/baseline_arrow_back_24" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select usage of electricity for today:"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
 
     <Spinner
         android:id="@+id/typeSpinnerElectricity"
@@ -17,8 +48,24 @@
         android:id="@+id/calculateButtonElectricity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calculate"
-        android:layout_gravity="center"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginLeft="5dp"
+        android:text="calculate" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp">
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_Electricity"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:iss_auto_cycle="true"
+            app:iss_corner_radius="15"
+            app:iss_delay="0"
+            app:iss_error_image="@color/neutral"
+            app:iss_period="3000"
+            app:iss_placeholder="@color/neutral" />
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

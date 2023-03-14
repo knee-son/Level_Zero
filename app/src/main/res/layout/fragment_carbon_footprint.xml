@@ -9,6 +9,30 @@
     tools:context=".Fragments.CarbonFootprintFragment"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_dark"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="11dp">
+
+            <TextView
+                android:id="@+id/back1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_centerVertical="true"
+                android:text="CARBON FOOTPRINT TRACKER"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -17,7 +41,6 @@
             android:layout_width="match_parent"
             android:layout_height="684dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             android:orientation="vertical">
@@ -59,7 +82,7 @@
                         <ImageView
                             android:layout_width="65dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/baseline_arrow_back_24" />
+                            android:src="@drawable/baseline_directions_car_24" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -91,7 +114,7 @@
                         <ImageView
                             android:layout_width="65dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/baseline_arrow_back_24" />
+                            android:src="@drawable/baseline_fastfood_24" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -123,7 +146,7 @@
                         <ImageView
                             android:layout_width="65dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/baseline_arrow_back_24" />
+                            android:src="@drawable/baseline_electrical_services_24" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -141,9 +164,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"/>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"/>
         </LinearLayout>
 
     </ScrollView>
