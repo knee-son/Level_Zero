@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_navigation_waste_management_to_wasteScheduleFragment"
             app:destination="@id/wasteScheduleFragment" />
+        <action
+            android:id="@+id/action_wasteManagementFragment_to_wasteEventFragment"
+            app:destination="@id/wasteEventFragment" />
     </fragment>
     <fragment
         android:id="@+id/airQualityFragment"
@@ -97,4 +100,9 @@
             android:id="@+id/action_carbonElectricityFragment_to_carbonFootprintFragment"
             app:destination="@id/carbonFootprintFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/wasteEventFragment"
+        android:name="com.level_zero.greeniq.Fragments.WasteEventFragment"
+        android:label="fragment_waste_event"
+        tools:layout="@layout/fragment_waste_event" />
 </navigation>

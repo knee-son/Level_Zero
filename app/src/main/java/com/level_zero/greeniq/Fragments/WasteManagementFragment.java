@@ -39,6 +39,13 @@ public class WasteManagementFragment extends Fragment {
                 NavHostFragment.findNavController(WasteManagementFragment.this)
                 .navigate(R.id.action_navigation_waste_management_to_wasteScheduleFragment));
 
+       binding.griddy1.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               NavHostFragment.findNavController(WasteManagementFragment.this).navigate(R.id.action_wasteManagementFragment_to_wasteEventFragment);
+           }
+       });
+
        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
        if (mapFragment == null) {
            mapFragment = SupportMapFragment.newInstance();

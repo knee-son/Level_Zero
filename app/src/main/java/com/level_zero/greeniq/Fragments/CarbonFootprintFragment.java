@@ -1,5 +1,6 @@
 package com.level_zero.greeniq.Fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,10 +21,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -110,14 +113,18 @@ public class CarbonFootprintFragment extends Fragment {
 
                 List<PieEntry> entries = new ArrayList<>();
 
-                entries.add(new PieEntry(Float.parseFloat(transportData), "Transport"));
+                entries.add(new PieEntry(Float.parseFloat(transportData), "Transport")  );
                 entries.add(new PieEntry(Float.parseFloat(foodData), "Food"));
                 entries.add(new PieEntry(Float.parseFloat(electricityData), "Electricity"));
 
-                PieDataSet pieDataSet = new PieDataSet(entries, "Carbon");
+                PieDataSet pieDataSet = new PieDataSet(entries, null);
                 pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+                pieDataSet.setDrawValues(true);
+                pieDataSet.setValueTextSize(12f);
 
                 PieData pieData = new PieData(pieDataSet);
+                Legend legend = pieChart.getLegend();
+                legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
 
                 pieChart.getDescription().setEnabled(false);
 
@@ -144,9 +151,10 @@ public class CarbonFootprintFragment extends Fragment {
                     // Retrieve the date and totalCarbon values
                     String date = childSnapshot.child("date").getValue(String.class);
                     String totalCarbon = childSnapshot.child("totalCarbon").getValue(String.class);
-
+                    float floatValue = Float.parseFloat(totalCarbon);
+                    String decimal = String.format("%.2f", floatValue);
                     // Add the data to the ArrayList
-                    dataList.add(date + " - Total Carbon: " + totalCarbon);
+                    dataList.add(date + " - Total Carbon: " + decimal);
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, dataList);
