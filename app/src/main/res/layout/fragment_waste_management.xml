@@ -79,7 +79,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="THIRD SHIFT"
+                    android:text="SECOND SHIFT"
                     android:textSize="16sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -121,7 +121,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="GATHER BATTLE OF PLASTICS"
+                    android:text="GATHER BOTTLE OF PLASTICS"
                     android:textSize="16sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
