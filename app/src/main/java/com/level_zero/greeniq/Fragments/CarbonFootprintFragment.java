@@ -121,11 +121,13 @@ public class CarbonFootprintFragment extends Fragment {
                 pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
                 pieDataSet.setDrawValues(true);
                 pieDataSet.setValueTextSize(12f);
+                pieDataSet.setValueTextColor(Color.BLACK);
 
                 PieData pieData = new PieData(pieDataSet);
                 Legend legend = pieChart.getLegend();
                 legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
 
+                pieChart.setEntryLabelColor(Color.BLACK);
                 pieChart.getDescription().setEnabled(false);
 
                 pieChart.setData(pieData);
