@@ -27,7 +27,6 @@ public class SettingsFragment extends Fragment {
 
     private FragmentSettingsBinding binding;
 
-    private AppCompatButton logout;
     private ImageView back;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,17 +34,16 @@ public class SettingsFragment extends Fragment {
 
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
 
-        logout = binding.logoutButton;
         back = binding.back1;
 
-
-        logout.setOnClickListener(new View.OnClickListener() {
+        binding.logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
+
         return binding.getRoot();
     }
 
