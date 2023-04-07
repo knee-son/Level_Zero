@@ -66,12 +66,15 @@
         tools:layout="@layout/fragment_waste_schedule" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.level_zero.greeniq.SettingsFragment"
+        android:name="com.level_zero.greeniq.Fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/action_settingsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/carbonTransportFragment"
@@ -105,4 +108,25 @@
         android:name="com.level_zero.greeniq.Fragments.WasteEventFragment"
         android:label="fragment_waste_event"
         tools:layout="@layout/fragment_waste_event" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.level_zero.greeniq.Fragments.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+        <argument
+            android:name="location"
+            app:argType="string" />
+        <argument
+            android:name="profilePicture"
+            app:argType="string" />
+    </fragment>
 </navigation>

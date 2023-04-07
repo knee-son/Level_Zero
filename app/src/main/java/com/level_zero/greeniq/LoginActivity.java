@@ -101,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String profileDB = snapshot.child(userId).child("profilePicture").getValue(String.class);
                                 String coinDB = snapshot.child(userId).child("coin").getValue(String.class);
                                 String userDB = snapshot.child(userId).child("id").getValue(String.class);
+                                String passwordDB = snapshot.child(userId).child("password").getValue(String.class);
 
                                 Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
 
@@ -112,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                                 bundle.putString("profilePicture", profileDB);
                                 bundle.putString("coin", coinDB);
                                 bundle.putString("id", userDB);
+                                bundle.putString("password", passwordDB);
 
 //                                for (String s : new String[]{emailDB, locationDB, phoneNumberDB, userNameDB, profileDB})
 //                                    System.out.println(s);

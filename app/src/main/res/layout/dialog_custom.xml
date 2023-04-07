@@ -14,7 +14,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="?android:attr/textColorPrimary"
         android:textStyle="bold"
-        android:text="TEST"
+        android:text="@string/test"
         android:layout_gravity="center_horizontal"/>
 
     <TextView
@@ -24,7 +24,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="?android:attr/textColorPrimary"
         android:gravity="center"
-        android:text="test"
+        android:text="@string/test1"
         android:layout_gravity="center_horizontal"/>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -32,6 +32,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="OK"/>
+        android:text="@string/ok"/>
 
 </LinearLayout>

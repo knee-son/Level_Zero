@@ -88,7 +88,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:text="Transport"
+                            android:text="@string/transport"
                             android:textColor="#6f6f6f"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -120,7 +120,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:text="Food"
+                            android:text="@string/food"
                             android:textColor="#6f6f6f"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -152,7 +152,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:text="Electricity"
+                            android:text="@string/electricity"
                             android:textColor="#6f6f6f"
                             android:textSize="16sp" />
                     </LinearLayout>

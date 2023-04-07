@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/neutral"
     android:orientation="vertical"
-    tools:context=".SettingsFragment">
+    tools:context=".Fragments.SettingsFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="20dp"
                 android:layout_toEndOf="@+id/back1"
-                android:text="SETTINGS"
+                android:text="@string/settings"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -43,7 +43,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:id="@+id/editProfile">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -53,7 +54,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="EDIT PROFILE"
+                android:text="@string/edit_profile"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -84,7 +85,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LANGUAGE"
+                android:text="@string/language"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -115,7 +116,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="THEME"
+                android:text="@string/theme"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -147,7 +148,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ABOUT APPLICATION"
+                android:text="@string/about_application"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -179,7 +180,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LOGOUT"
+                android:text="@string/logout"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"

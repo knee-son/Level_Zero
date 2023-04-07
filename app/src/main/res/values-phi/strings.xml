@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GreenIQ</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="waste_info">Waste Info</string>
+    <string name="carbon_footprint">Carbon Footprint</string>
+    <string name="air_quality">Air Quality</string>
+    <string name="welcome_user">Maligayang pagdating, user!</string>
+    <string name="enter_google_email_and_password">Ipasok ang email at password ng Google:</string>
+    <string name="email">EMAIL</string>
+    <string name="password">PASSWORD</string>
+    <string name="login">LOGIN</string>
+    <string name="create_new_account">Lumikha ng Bagong Account</string>
+    <string name="welcome_new_user">Maligayang pagdating, bagong user!</string>
+    <string name="enter_account_details_below">Ipasok ang mga detalye ng account sa ibaba:</string>
+    <string name="already_have_an_account">Mayroon nang account?</string>
+    <string name="register">REGISTER</string>
+    <string name="location">LOKASYON</string>
+    <string name="phone_number">NUMERO NG TELEPONO</string>
+    <string name="username">USERNAME</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="settings">SETTINGS</string>
+    <string name="edit_profile">IBAHIN ANG PROFILE</string>
+    <string name="language">WIKA</string>
+    <string name="theme">TEMA</string>
+    <string name="about_application">TUNGKOL SA APLIKASYON</string>
+    <string name="logout">LOGOUT</string>
+    <string name="test">TEST</string>
+    <string name="test1">test</string>
+    <string name="ok">OK</string>
+    <string name="air_quality1">Kalidad ng Hangin</string>
+    <string name="click_button_to_get_air_quality">i-click ang button para makuha ang kalidad ng hangin</string>
+    <string name="nearest_city">Pinakamalapit na Lungsod:</string>
+    <string name="click_button_to_get_nearest_city">i-click ang pindutan upang makakuha ng pinakamalapit na lungsod</string>
+    <string name="nearest_city_aqi">Pinakamalapit na AQI ng Lungsod:</string>
+    <string name="get_air_quality">Kunin ang Kalidad ng Hangin</string>
+    <string name="select_usage_of_electricity_for_today">Piliin ang paggamit ng kuryente para sa araw na ito:</string>
+    <string name="calculate">Kalkulahin</string>
+    <string name="select_type_of_food_you_ve_cooked">Pumili ng uri ng pagkain na iyong niluto:</string>
+    <string name="input">Input</string>
+    <string name="food_consumption_in_kg">Pagkonsumo ng pagkain (sa kg)</string>
+    <string name="calculate1">Kalkulahin</string>
+    <string name="transport">Transportasyon</string>
+    <string name="food">Pagkain</string>
+    <string name="electricity">Kuryente</string>
+    <string name="select_type_of_your_transport">Pumili ng uri ng iyong sasakyan:</string>
+    <string name="input1">Input</string>
+    <string name="distance_of_travel">Distansya ng paglalakbay</string>
+    <string name="calculate2">Kalkulahin</string>
+    <string name="save">SAVE</string>
+    <string name="schedule_of_activities">ISKEDYUL NG MGA GAWAIN:</string>
+    <string name="recycling_sites_near_you">Mga recycling site na malapit sa iyo:</string>
+    <string name="today_s_schedule">ISKEDYUL NGAYON</string>
+    <string name="current_event">KASALUKUYANG PANGYAYARI</string>
+</resources>

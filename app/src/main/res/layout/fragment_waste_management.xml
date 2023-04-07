@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Recycling sites near you:"
+            android:text="@string/recycling_sites_near_you"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -72,7 +72,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TODAY'S SCHEDULE"
+                    android:text="@string/today_s_schedule"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CURRENT EVENT"
+                    android:text="@string/current_event"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 

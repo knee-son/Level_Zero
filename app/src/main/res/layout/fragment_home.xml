@@ -110,7 +110,7 @@
                     android:layout_width="77dp"
                     android:layout_height="40dp"
                     android:backgroundTint="@color/neutral_mild"
-                    android:text="SAVE"
+                    android:text="@string/save"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="#633527"
                     android:textSize="12sp"
@@ -152,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="SCHEDULE OF ACTIVITIES:"
+            android:text="@string/schedule_of_activities"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />

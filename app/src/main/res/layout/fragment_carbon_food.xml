@@ -32,7 +32,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select type of food you've cooked:"
+        android:text="@string/select_type_of_food_you_ve_cooked"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:layout_marginTop="20dp"/>
@@ -52,7 +52,7 @@
 
         <EditText
             android:id="@+id/amountValueFood"
-            android:hint="Input"
+            android:hint="@string/input"
             android:textAlignment="center"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
             android:layout_alignBottom="@id/amountValueFood"
             android:layout_marginBottom="5dp"
             android:layout_toEndOf="@id/amountValueFood"
-            android:text="Food consumption (in kg)"
+            android:text="@string/food_consumption_in_kg"
             android:textColor="@color/black"
             android:textSize="18sp" />
     </RelativeLayout>
@@ -73,7 +73,7 @@
         android:id="@+id/calculateButtonFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calculate"
+        android:text="@string/calculate1"
         android:layout_marginLeft="10dp"/>
 
     <androidx.cardview.widget.CardView
