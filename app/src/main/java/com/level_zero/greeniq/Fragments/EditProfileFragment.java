@@ -19,7 +19,6 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +37,6 @@ import com.level_zero.greeniq.Profile;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentEditProfileBinding;
 
-
 import java.io.IOException;
 import java.util.UUID;
 
@@ -53,6 +51,7 @@ public class EditProfileFragment extends Fragment {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -110,6 +109,12 @@ public class EditProfileFragment extends Fragment {
 
                 Profile profile = new Profile(fetchUserName, fetchPhone, userAvatar, fetchLocation, userEmail, fetchPassword, userId, userCoin);
                 databaseReference.child(userId).setValue(profile);
+
+                getActivity().finish();
+
+                Intent intent = getActivity().getBaseContext().getPackageManager().getLaunchIntentForPackage(getActivity().getBaseContext().getPackageName());
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
 
