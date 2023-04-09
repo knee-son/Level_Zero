@@ -70,7 +70,8 @@
     <string name="recycling_sites_near_you">Recycling sites near you:</string>
     <string name="today_s_schedule">TODAY\'S SCHEDULE</string>
     <string name="current_event">CURRENT EVENT</string>
-    <string name="save1">SAVE</string>
     <string name="save_avatar">SAVE AVATAR</string>
     <string name="save_details">SAVE DETAILS</string>
+    <string name="back">back</string>
+    <string name="proceed">proceed</string>
 </resources>

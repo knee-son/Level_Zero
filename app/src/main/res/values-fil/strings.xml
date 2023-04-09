@@ -70,4 +70,8 @@
     <string name="recycling_sites_near_you">Mga recycling site na malapit sa iyo:</string>
     <string name="today_s_schedule">ISKEDYUL NGAYON</string>
     <string name="current_event">KASALUKUYANG PANGYAYARI</string>
+    <string name="save_avatar">ISAVE ANG AVATAR</string>
+    <string name="save_details">ISAVE ANG DETALYE</string>
+    <string name="back">bumalik</string>
+    <string name="proceed">patuloy</string>
 </resources>
