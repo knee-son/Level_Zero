@@ -3,6 +3,7 @@ package com.level_zero.greeniq.Fragments;
 import static android.app.Activity.RESULT_OK;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -33,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
+import com.level_zero.greeniq.LanguageManager;
 import com.level_zero.greeniq.Profile;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentEditProfileBinding;
@@ -42,6 +44,14 @@ import java.util.UUID;
 
 public class EditProfileFragment extends Fragment {
 
+    private LanguageManager languageManager;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        languageManager = new LanguageManager(context);
+        languageManager.updateResource(languageManager.getLang());
+    }
     private FragmentEditProfileBinding binding;
     private TextInputLayout userName, phone, location, password;
     private TextView email;

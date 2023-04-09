@@ -1,6 +1,6 @@
 package com.level_zero.greeniq;
 
-public class Profile {
+public class Profile extends AppCompat{
     private String userName;
     private String phoneNumber;
     private String profilePicture;

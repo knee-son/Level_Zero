@@ -3,6 +3,7 @@ package com.level_zero.greeniq.Fragments;
 import static androidx.navigation.Navigation.findNavController;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.level_zero.greeniq.LanguageManager;
 import com.level_zero.greeniq.LoginActivity;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentSettingsBinding;
@@ -26,6 +28,14 @@ import com.level_zero.greeniq.databinding.FragmentSettingsBinding;
 
 public class SettingsFragment extends Fragment {
 
+    private LanguageManager languageManager;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        languageManager = new LanguageManager(context);
+        languageManager.updateResource(languageManager.getLang());
+    }
     private FragmentSettingsBinding binding;
 
     private ImageView back;

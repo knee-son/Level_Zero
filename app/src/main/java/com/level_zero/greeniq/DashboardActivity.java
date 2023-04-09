@@ -15,7 +15,7 @@ import android.view.View;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.level_zero.greeniq.databinding.ActivityDashboardBinding;
 
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompat {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

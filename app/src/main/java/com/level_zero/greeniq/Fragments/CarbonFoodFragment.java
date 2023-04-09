@@ -2,6 +2,7 @@ package com.level_zero.greeniq.Fragments;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.level_zero.greeniq.History;
+import com.level_zero.greeniq.LanguageManager;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentCarbonFoodBinding;
 
@@ -39,6 +41,14 @@ import java.util.List;
 
 public class CarbonFoodFragment extends Fragment {
 
+    private LanguageManager languageManager;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        languageManager = new LanguageManager(context);
+        languageManager.updateResource(languageManager.getLang());
+    }
     private FragmentCarbonFoodBinding binding;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;

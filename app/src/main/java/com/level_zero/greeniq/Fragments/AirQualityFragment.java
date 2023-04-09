@@ -1,5 +1,6 @@
 package com.level_zero.greeniq.Fragments;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -30,6 +31,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.level_zero.greeniq.LanguageManager;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentAirQualityBinding;
 
@@ -40,6 +42,14 @@ import java.util.Arrays;
 
 public class AirQualityFragment extends Fragment {
 
+    private LanguageManager languageManager;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        languageManager = new LanguageManager(context);
+        languageManager.updateResource(languageManager.getLang());
+    }
     private FragmentAirQualityBinding binding;
     private TextView AQI, nearestCityTv;
     public View onCreateView(@NonNull LayoutInflater inflater,

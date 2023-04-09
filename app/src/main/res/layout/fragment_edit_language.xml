@@ -13,17 +13,19 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical">
+
         <TextView
+            android:id="@+id/textLanguage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:text="@string/language"
-            android:id="@+id/textLanguage"/>
+            android:textSize="20sp" />
+
         <Button
+            android:id="@+id/btn_theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/location"
-            android:id="@+id/btn_theme"/>
+            android:text="@string/location" />
 
     </LinearLayout>
     <LinearLayout

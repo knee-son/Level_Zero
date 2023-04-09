@@ -136,5 +136,9 @@
         android:id="@+id/editLanguageFragment"
         android:name="com.level_zero.greeniq.Fragments.EditLanguageFragment"
         android:label="fragment_edit_language"
-        tools:layout="@layout/fragment_edit_language" />
+        tools:layout="@layout/fragment_edit_language" >
+        <action
+            android:id="@+id/action_editLanguageFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

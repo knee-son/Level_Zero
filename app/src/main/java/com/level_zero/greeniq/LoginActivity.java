@@ -39,7 +39,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompat {
 
     private TextInputLayout email, password;
     private FirebaseAuth firebaseAuth;

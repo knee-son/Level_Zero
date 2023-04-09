@@ -17,7 +17,7 @@ import com.level_zero.greeniq.databinding.ActivityRegisterBinding;
 
 import java.util.Objects;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompat {
 
     private TextInputLayout email, password, userName, location, phoneNumber;
     private FirebaseAuth firebaseAuth;

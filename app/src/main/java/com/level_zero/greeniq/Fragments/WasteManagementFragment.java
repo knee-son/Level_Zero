@@ -1,5 +1,6 @@
 package com.level_zero.greeniq.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.level_zero.greeniq.LanguageManager;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentWasteManagementBinding;
 
@@ -23,6 +25,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 
 public class WasteManagementFragment extends Fragment {
 
+    private LanguageManager languageManager;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        languageManager = new LanguageManager(context);
+        languageManager.updateResource(languageManager.getLang());
+    }
     private FragmentWasteManagementBinding binding;
     private ImageView wasteSchedule;
     private GoogleMap mMap;

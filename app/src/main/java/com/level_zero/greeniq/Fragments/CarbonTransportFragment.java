@@ -2,6 +2,7 @@ package com.level_zero.greeniq.Fragments;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -30,6 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.level_zero.greeniq.History;
+import com.level_zero.greeniq.LanguageManager;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentCarbonTransportBinding;;import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,6 +40,14 @@ import java.util.List;
 
 public class CarbonTransportFragment extends Fragment {
 
+    private LanguageManager languageManager;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        languageManager = new LanguageManager(context);
+        languageManager.updateResource(languageManager.getLang());
+    }
     private FragmentCarbonTransportBinding binding;
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
