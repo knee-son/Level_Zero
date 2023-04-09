@@ -78,6 +78,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_editLanguageFragment"
             app:destination="@id/editLanguageFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_editThemeFragment"
+            app:destination="@id/editThemeFragment" />
     </fragment>
     <fragment
         android:id="@+id/carbonTransportFragment"
@@ -141,4 +144,9 @@
             android:id="@+id/action_editLanguageFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/editThemeFragment"
+        android:name="com.level_zero.greeniq.Fragments.EditThemeFragment"
+        android:label="fragment_edit_theme"
+        tools:layout="@layout/fragment_edit_theme" />
 </navigation>

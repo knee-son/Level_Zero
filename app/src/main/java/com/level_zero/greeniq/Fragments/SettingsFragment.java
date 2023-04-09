@@ -75,6 +75,12 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        binding.editTheme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(SettingsFragment.this).navigate(R.id.action_settingsFragment_to_editThemeFragment);
+            }
+        });
 
 
 

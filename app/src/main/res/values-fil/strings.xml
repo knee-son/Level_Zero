@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="done">Itapos</string>
     <string name="app_name">GreenIQ</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
