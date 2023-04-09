@@ -50,7 +50,7 @@ public class EditLanguageFragment extends Fragment {
 
         eng.setOnClickListener(view -> {
             lang.updateResource("en");
-            btn.setText("LOCATION");
+            btn.setText("DONE");
             txt.setText("LANGUAGE");
 
             //getParentFragmentManager().beginTransaction().detach(this).attach(this).commit();
@@ -58,7 +58,7 @@ public class EditLanguageFragment extends Fragment {
 
         fil.setOnClickListener(view -> {
             lang.updateResource("fil");
-            btn.setText("LOKASYON");
+            btn.setText("ITAPOS");
             txt.setText("WIKA");
             //getParentFragmentManager().beginTransaction().detach(this).attach(this).commit();
         });
