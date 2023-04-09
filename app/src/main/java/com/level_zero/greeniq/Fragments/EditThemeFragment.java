@@ -59,7 +59,7 @@ public class EditThemeFragment extends Fragment {
         binding.btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavHostFragment.findNavController(EditThemeFragment.this).navigate(R.id.action_settingsFragment_to_editLanguageFragment);
+                NavHostFragment.findNavController(EditThemeFragment.this).navigate(R.id.action_editThemeFragment_to_settingsFragment);
 
             }
         });

@@ -148,5 +148,9 @@
         android:id="@+id/editThemeFragment"
         android:name="com.level_zero.greeniq.Fragments.EditThemeFragment"
         android:label="fragment_edit_theme"
-        tools:layout="@layout/fragment_edit_theme" />
+        tools:layout="@layout/fragment_edit_theme" >
+        <action
+            android:id="@+id/action_editThemeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
 </navigation>
