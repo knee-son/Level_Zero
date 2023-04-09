@@ -75,6 +75,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_editLanguageFragment"
+            app:destination="@id/editLanguageFragment" />
     </fragment>
     <fragment
         android:id="@+id/carbonTransportFragment"
@@ -129,4 +132,9 @@
             android:name="profilePicture"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/editLanguageFragment"
+        android:name="com.level_zero.greeniq.Fragments.EditLanguageFragment"
+        android:label="fragment_edit_language"
+        tools:layout="@layout/fragment_edit_language" />
 </navigation>

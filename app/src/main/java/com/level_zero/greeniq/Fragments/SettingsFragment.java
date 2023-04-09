@@ -58,6 +58,14 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        binding.editLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(SettingsFragment.this).navigate(R.id.action_settingsFragment_to_editLanguageFragment);
+            }
+        });
+
+
         return binding.getRoot();
     }
 
