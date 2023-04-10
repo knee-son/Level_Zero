@@ -96,7 +96,7 @@ public class SettingsFragment extends Fragment {
         AppCompatButton okButton = customLayout.findViewById(R.id.button);
 
         titleView.setText("About Application");
-        messageView.setText("[Test Details about the application]");
+        messageView.setText("Recycling and waste management are critical pointss that contributes to protection and preservation of the environment. \n\nThis app provides a convenient, efficient, and user-friendly visual to manage household waste by informing users on proper waste sorting, tracking them of their recycling efforts, and enabling them to connect with local recycling facilities.");
 
 
         builder.setView(customLayout);
