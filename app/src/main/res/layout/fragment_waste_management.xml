@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/neutral"
+    style="@style/SCREEN"
     android:orientation="vertical"
     tools:context=".Fragments.WasteManagementFragment">
 
@@ -16,7 +16,6 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="15dp"
         android:elevation="0dp"
-        app:cardBackgroundColor="@color/neutral_heavy"
         app:cardCornerRadius="15dp">
 
         <TextView
@@ -25,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/recycling_sites_near_you"
-            android:textColor="@color/white"
+            style="@style/TEXT"
             android:textSize="22sp"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
@@ -74,13 +73,15 @@
                     android:layout_height="wrap_content"
                     android:text="@string/today_s_schedule"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    style="@style/TEXT"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SECOND SHIFT"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    style="@style/TEXT"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </GridLayout>
@@ -116,13 +117,15 @@
                     android:layout_height="wrap_content"
                     android:text="@string/current_event"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    style="@style/TEXT"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="GATHER BOTTLE OF PLASTICS"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    style="@style/TEXT"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </GridLayout>

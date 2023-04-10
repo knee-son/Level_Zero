@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:padding="15dp"
     android:orientation="vertical"
-    tools:context=".Fragments.EditLanguageFragment">
+    tools:context=".Fragments.EditLanguageFragment"
+    style="@style/SCREEN">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -19,13 +20,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/language"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            style="@style/TEXT"/>
 
         <Button
             android:id="@+id/btn_theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/location" />
+            android:text="@string/location"
+            style="@style/BUTTON"/>
 
     </LinearLayout>
     <LinearLayout

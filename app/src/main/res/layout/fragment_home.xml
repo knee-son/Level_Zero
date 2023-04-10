@@ -4,13 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/SCREEN">
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/neutral"
     tools:context=".Fragments.HomeFragment">
 
     <RelativeLayout
@@ -22,7 +22,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="11dp">
+            android:padding="11dp"
+            style="@style/RELATIVE">
 
             <ImageView
                 android:id="@+id/settings"
@@ -41,7 +42,7 @@
         android:layout_margin="5dp"
         app:cardCornerRadius="30dp"
         android:elevation="0dp"
-        app:cardBackgroundColor="@color/theme_light">
+        style="@style/SCREEN">
 
         <androidx.cardview.widget.CardView
             android:layout_width="170dp"
@@ -66,7 +67,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    style="@style/TEXT"
                     android:textSize="16sp"
                     android:text="COIN"
                     android:id="@+id/coinTV"
@@ -74,7 +75,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    style="@style/TEXT"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:text="USERNAME"
@@ -87,7 +88,8 @@
                     android:textSize="16sp"
                     android:text="EMAIL"
                     android:id="@+id/emailTV"
-                    android:layout_gravity="right"/>
+                    android:layout_gravity="right"
+                    style="@style/TEXT"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -95,7 +97,8 @@
                     android:textSize="16sp"
                     android:text="PHONE NUMBER"
                     android:id="@+id/phoneNumberTV"
-                    android:layout_gravity="right"/>
+                    android:layout_gravity="right"
+                    style="@style/TEXT"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -103,16 +106,16 @@
                     android:textSize="16sp"
                     android:text="LOCATION"
                     android:id="@+id/locationTV"
-                    android:layout_gravity="right"/>
+                    android:layout_gravity="right"
+                    style="@style/TEXT"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/saveButton"
                     android:layout_width="77dp"
                     android:layout_height="40dp"
-                    android:backgroundTint="@color/neutral_mild"
+                    style="@style/BUTTON"
                     android:text="@string/save"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textColor="#633527"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
@@ -145,7 +148,7 @@
         android:layout_gravity="center"
         android:layout_margin="15dp"
         android:elevation="0dp"
-        app:cardBackgroundColor="@color/theme_light"
+        style="@style/BUTTON"
         app:cardCornerRadius="15dp">
 
         <TextView
@@ -153,7 +156,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/schedule_of_activities"
-            android:textColor="@color/white"
+            style="@style/TEXT"
             android:textSize="18sp"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>

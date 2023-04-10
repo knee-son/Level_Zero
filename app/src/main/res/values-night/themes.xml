@@ -23,7 +23,7 @@
     </style>
 
     <style name="BUTTON">
-        <item name="backgroundTint">#7F8181</item>
+        <item name="android:backgroundTint">#7F8181</item>
         <item name="android:textColor">#D3D0D0</item>
     </style>
 
