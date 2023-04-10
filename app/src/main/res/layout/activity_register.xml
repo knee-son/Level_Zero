@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/neutral"
+    style="@style/SCREEN"
     tools:context=".RegisterActivity">
 
     <LinearLayout
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/welcome_new_user"
-            android:textColor="@color/common_google_signin_btn_text_light_default"
+            style="@style/TEXT"
             android:textSize="30sp"
             android:textStyle="bold" />
 
@@ -37,12 +37,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/enter_account_details_below"
-            android:textColor="@color/common_google_signin_btn_text_light_default"
+            style="@style/TEXT"
             android:textSize="15sp"
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -57,7 +57,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
@@ -73,7 +73,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
@@ -88,7 +88,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
@@ -103,7 +103,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
@@ -124,10 +124,9 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/neutral_mild"
+            style="@style/BUTTON"
+
             android:text="@string/register"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#633527"
             android:textSize="15sp"
             android:textStyle="bold"
             app:cornerRadius="14dp"/>
@@ -138,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/already_have_an_account"
-            android:textColor="@color/common_google_signin_btn_text_light_default"
+            style="@style/TEXT"
             android:textSize="15sp"
             android:textStyle="bold"
             android:onClick="openLogin"/>

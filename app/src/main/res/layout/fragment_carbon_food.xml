@@ -5,21 +5,24 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.CarbonFoodFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    style="@style/SCREEN">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/theme_dark"
+        style="@style/RELATIVE"
         android:layout_marginBottom="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="11dp">
+            android:padding="11dp"
+            style="@style/RELATIVE">
 
             <ImageView
                 android:id="@+id/back3"
+                style="@style/IMAGEVIEW"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
@@ -34,7 +37,7 @@
         android:layout_height="wrap_content"
         android:text="@string/select_type_of_food_you_ve_cooked"
         android:textSize="18sp"
-        android:textColor="@color/black"
+        style="@style/TEXT"
         android:layout_marginTop="20dp"/>
 
     <Spinner
@@ -65,7 +68,7 @@
             android:layout_marginBottom="5dp"
             android:layout_toEndOf="@id/amountValueFood"
             android:text="@string/food_consumption_in_kg"
-            android:textColor="@color/black"
+            style="@style/TEXT"
             android:textSize="18sp" />
     </RelativeLayout>
 
@@ -74,7 +77,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/calculate1"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        style="@style/BUTTON"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
