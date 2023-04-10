@@ -40,13 +40,13 @@ public class EditThemeFragment extends Fragment {
                 if (isChecked) {
                     switch (selectedBtnId) {
                         case R.id.btnDark:
-                            theme = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
-                            break;
-                        case R.id.btnLight:
                             theme = AppCompatDelegate.MODE_NIGHT_YES;
                             break;
-                        default:
+                        case R.id.btnLight:
                             theme = AppCompatDelegate.MODE_NIGHT_NO;
+                            break;
+                        default:
+                            theme = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
                     }
                 } else {
                     theme = AppCompatDelegate.MODE_NIGHT_NO;
