@@ -1,6 +1,7 @@
 package com.level_zero.greeniq.Fragments;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -143,33 +144,37 @@ public class AirQualityFragment extends Fragment {
                 BarDataSet saturdayDataSet = new BarDataSet(Arrays.asList(saturdayEntry), "Saturday");
                 BarDataSet sundayDataSet = new BarDataSet(Arrays.asList(sundayEntry), "Sunday");
 
+                TypedArray a = getContext().getTheme().obtainStyledAttributes(R.style.TEXT, new int[]{android.R.attr.textColor});
+                int color = a.getColor(0, 0);
+                a.recycle();
+
                 // Customize the appearance of the BarDataSets
                 mondayDataSet.setColor(Color.CYAN);
-                mondayDataSet.setValueTextColor(Color.BLACK);
+                mondayDataSet.setValueTextColor(color);
                 mondayDataSet.setValueTextSize(12f);
 
                 tuesdayDataSet.setColor(Color.CYAN);
-                tuesdayDataSet.setValueTextColor(Color.BLACK);
+                tuesdayDataSet.setValueTextColor(color);
                 tuesdayDataSet.setValueTextSize(12f);
 
                 wednesdayDataSet.setColor(Color.CYAN);
-                wednesdayDataSet.setValueTextColor(Color.BLACK);
+                wednesdayDataSet.setValueTextColor(color);
                 wednesdayDataSet.setValueTextSize(12f);
 
                 thursdayDataSet.setColor(Color.CYAN);
-                thursdayDataSet.setValueTextColor(Color.BLACK);
+                thursdayDataSet.setValueTextColor(color);
                 thursdayDataSet.setValueTextSize(12f);
 
                 fridayDataSet.setColor(Color.CYAN);
-                fridayDataSet.setValueTextColor(Color.BLACK);
+                fridayDataSet.setValueTextColor(color);
                 fridayDataSet.setValueTextSize(12f);
 
                 saturdayDataSet.setColor(Color.CYAN);
-                saturdayDataSet.setValueTextColor(Color.BLACK);
+                saturdayDataSet.setValueTextColor(color);
                 saturdayDataSet.setValueTextSize(12f);
 
                 sundayDataSet.setColor(Color.CYAN);
-                sundayDataSet.setValueTextColor(Color.BLACK);
+                sundayDataSet.setValueTextColor(color);
                 sundayDataSet.setValueTextSize(12f);
 
                 // Create a BarData object that contains all of the BarDataSets
@@ -179,16 +184,21 @@ public class AirQualityFragment extends Fragment {
 
                 // Customize the appearance of the chart
                 BarChart barChart = binding.chart;
+                barChart.setBorderColor(color);
                 barChart.setData(barData);
                 barChart.getDescription().setEnabled(false); // Disable the description label
                 barChart.setDrawGridBackground(false); // Disable the background grid lines
                 barChart.getAxisLeft().setDrawGridLines(false); // Disable the left y-axis grid lines
+                barChart.getAxisLeft().setTextColor(color); // Set the color of the left y-axis labels
                 barChart.getAxisRight().setDrawGridLines(false); // Disable the right y-axis grid lines
+                barChart.getAxisRight().setTextColor(color); // Set the color of the right y-axis labels
                 barChart.getXAxis().setDrawGridLines(false); // Disable the x-axis grid lines
+                barChart.getXAxis().setTextColor(color); // Set the color of the x-axis labels
                 barChart.getXAxis().setGranularity(1f); // Set the x-axis granularity to 1 (one label per day of the week)
                 barChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM); // Set the position of the x-axis to the bottom
                 barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(Arrays.asList("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"))); // Set the x-axis labels to the abbreviated day names
                 barChart.getLegend().setEnabled(false); // Disable the legend
+                barChart.getBarData().setValueTextColor(color); // Set the color of the data labels
 
                 // Refresh the chart
                 barChart.invalidate();
