@@ -62,8 +62,6 @@ public class HomeFragment extends Fragment {
 
     private TextView email, username, phone, location, coin;
     private ImageView avatar, settings;
-    private AppCompatButton save, dashboard;
-    private Uri imagePath;
     private ImageSlider imageSlider;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -84,7 +82,6 @@ public class HomeFragment extends Fragment {
         phone = binding.phoneNumberTV;
         location = binding.locationTV;
         avatar = binding.avatarIV;
-        save = binding.saveButton;
         settings = binding.settings;
         coin = binding.coinTV;
         imageSlider = binding.imageSlider;
@@ -125,101 +122,7 @@ public class HomeFragment extends Fragment {
 
         Glide.with(this).load(userAvatar).error(R.drawable.defaultpfp).placeholder(R.drawable.defaultpfp).into(avatar);
 
-        avatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent pictureIntent = new Intent(Intent.ACTION_PICK);
-//                pictureIntent.setType("image/*");
-//                startActivityForResult(pictureIntent, 1);
-
-                Intent pictureIntent = new Intent(Intent.ACTION_PICK);
-                pictureIntent.setType("image/*");
-                getResult.launch(pictureIntent);
-            }
-        });
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveImage();
-            }
-        });
-
         return binding.getRoot();
-    }
-
-    private void saveImage() {
-        ProgressDialog progressDialog = ProgressDialog.show(
-                getActivity(),
-                "Saving image...",
-                "Please wait...",
-                true);
-
-        FirebaseStorage.getInstance().getReference("images/"+ UUID.randomUUID().toString())
-                .putFile(imagePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        if(task.isSuccessful()){
-                            task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Uri> task) {
-                                    if(task.isSuccessful()){
-                                        savedImage(task.getResult().toString());
-                                    }
-                                }
-                            });
-                            Toast.makeText(getActivity(),"Saved Image", Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(getActivity(),"Failed to Save Image", Toast.LENGTH_SHORT).show();
-                        }
-                        progressDialog.dismiss();
-                    }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                        double progress = 100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount();
-                        progressDialog.setMessage(" Uploading " +(int)progress+"%");
-
-                    }
-                });
-    }
-
-    private void savedImage(String url) {
-        databaseReference.child(firebaseAuth.getCurrentUser().getUid()+"/profilePicture").setValue(url);
-    }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if(requestCode == 1 && resultCode == RESULT_OK && data != null){
-//            imagePath = data.getData();
-//            getImage();
-//            System.out.println(imagePath);
-//        }
-//    }
-
-    ActivityResultLauncher<Intent> getResult = registerForActivityResult(
-        new ActivityResultContracts.StartActivityForResult(),
-        new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult r) {
-                if (r.getResultCode() == RESULT_OK && r.getData() != null) {
-                    imagePath = r.getData().getData();
-                    getImage();
-                    System.out.println(imagePath);
-                }
-            }
-        }
-    );
-
-    private void getImage(){
-        Bitmap bitmap = null;
-        try{
-            bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imagePath);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        avatar.setImageBitmap(bitmap);
     }
 
     @Override

@@ -108,19 +108,6 @@
                     android:id="@+id/locationTV"
                     android:layout_gravity="right"
                     style="@style/TEXT"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/saveButton"
-                    android:layout_width="77dp"
-                    android:layout_height="40dp"
-                    style="@style/BUTTON"
-                    android:text="@string/save"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textSize="10sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="right"
-                    app:cornerRadius="10dp" />
             </LinearLayout>
     </androidx.cardview.widget.CardView>
 

@@ -29,8 +29,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
@@ -117,8 +121,25 @@ public class EditProfileFragment extends Fragment {
                 String fetchLocation = location.getEditText().getText().toString();
                 String fetchPassword = password.getEditText().getText().toString();
 
-                Profile profile = new Profile(fetchUserName, fetchPhone, userAvatar, fetchLocation, userEmail, fetchPassword, userId, userCoin);
-                databaseReference.child(userId).setValue(profile);
+                Query query = databaseReference.orderByChild("id").equalTo(userId);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                            dataSnapshot.getRef().child("userName").setValue(fetchUserName);
+                            dataSnapshot.getRef().child("password").setValue(fetchPassword);
+                            dataSnapshot.getRef().child("phone").setValue(fetchPhone);
+                            dataSnapshot.getRef().child("location").setValue(fetchLocation);
+
+                            Toast.makeText(getContext(), "Updating data of "+userEmail, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
                 getActivity().finish();
 
@@ -175,7 +196,22 @@ public class EditProfileFragment extends Fragment {
     }
 
     private void savedImage(String url) {
-        databaseReference.child(firebaseAuth.getCurrentUser().getUid()+"/profilePicture").setValue(url);
+        Bundle bundle = getActivity().getIntent().getExtras();
+        String userId = bundle.getString("id");
+        Query query = databaseReference.orderByChild("id").equalTo(userId);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    dataSnapshot.getRef().child("profilePicture").setValue(url);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     ActivityResultLauncher<Intent> getResult = registerForActivityResult(
