@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -43,7 +44,6 @@ public class LoginActivity extends AppCompat {
 
     private TextInputLayout email, password;
     private FirebaseAuth firebaseAuth;
-    private FirebaseUser currentUser;
     private DatabaseReference reference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompat {
 
         email = findViewById(R.id.userEmailLog);
         password = findViewById(R.id.userPasswordLog);
+
         AppCompatButton login = findViewById(R.id.loginButton);
 
         //login.setOnClickListener(view -> loginUser());
@@ -82,6 +83,9 @@ public class LoginActivity extends AppCompat {
         try {
             String userEmailLog = RegisterActivity.safeFetch(email);
             String userPassLog = RegisterActivity.safeFetch(password);
+
+            ProgressBar progressBar = findViewById(R.id.loading);
+            progressBar.setVisibility(View.VISIBLE);
 
             firebaseAuth.signInWithEmailAndPassword(userEmailLog, userPassLog).addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
@@ -142,6 +146,8 @@ public class LoginActivity extends AppCompat {
                 }else {
                     Toast.makeText(getApplicationContext(),"Login failed!", Toast.LENGTH_SHORT).show();
                 }
+
+                progressBar.setVisibility(View.GONE);
             });
 
         } catch (NullPointerException e){

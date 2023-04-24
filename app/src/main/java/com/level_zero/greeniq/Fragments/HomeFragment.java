@@ -2,6 +2,7 @@ package com.level_zero.greeniq.Fragments;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.animation.ObjectAnimator;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -103,11 +104,17 @@ public class HomeFragment extends Fragment {
         coin.setText(userCoin);
 
         List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/certificate%2F2.jpg?alt=media&token=07a27b5a-dd15-478f-82d3-ab65eb4fb53f", null, ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/certificate%2FUntitled-1.jpg?alt=media&token=8b4c31e3-1ccd-4647-88a0-ba911108fc09", null, ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/certificate%2F1.jpg?alt=media&token=70b0e0ba-9311-4d35-b595-74971d435b69", null, ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/certificate%2F2.jpg?alt=media&token=2d9d6c64-bc99-4a68-8852-6bb827d2477b", null, ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/certificate%2F3.jpg?alt=media&token=7971af6a-1b37-413f-a662-7339b613f4b9", null, ScaleTypes.CENTER_CROP));
 
         imageSlider.setImageList(slideModels,ScaleTypes.CENTER_CROP);
 
+//        ObjectAnimator slideLeft = ObjectAnimator.ofFloat(myImage, "translationX", 0f, -myImage.getWidth());
+//        slideLeft.setDuration(1000);
+//
+//        AnimatorSet animatorSet = new AnimatorSet();
+//        animatorSet.playTogether(slideLeft);
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

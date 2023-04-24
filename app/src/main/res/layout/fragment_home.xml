@@ -116,7 +116,7 @@
                     style="@style/BUTTON"
                     android:text="@string/save"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
                     android:layout_gravity="right"
@@ -174,7 +174,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:dateTextAppearance="@style/CalendarDateTextAppearance"/>
+            android:dateTextAppearance="@style/CalendarDateTextAppearance"
+            app:mcv_tileSize="match_parent"/>
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>
