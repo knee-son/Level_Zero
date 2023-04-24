@@ -16,7 +16,7 @@
     </style>
 
     <style name="SCREEN">
-        <item name="android:background">#FFF</item>
+        <item name="android:background">@color/neutral</item>
     </style>
 
     <style name="TEXT" format = "color">

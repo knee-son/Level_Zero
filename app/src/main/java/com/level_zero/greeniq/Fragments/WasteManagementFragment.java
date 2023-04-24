@@ -11,12 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.level_zero.greeniq.LanguageManager;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentWasteManagementBinding;
@@ -36,11 +42,34 @@ public class WasteManagementFragment extends Fragment {
     private FragmentWasteManagementBinding binding;
     private ImageView wasteSchedule;
     private GoogleMap mMap;
+    private TextView shortDesc;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentWasteManagementBinding.inflate(inflater, container, false);
+
+        shortDesc = binding.shortDesc;
+
+        firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        databaseReference = firebaseDatabase.getReference("Event");
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String fetchShort = snapshot.child("shortDesc").getValue(String.class);
+
+                shortDesc.setText(fetchShort);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
 //        adding one more cardview:
 //        binding.griddy.addView(new CardView(getActivity()));

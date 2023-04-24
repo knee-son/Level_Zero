@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompat {
     private TextInputLayout email, password, userName, location, phoneNumber;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser currentUser;
-    private DatabaseReference databaseReference, databaseReferenceCarbon;
+    private DatabaseReference databaseReference, databaseReferenceCarbon, databaseReferenceCertificate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +36,7 @@ public class RegisterActivity extends AppCompat {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("User");
         databaseReferenceCarbon = firebaseDatabase.getReference("Carbon Data");
+        databaseReferenceCertificate = firebaseDatabase.getReference("Certificate");
 
         email = findViewById(R.id.userEmail);
         password = findViewById(R.id.userPassword);
@@ -106,9 +107,11 @@ public class RegisterActivity extends AppCompat {
                 if(task.isSuccessful()){
                     FirebaseUser user = task.getResult().getUser();
                     String userId = Objects.requireNonNull(user).getUid();
+                    String firstCert = "https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/certificate%2FUntitled-1.jpg?alt=media&token=5d9cb3f7-af0c-45a5-937c-4bc4520e6574";
                     String defaultProfile = "https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/images%2F1e98af88-102c-4ffd-a85c-c450162cd7d7?alt=media&token=d1d09296-b020-422b-a584-2fb40719bb66";
                     databaseReference.child(userId).setValue(new Profile(userUserName, userPhoneNumber, defaultProfile, userLocation, userEmail, userPass, userId, "0"));
                     databaseReferenceCarbon.child(userId).setValue(new CarbonData("1", "1", "1"));
+                    databaseReferenceCertificate.child(userId).setValue(new Certificate(firstCert));
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     Toast.makeText(getApplicationContext(),"You are now registered, "+userUserName+"!", Toast.LENGTH_SHORT).show();
                 } else {
