@@ -48,7 +48,7 @@
             android:layout_width="170dp"
             android:layout_height="170dp"
             android:layout_margin="15dp"
-            app:cardCornerRadius="90dp">
+            app:cardCornerRadius="30dp">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -59,10 +59,10 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="right|center"
-                android:layout_marginRight="20dp">
+                android:layout_marginRight="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -124,9 +124,7 @@
             app:iss_auto_cycle="true"
             app:iss_corner_radius="15"
             app:iss_delay="0"
-            app:iss_error_image="@color/neutral"
-            app:iss_period="3000"
-            app:iss_placeholder="@color/neutral" />
+            app:iss_period="3000"/>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -135,7 +133,7 @@
         android:layout_gravity="center"
         android:layout_margin="15dp"
         android:elevation="0dp"
-        style="@style/BUTTON"
+        style="@style/brown"
         app:cardCornerRadius="15dp">
 
         <TextView
@@ -143,7 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/schedule_of_activities"
-            style="@style/TEXT"
+            style="@style/brown"
             android:textSize="18sp"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
@@ -153,16 +151,18 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        app:cardCornerRadius="30dp"
-        app:cardBackgroundColor="@color/white">
+        android:layout_marginBottom="80dp"
+        app:cardCornerRadius="30dp">
 
         <CalendarView
             android:id="@+id/calendarView"
+            style="@style/calendar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:dateTextAppearance="@style/CalendarDateTextAppearance"
-            app:mcv_tileSize="match_parent"/>
+            android:focusedMonthDateColor="#FFFFFF"
+            app:mcv_tileSize="match_parent" />
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

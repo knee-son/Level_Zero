@@ -36,4 +36,18 @@
     <style name="IMAGEVIEW">
         <item name="android:tint">#FFFFFF</item>
     </style>
+
+    <style name="brown">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="cardBackgroundColor">#45341A</item>
+    </style>
+
+    <style name="calendar"  parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize attributes here -->
+<!--        <item name="android:background">@color/black</item>-->
+<!--        <item name="android:textColorPrimary">@color/white</item>-->
+<!--        <item name="android:textColorSecondary">@color/white</item>-->
+    </style>
+
+    <color name="my_bar_color">#4F1CC5</color>
 </resources>

@@ -33,7 +33,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AQItv"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintVertical_bias="0.132"
+        app:backgroundTint="#FF0000" />
 
     <TextView
         android:id="@+id/AQItv"
@@ -97,7 +98,7 @@
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.317" />
+        app:layout_constraintVertical_bias="0.317"/>
 
     <Button
         android:id="@+id/button4"

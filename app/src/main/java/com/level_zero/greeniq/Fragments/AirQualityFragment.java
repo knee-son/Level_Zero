@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -148,32 +149,34 @@ public class AirQualityFragment extends Fragment {
                 int color = a.getColor(0, 0);
                 a.recycle();
 
+                int barColor = ContextCompat.getColor(requireContext(), R.color.my_bar_color);
+
                 // Customize the appearance of the BarDataSets
-                mondayDataSet.setColor(Color.CYAN);
+                mondayDataSet.setColor(barColor);
                 mondayDataSet.setValueTextColor(color);
                 mondayDataSet.setValueTextSize(12f);
 
-                tuesdayDataSet.setColor(Color.CYAN);
+                tuesdayDataSet.setColor(barColor);
                 tuesdayDataSet.setValueTextColor(color);
                 tuesdayDataSet.setValueTextSize(12f);
 
-                wednesdayDataSet.setColor(Color.CYAN);
+                wednesdayDataSet.setColor(barColor);
                 wednesdayDataSet.setValueTextColor(color);
                 wednesdayDataSet.setValueTextSize(12f);
 
-                thursdayDataSet.setColor(Color.CYAN);
+                thursdayDataSet.setColor(barColor);
                 thursdayDataSet.setValueTextColor(color);
                 thursdayDataSet.setValueTextSize(12f);
 
-                fridayDataSet.setColor(Color.CYAN);
+                fridayDataSet.setColor(barColor);
                 fridayDataSet.setValueTextColor(color);
                 fridayDataSet.setValueTextSize(12f);
 
-                saturdayDataSet.setColor(Color.CYAN);
+                saturdayDataSet.setColor(barColor);
                 saturdayDataSet.setValueTextColor(color);
                 saturdayDataSet.setValueTextSize(12f);
 
-                sundayDataSet.setColor(Color.CYAN);
+                sundayDataSet.setColor(barColor);
                 sundayDataSet.setValueTextColor(color);
                 sundayDataSet.setValueTextSize(12f);
 

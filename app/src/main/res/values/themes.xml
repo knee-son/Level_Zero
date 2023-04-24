@@ -27,4 +27,18 @@
         <item name="android:background">@android:color/holo_blue_dark</item>
         <item name="android:textColor">#FFF</item>
     </style>
+
+    <style name="brown">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="cardBackgroundColor">@color/neutral_mild</item>
+    </style>
+
+    <style name="calendar"  parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize attributes here -->
+        <!--        <item name="android:background">@color/black</item>-->
+        <!--        <item name="android:textColorPrimary">@color/white</item>-->
+                <item name="android:textColorSecondary">@color/black</item>
+    </style>
+
+    <color name="my_bar_color">#80F1E8</color>
 </resources>
