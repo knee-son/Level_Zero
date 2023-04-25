@@ -13,6 +13,9 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -126,8 +129,39 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    public void onResume() {
+        super.onResume();
+
+//// Get references to your views
+//        View bindingProfile = findViewById(R.id.binding_profile);
+//        View bindingCertificate = findViewById(R.id.binding_certificate);
+//        View bindingCalendar = findViewById(R.id.binding_calendar);
+
+// Set initial positions of views
+        binding.profile.setTranslationX(binding.profile.getWidth());
+        binding.certificate.setTranslationX(binding.profile.getWidth());
+        binding.calendar.setTranslationX(binding.profile.getWidth());
+
+// Create animations for each view
+        ObjectAnimator titleAnimation = ObjectAnimator.ofFloat(binding.title, "alpha", 1);
+        titleAnimation.setDuration(500);
+        titleAnimation.setStartDelay(400);
+
+        ObjectAnimator profileAnimation = ObjectAnimator.ofFloat(binding.profile, "translationX", 0);
+        profileAnimation.setDuration(300);
+
+        ObjectAnimator certificateAnimation = ObjectAnimator.ofFloat(binding.certificate, "translationX", 0);
+        certificateAnimation.setDuration(300);
+        certificateAnimation.setStartDelay(100);
+
+        ObjectAnimator calendarAnimation = ObjectAnimator.ofFloat(binding.calendar, "translationX", 0);
+        calendarAnimation.setDuration(300);
+        calendarAnimation.setStartDelay(200);
+
+// Start the animations
+        titleAnimation.start();
+        profileAnimation.start();
+        certificateAnimation.start();
+        calendarAnimation.start();
     }
 }

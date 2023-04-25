@@ -33,8 +33,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AQItv"
-        app:layout_constraintVertical_bias="0.132"
-        app:backgroundTint="#FF0000" />
+        app:layout_constraintVertical_bias="0.132" />
 
     <TextView
         android:id="@+id/AQItv"
