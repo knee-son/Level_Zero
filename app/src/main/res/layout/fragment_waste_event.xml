@@ -6,6 +6,7 @@
     tools:context=".Fragments.WasteEventFragment"
     android:orientation="vertical"
     android:padding="10dp"
+    android:gravity="center"
     style="@style/SCREEN">
 
     <TextView
@@ -13,10 +14,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TITLE EVENT"
-        android:textSize="22sp"
+        android:fontFamily="cursive"
+        android:textSize="44sp"
         style="@style/TEXT"
-        android:textStyle="bold"
-        android:layout_marginTop="150dp"/>
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/detailsEvent"
