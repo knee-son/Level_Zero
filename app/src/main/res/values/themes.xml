@@ -24,8 +24,9 @@
     </style>
 
     <style name="BUTTON">
-        <item name="android:background">@android:color/holo_blue_dark</item>
+        <item name="backgroundTint">#1E425E</item>
         <item name="android:textColor">#FFF</item>
+        <item name="fontFamily">"sans-serif-thin"</item>
     </style>
 
     <style name="brown">
