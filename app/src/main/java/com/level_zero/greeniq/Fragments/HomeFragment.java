@@ -37,8 +37,11 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
@@ -67,8 +70,10 @@ public class HomeFragment extends Fragment {
     private ImageView avatar, settings;
     private ImageSlider imageSlider;
     private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference, databaseReferenceCertificate;
     private FirebaseAuth firebaseAuth;
+
+    private List<SlideModel> slideModels;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -77,6 +82,7 @@ public class HomeFragment extends Fragment {
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("User");
+        databaseReferenceCertificate = firebaseDatabase.getReference("Certificate");
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -103,12 +109,8 @@ public class HomeFragment extends Fragment {
         location.setText(userLocation);
         coin.setText(userCoin);
 
-        List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/certificate%2F1.jpg?alt=media&token=70b0e0ba-9311-4d35-b595-74971d435b69", null, ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/certificate%2F2.jpg?alt=media&token=2d9d6c64-bc99-4a68-8852-6bb827d2477b", null, ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/certificate%2F3.jpg?alt=media&token=7971af6a-1b37-413f-a662-7339b613f4b9", null, ScaleTypes.CENTER_CROP));
-
-        imageSlider.setImageList(slideModels,ScaleTypes.CENTER_CROP);
+        slideModels = new ArrayList<>();
+        retrieveDataAndPopulateList();
 
 //        ObjectAnimator slideLeft = ObjectAnimator.ofFloat(myImage, "translationX", 0f, -myImage.getWidth());
 //        slideLeft.setDuration(1000);
@@ -126,6 +128,28 @@ public class HomeFragment extends Fragment {
         Glide.with(this).load(userAvatar).error(R.drawable.defaultpfp).placeholder(R.drawable.defaultpfp).into(avatar);
 
         return binding.getRoot();
+    }
+
+    private void retrieveDataAndPopulateList() {
+        Bundle bundle = getActivity().getIntent().getExtras();
+        String userUserName = bundle.getString("userName");
+
+        databaseReferenceCertificate.child(userUserName).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    String url = dataSnapshot.child("z0").getValue(String.class);
+
+                    slideModels.add(new SlideModel(url, null, ScaleTypes.CENTER_CROP));
+                    imageSlider.setImageList(slideModels,ScaleTypes.CENTER_CROP);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
