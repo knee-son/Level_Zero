@@ -1,6 +1,6 @@
 package com.level_zero.greeniq;
 
-public class History extends AppCompat{
+public class History {
     private String date, totalCarbon;
 
     public History(String date, String totalCarbon) {

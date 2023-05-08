@@ -50,47 +50,55 @@ public class RegisterActivity extends AppCompat {
             ProgressBar progressBar = findViewById(R.id.loading);
             progressBar.setVisibility(View.VISIBLE);
 
+            boolean flag = false;
+
             if(validateField(email)){
                 email.setError("Field must have information");
                 Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+                flag=false;
             }else{
                 email.setError(null);
                 email.setErrorEnabled(false);
-                registerUser();
+                flag=true;
             }
             if(validateField(password)){
                 password.setError("Field must have information");
                 Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+                flag=false;
             }else{
                 password.setError(null);
                 password.setErrorEnabled(false);
-                registerUser();
+                flag=true;
             }
             if(validateField(userName)){
                 userName.setError("Field must have information");
                 Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+                flag=false;
             }else{
                 userName.setError(null);
                 userName.setErrorEnabled(false);
-                registerUser();
+                flag=true;
             }
             if(validateField(location)){
                 location.setError("Field must have information");
                 Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+                flag=false;
             }else{
                 location.setError(null);
                 location.setErrorEnabled(false);
-                registerUser();
+                flag=true;
             }
             if(validateField(phoneNumber)){
                 phoneNumber.setError("Field must have information");
                 Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+                flag=false;
             }else{
                 phoneNumber.setError(null);
                 phoneNumber.setErrorEnabled(false);
-                registerUser();
+                flag=true;
             }
 
+            if(flag) registerUser();
             progressBar.setVisibility(View.GONE);
         });
     }
@@ -107,10 +115,14 @@ public class RegisterActivity extends AppCompat {
             String userPhoneNumber = safeFetch(phoneNumber);
             String userLocation = safeFetch(location);
 
+            System.out.println(userEmail);
+            System.out.println(userPass);
+
             firebaseAuth.createUserWithEmailAndPassword(userEmail, userPass).addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
                     FirebaseUser user = task.getResult().getUser();
                     String userId = Objects.requireNonNull(user).getUid();
+                    System.out.println(userId);
                     String firstCert = "https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/certificate%2FUntitled-1.jpg?alt=media&token=5d9cb3f7-af0c-45a5-937c-4bc4520e6574";
                     String defaultProfile = "https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/images%2F1e98af88-102c-4ffd-a85c-c450162cd7d7?alt=media&token=d1d09296-b020-422b-a584-2fb40719bb66";
                     databaseReference.child(userId).setValue(new Profile(userUserName, userPhoneNumber, defaultProfile, userLocation, userEmail, userPass, userId, "0"));
@@ -120,6 +132,7 @@ public class RegisterActivity extends AppCompat {
                     Toast.makeText(getApplicationContext(),"You are now registered, "+userUserName+"!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(),"Registration failed!", Toast.LENGTH_SHORT).show();
+                    System.out.println(task.getException().getMessage());
                 }
             });
 

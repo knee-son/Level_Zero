@@ -1,6 +1,6 @@
 package com.level_zero.greeniq;
 
-public class CarbonData extends AppCompat{
+public class CarbonData {
     private String transportTotal;
     private String foodTotal;
     private String electricityTotal;

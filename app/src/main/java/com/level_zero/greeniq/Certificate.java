@@ -1,6 +1,6 @@
 package com.level_zero.greeniq;
 
-public class Certificate extends AppCompat{
+public class Certificate {
     private String z0;
 
     public Certificate(String z0) {
