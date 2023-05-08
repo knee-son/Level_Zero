@@ -134,6 +134,16 @@
                 style="@style/FIELDS"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <ProgressBar
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/background_light"
+            />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/signupButton"
             android:layout_width="180dp"

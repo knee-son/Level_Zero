@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -45,9 +46,10 @@ public class RegisterActivity extends AppCompat {
         phoneNumber = findViewById(R.id.userPhoneNumber);
         location = findViewById(R.id.userLocation);
 
-        //signUp.setOnClickListener(view -> registerUser());
-
         signUp.setOnClickListener(view -> {
+            ProgressBar progressBar = findViewById(R.id.loading);
+            progressBar.setVisibility(View.VISIBLE);
+
             if(validateField(email)){
                 email.setError("Field must have information");
                 Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
@@ -88,6 +90,8 @@ public class RegisterActivity extends AppCompat {
                 phoneNumber.setErrorEnabled(false);
                 registerUser();
             }
+
+            progressBar.setVisibility(View.GONE);
         });
     }
 

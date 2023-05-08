@@ -1,20 +1,15 @@
 package com.level_zero.greeniq;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,21 +18,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.level_zero.greeniq.Fragments.HomeFragment;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompat {
@@ -126,13 +106,6 @@ public class LoginActivity extends AppCompat {
 //                                fragobj.setArguments(bundle);
 
                                 intent.putExtras(bundle);
-
-//                                intent.putExtra("email", emailDB);
-//                                intent.putExtra("location", locationDB);
-//                                intent.putExtra("phoneNumber", phoneNumberDB);
-//                                intent.putExtra("userName", userNameDB);
-//                                intent.putExtra("profilePicture", profileDB);
-
                                 startActivity(intent);
                             }
                         }
@@ -172,10 +145,6 @@ public class LoginActivity extends AppCompat {
     private boolean validateEmail(){
         String val = Objects.requireNonNull(email.getEditText()).getText().toString();
 
-        if(val.isEmpty()) {
-            return false;
-        }else{
-            return true;
-        }
+        return !val.isEmpty();
     }
 }

@@ -11,7 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="myColor">@style/TEXT</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/background_light</item>
         <!-- text color. -->
         <item name="android:textColor">@color/white</item>
         <!-- hint color. -->
@@ -51,10 +51,9 @@
     </style>
 
     <style name="calendar"  parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize attributes here -->
-        <!--        <item name="android:background">@color/black</item>-->
-        <!--        <item name="android:textColorPrimary">@color/white</item>-->
-                <item name="android:textColorSecondary">@color/black</item>
+        <item name="colorSecondary">@color/neutral_mild</item>
+        <item name="android:textColorSecondary">@color/black</item>
+        <item name="android:selectedWeekBackgroundColor">@color/neutral_mild</item>
     </style>
 
     <color name="my_bar_color">#80F1E8</color>

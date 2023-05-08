@@ -104,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:indeterminateTint="@color/theme_dark"
+            android:indeterminateTint="@color/background_light"
             android:visibility="gone"/>
 
         <com.google.android.material.button.MaterialButton

@@ -49,10 +49,9 @@
     </style>
 
     <style name="calendar"  parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize attributes here -->
-<!--        <item name="android:background">@color/black</item>-->
-<!--        <item name="android:textColorPrimary">@color/white</item>-->
-<!--        <item name="android:textColorSecondary">@color/white</item>-->
+<!--        <item name="android:textColorSecondary">@color/black</item>-->
+<!--        <item name="android:textColor">@color/neutral_mild</item>-->
+        <item name="colorSecondary">@color/background_light</item>
     </style>
 
     <color name="my_bar_color">#4F1CC5</color>
