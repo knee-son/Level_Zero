@@ -61,13 +61,17 @@
             android:layout_marginTop="25dp"
             android:hint="@string/email"
             android:id="@+id/userEmailLog"
+            android:textColorHint="@color/white"
             app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="test1@gmail.com"/>
+                android:text="test1@gmail.com"
+                android:textColor="@color/white"
+                android:background="@drawable/round_background"
+                style="@style/FIELDS"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -76,6 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:hint="@string/password"
+            android:textColorHint="@color/white"
             android:id="@+id/userPasswordLog"
             app:passwordToggleEnabled="true"
             app:startIconDrawable="@drawable/ic_baseline_lock_24">
@@ -84,7 +89,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:text="123123"/>
+                android:text="123123"
+                android:textColor="@color/white"
+                android:background="@drawable/round_background"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -102,6 +109,8 @@
         <com.google.android.material.button.MaterialButton
 
             android:id="@+id/loginButton"
+            android:shape="ring"
+            android:radius="20dp"
             android:layout_width="180dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
@@ -109,8 +118,7 @@
             android:text="@string/login"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:background="@drawable/rounded_shape"
-            style="@style/BUTTON"/>
+            style="@style/FIELDS"/>
 
         <TextView
             android:id="@+id/newAccount"

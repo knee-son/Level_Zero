@@ -26,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="sans-serif-thin"
             android:text="@string/welcome_new_user"
             style="@style/TEXT"
             android:textSize="30sp"
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/enter_account_details_below"
+            android:fontFamily="sans-serif-thin"
             style="@style/TEXT"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -48,12 +50,15 @@
             android:layout_marginTop="25dp"
             android:hint="@string/email"
             android:id="@+id/userEmail"
-            app:startIconDrawable="@drawable/ic_email">
+            app:startIconDrawable="@drawable/ic_email"
+            style="@style/textINPUT">
 
             <com.google.android.material.textfield.TextInputEditText
+                style = "@style/FIELDS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:background="@drawable/round_background"
+                android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -64,12 +69,15 @@
             android:hint="@string/password"
             android:id="@+id/userPassword"
             app:passwordToggleEnabled="true"
-            app:startIconDrawable="@drawable/ic_baseline_lock_24">
+            app:startIconDrawable="@drawable/ic_baseline_lock_24"
+            style="@style/textINPUT">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                android:background="@drawable/round_background"
+                style="@style/FIELDS"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -79,12 +87,15 @@
             android:layout_marginTop="3dp"
             android:hint="@string/username"
             android:id="@+id/userUserName"
-            app:startIconDrawable="@drawable/user">
+            app:startIconDrawable="@drawable/user"
+            style="@style/textINPUT">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                android:background="@drawable/round_background"
+                style="@style/FIELDS"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -94,12 +105,15 @@
             android:layout_marginTop="3dp"
             android:hint="@string/phone_number"
             android:id="@+id/userPhoneNumber"
-            app:startIconDrawable="@drawable/phone">
+            app:startIconDrawable="@drawable/phone"
+            style="@style/textINPUT">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                android:background="@drawable/round_background"
+                style="@style/FIELDS"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -109,12 +123,15 @@
             android:layout_marginTop="3dp"
             android:hint="@string/location"
             android:id="@+id/userLocation"
-            app:startIconDrawable="@drawable/location">
+            app:startIconDrawable="@drawable/location"
+            style="@style/textINPUT">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                android:background="@drawable/round_background"
+                style="@style/FIELDS"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -124,7 +141,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            style="@style/BUTTON"
+            style="@style/FIELDS"
 
             android:text="@string/register"
             android:textSize="15sp"
@@ -137,6 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/already_have_an_account"
+            android:fontFamily="sans-serif-thin"
             style="@style/TEXT"
             android:textSize="15sp"
             android:textStyle="bold"

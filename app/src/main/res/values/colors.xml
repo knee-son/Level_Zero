@@ -2,9 +2,9 @@
 <resources>
     <color name="neutral">#EDFA8B</color>
     <color name="neutral_mild">#C6AB72</color>
-    <color name="neutral_heavy">#B36744</color>
-    <color name="theme_light">#7DDD48</color>
-    <color name="theme_dark">#1E425E</color>
+    <color name="neutral_heavy">#FFB36744</color>
+    <color name="theme_light">#EDFA8B</color>
+    <color name="theme_dark">#040404E5</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorAccent">#09FF15</color>
@@ -15,4 +15,6 @@
     <color name="colorOnPrimaryDark">#FFFFFF</color>
     <color name="dark_blue">#000080</color>
     <color name="colorText">#000000</color>
+    <color name="background_light">#1E425E</color>
+    <color name="background_dark">#4C2B0E</color>
 </resources>

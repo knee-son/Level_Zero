@@ -101,7 +101,7 @@
 
     <Button
         android:id="@+id/button4"
-        style="@style/BUTTON"
+        style="@style/FIELDS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
