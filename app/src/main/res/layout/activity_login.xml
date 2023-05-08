@@ -91,7 +91,8 @@
                 android:inputType="textPassword"
                 android:text="123123"
                 android:textColor="@color/white"
-                android:background="@drawable/round_background"/>
+                android:background="@drawable/round_background"
+                style="@style/FIELDS"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>

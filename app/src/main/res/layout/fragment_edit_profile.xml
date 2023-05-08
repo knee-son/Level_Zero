@@ -50,7 +50,8 @@
             android:inputType="text"
             android:text="USERNAME"
             android:layout_gravity="center"
-            style="@style/TEXT"/>
+            android:background="@drawable/round_background"
+            style="@style/textINPUT"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -66,7 +67,8 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:text="PASSWORD"
-            style="@style/TEXT"/>
+            android:background="@drawable/round_background"
+            style="@style/textINPUT"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -80,6 +82,8 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:text="PHONE NUMBER"
+            android:background="@drawable/round_background"
+            style="@style/textINPUT"
             android:layout_gravity="center"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,6 +99,8 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:text="LOCATION"
+            style="@style/textINPUT"
+            android:background="@drawable/round_background"
             android:layout_gravity="center"/>
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -16,12 +16,13 @@
     </style>
 
     <style name="SCREEN">
-        <item name="android:background">#232323</item>
+        <item name="android:background">@color/theme_dark</item>
     </style>
 
     <style name="TEXT" format = "color">
         <item name="android:textColor">#EFD177</item>
     </style>
+
 
     <style name="textINPUT">
         <item name="android:textColor">@color/white</item>

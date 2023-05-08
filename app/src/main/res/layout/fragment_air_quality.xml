@@ -6,10 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.AirQualityFragment"
     android:orientation="vertical"
+    style="@style/SCREEN"
     android:padding="20dp">
+
     <TextView
         android:id="@+id/textView"
-        style="@style/TEXT"
+        style="@style/FIELDS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -22,6 +24,7 @@
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/round_background"
         app:layout_constraintVertical_bias="0.023" />
 
     <com.github.mikephil.charting.charts.BarChart
@@ -30,10 +33,10 @@
         android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AQItv"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.681" />
 
     <TextView
         android:id="@+id/AQItv"
@@ -42,8 +45,9 @@
         android:gravity="center_horizontal"
         android:text="@string/click_button_to_get_air_quality"
         android:textAlignment="center"
-        style="@style/TEXT"
-        android:textSize="15dp"
+        style="@style/FIELDS"
+        android:textSize="20dp"
+        android:background="@drawable/round_background"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,51 +57,52 @@
 
     <TextView
         android:id="@+id/nearestCity"
+        style="@style/TEXT"
         android:layout_width="224dp"
         android:layout_height="31dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/nearest_city"
         android:textAlignment="center"
         android:textSize="20dp"
-        style="@style/TEXT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.175" />
+        app:layout_constraintVertical_bias="0.158" />
 
     <TextView
         android:id="@+id/nearestCityTv"
+        style="@style/FIELDS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/click_button_to_get_nearest_city"
         android:textAlignment="center"
-        style="@style/TEXT"
         android:textSize="20dp"
+        android:background="@drawable/round_background"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232" />
+        app:layout_constraintVertical_bias="0.224"/>
 
     <TextView
         android:id="@+id/et"
+        style="@style/TEXT"
         android:layout_width="224dp"
         android:layout_height="31dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/nearest_city_aqi"
         android:textAlignment="center"
         android:textSize="20dp"
-        style="@style/TEXT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.317"/>
+        app:layout_constraintVertical_bias="0.298" />
 
     <Button
         android:id="@+id/button4"
@@ -113,6 +118,6 @@
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="@id/chart"
         app:layout_constraintTop_toTopOf="@id/chart"
-        app:layout_constraintVertical_bias="0.764" />
+        app:layout_constraintVertical_bias="0.789" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

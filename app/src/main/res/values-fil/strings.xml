@@ -47,10 +47,10 @@
     <string name="test1">test</string>
     <string name="ok">OK</string>
     <string name="air_quality1">Kalidad ng Hangin</string>
-    <string name="click_button_to_get_air_quality">i-click ang button para makuha ang kalidad ng hangin</string>
-    <string name="nearest_city">Pinakamalapit na Lungsod:</string>
-    <string name="click_button_to_get_nearest_city">i-click ang pindutan upang makakuha ng pinakamalapit na lungsod</string>
-    <string name="nearest_city_aqi">Pinakamalapit na AQI ng Lungsod:</string>
+    <string name="click_button_to_get_air_quality">Kumuha ang kalidad ng hangin</string>
+    <string name="nearest_city">Lungsod:</string>
+    <string name="click_button_to_get_nearest_city">Kumuha ng pinakamalapit na lungsod</string>
+    <string name="nearest_city_aqi">AQI ng Lungsod:</string>
     <string name="get_air_quality">Kunin ang Kalidad ng Hangin</string>
     <string name="select_usage_of_electricity_for_today">Piliin ang paggamit ng kuryente para sa araw na ito:</string>
     <string name="calculate">Kalkulahin</string>
@@ -67,7 +67,7 @@
     <string name="calculate2">Kalkulahin</string>
     <string name="save">SAVE</string>
     <string name="schedule_of_activities">ISKEDYUL NG MGA GAWAIN:</string>
-    <string name="recycling_sites_near_you">Mga recycling site na malapit sa iyo:</string>
+    <string name="recycling_sites_near_you">Mga recycling site na malapit:</string>
     <string name="today_s_schedule">ISKEDYUL NGAYON</string>
     <string name="current_event">KASALUKUYANG PANGYAYARI</string>
     <string name="save_avatar">ISAVE ANG AVATAR</string>
