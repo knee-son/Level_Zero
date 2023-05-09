@@ -2,7 +2,10 @@ package com.level_zero.greeniq.Fragments;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -66,6 +69,7 @@ public class CarbonTransportFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+
         binding = FragmentCarbonTransportBinding.inflate(inflater, container, false);
 
         typeSpinner = binding.typeSpinnerTransport;
@@ -106,6 +110,7 @@ public class CarbonTransportFragment extends Fragment {
         });
         
         button.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 valueDatabase();
@@ -138,7 +143,13 @@ public class CarbonTransportFragment extends Fragment {
                 double total = valueTransport + valueFood + valueElectricity;
                 String currentDate = simpleDateFormat.format(calendar.getTime());
 
-                Toast.makeText(getActivity(), "Your transport carbon footprint is " + valueTransport + " Kg CO", Toast.LENGTH_SHORT).show();
+                if(valueTransport == 0)
+                {
+                    displayErrorDialog("Invalid input:\nPlease enter a numeric value.");
+                    return;
+                }else{
+                    Toast.makeText(getActivity(), String.format("Your transport carbon footprint is %.2f Kg CO", valueTransport), Toast.LENGTH_SHORT).show();
+                }
 
                 History history = new History(currentDate, String.valueOf(total));
 
@@ -154,19 +165,39 @@ public class CarbonTransportFragment extends Fragment {
 
     private void valueDatabase() {
 
-        double amount = Double.parseDouble(amountEditText.getText().toString());
+        double amount = 0;
+
+        try {
+            amount = Double.parseDouble(amountEditText.getText().toString());;
+        } catch (NumberFormatException e) {
+            displayErrorDialog("Invalid input:\nPlease enter a numeric value.");
+            return;
+        }
 
         if (typeValue.equals("Private")) {
-            footprintValue = amount * 5.8 / 100 * 2.3035;
+            footprintValue = amount * (5.8 / 100 * 2.3035);
         } else if (typeValue.equals("Public")) {
-            footprintValue = amount * 18.181818182 / 100 * 2.3035;
+            footprintValue = amount * (18.181818182 / 100 * 2.3035);
         } else if (typeValue.equals("Motorcycle")) {
-            footprintValue = amount * 1.8867924528 / 100 * 2.3035;
+            footprintValue = amount * (1.8867924528 / 100 * 2.3035);
         }
 
         databaseReference.child(currentUser).child("transportTotal").setValue(String.valueOf(footprintValue));
     }
+    private void displayErrorDialog(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Error!");
 
+        builder.setMessage(message);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;

@@ -2,7 +2,9 @@ package com.level_zero.greeniq.Fragments;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -137,7 +139,15 @@ public class CarbonElectricityFragment extends Fragment {
                 double total = valueTransport + valueFood + valueElectricity;
                 String currentDate = simpleDateFormat.format(calendar.getTime());
 
-                Toast.makeText(getActivity(), "Your electricity carbon footprint is " + valueElectricity + " Kg CO", Toast.LENGTH_SHORT).show();
+                if(valueElectricity == 0)
+                {
+                    displayErrorDialog("Invalid input:\nPlease enter a numeric value.");
+                    return;
+                }else {
+                    Toast.makeText(getActivity(), String.format("Your electricity carbon footprint is %.2f Kg CO", valueElectricity), Toast.LENGTH_SHORT).show();
+
+                }
+
 
                 History history = new History(currentDate, String.valueOf(total));
 
@@ -152,6 +162,7 @@ public class CarbonElectricityFragment extends Fragment {
     }
 
     private void valueDatabase() {
+
         if (typeValue.equals("Low Usage")) {
             footprintElectricity = 24 * 1.35;
         } else if (typeValue.equals("Medium Usage")) {
@@ -162,7 +173,20 @@ public class CarbonElectricityFragment extends Fragment {
 
         databaseReference.child(currentUser).child("electricityTotal").setValue(String.valueOf(footprintElectricity));
     }
+    private void displayErrorDialog(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Error!");
 
+        builder.setMessage(message);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;

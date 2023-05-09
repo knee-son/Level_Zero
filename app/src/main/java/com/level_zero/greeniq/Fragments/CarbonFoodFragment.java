@@ -2,7 +2,9 @@ package com.level_zero.greeniq.Fragments;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -142,8 +144,14 @@ public class CarbonFoodFragment extends Fragment {
 
                 History history = new History(currentDate, String.valueOf(total));
 
-                Toast.makeText(getActivity(), "Your food carbon footprint is " + valueFood + " Kg CO", Toast.LENGTH_SHORT).show();
 
+                if(valueFood == 0)
+                {
+                    displayErrorDialog("Invalid input:\nPlease enter a numeric value.");
+                    return;
+                }else {
+                    Toast.makeText(getActivity(), String.format("Your food carbon footprint is %.2f Kg CO", valueFood), Toast.LENGTH_SHORT).show();
+                }
                 firebaseDatabase.getReference("Carbon History").child(currentUser).child(currentDate).setValue(history);
             }
 
@@ -155,7 +163,14 @@ public class CarbonFoodFragment extends Fragment {
     }
 
     private void valueDatabase() {
-        double amount = Double.parseDouble(amountEditText.getText().toString());
+        double amount = 0;
+
+        try {
+            amount = Double.parseDouble(amountEditText.getText().toString());;
+        } catch (NumberFormatException e) {
+            displayErrorDialog("Invalid input:\nPlease enter a numeric value.");
+            return;
+        }
 
         if (typeValue.equals("Pork")) {
             footprintFood = amount * 7.6;
@@ -171,7 +186,20 @@ public class CarbonFoodFragment extends Fragment {
 
         databaseReference.child(currentUser).child("foodTotal").setValue(String.valueOf(footprintFood));
     }
+    private void displayErrorDialog(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Error!");
 
+        builder.setMessage(message);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
