@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompat {
         setContentView(R.layout.activity_login);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        reference = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User");
 
         email = findViewById(R.id.userEmailLog);
         password = findViewById(R.id.userPasswordLog);
@@ -40,29 +41,58 @@ public class LoginActivity extends AppCompat {
         //login.setOnClickListener(view -> loginUser());
 
         login.setOnClickListener(view -> {
-            if(!validateEmail()){
-                email.setError("Field must have information");
-                Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+            if(email.equals("") || password.equals("")){
+                email.setError("All fields must not empty");
+                password.setError("All fields must not empty");
             }else{
                 email.setError(null);
-                email.setErrorEnabled(false);
-                loginUser();
-            }
-            if(!validatePassword()){
-                password.setError("Field must have information");
-                Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
-            }else{
                 password.setError(null);
-                password.setErrorEnabled(false);
-                loginUser();
+
+                String fetchEmail = email.getEditText().getText().toString();
+                String fetchPassword = password.getEditText().getText().toString();
+
+                reference.orderByChild("email").equalTo(fetchEmail)
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    email.setError(null);
+                                    reference.orderByChild("password").equalTo(fetchPassword)
+                                            .addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                    if(snapshot.exists()){
+                                                        password.setError(null);
+                                                        loginUser();
+                                                    }else{
+                                                        password.setError("Wrong Password!");
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                                }
+                                            });
+                                }else{
+                                    email.setError("Email does not exists.");
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
             }
         });
     }
 
     private void loginUser() {
         try {
-            String userEmailLog = RegisterActivity.safeFetch(email);
-            String userPassLog = RegisterActivity.safeFetch(password);
+            String userEmailLog = email.getEditText().getText().toString();
+            String userPassLog = password.getEditText().getText().toString();
 
             ProgressBar progressBar = findViewById(R.id.loading);
             progressBar.setVisibility(View.VISIBLE);
@@ -133,18 +163,5 @@ public class LoginActivity extends AppCompat {
     public void openRegister(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
-    }
-
-    private boolean validatePassword(){
-        String val = password.getEditText().getText().toString();
-
-        return !val.isEmpty();
-    }//end of the method
-
-    //validate user name or email
-    private boolean validateEmail(){
-        String val = Objects.requireNonNull(email.getEditText()).getText().toString();
-
-        return !val.isEmpty();
     }
 }

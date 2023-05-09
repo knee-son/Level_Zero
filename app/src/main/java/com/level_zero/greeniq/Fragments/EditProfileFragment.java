@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -65,6 +66,7 @@ public class EditProfileFragment extends Fragment {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -73,6 +75,8 @@ public class EditProfileFragment extends Fragment {
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("User");
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
         userName = binding.editUsername;
         password = binding.editPassword;
@@ -121,31 +125,66 @@ public class EditProfileFragment extends Fragment {
                 String fetchLocation = location.getEditText().getText().toString();
                 String fetchPassword = password.getEditText().getText().toString();
 
-                Query query = databaseReference.orderByChild("id").equalTo(userId);
-                query.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                            dataSnapshot.getRef().child("userName").setValue(fetchUserName);
-                            dataSnapshot.getRef().child("password").setValue(fetchPassword);
-                            dataSnapshot.getRef().child("phone").setValue(fetchPhone);
-                            dataSnapshot.getRef().child("location").setValue(fetchLocation);
+                databaseReference.orderByChild("userName").equalTo(fetchUserName)
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    userName.setError("Username exists.");
+                                }else{
+                                    userName.setError(null);
+                                    if(fetchPassword.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$")){
+                                        password.setError(null);
+                                        if(fetchPhone.matches("^(09|\\+639)\\d{9}$")){
+                                            phone.setError(null);
 
-                            Toast.makeText(getContext(), "Updating data of "+userEmail, Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                                            firebaseUser.updatePassword(fetchPassword)
+                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if(task.isSuccessful()){
+                                                                Query query = databaseReference.orderByChild("id").equalTo(userId);
+                                                                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                                    @Override
+                                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                                                            dataSnapshot.getRef().child("userName").setValue(fetchUserName);
+                                                                            dataSnapshot.getRef().child("password").setValue(fetchPassword);
+                                                                            dataSnapshot.getRef().child("phoneNumber").setValue(fetchPhone);
+                                                                            dataSnapshot.getRef().child("location").setValue(fetchLocation);
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                                                                            Toast.makeText(getContext(), "Updating data of "+userEmail, Toast.LENGTH_SHORT).show();
+                                                                        }
+                                                                    }
 
-                    }
-                });
+                                                                    @Override
+                                                                    public void onCancelled(@NonNull DatabaseError error) {
 
-                getActivity().finish();
+                                                                    }
+                                                                });
 
-                Intent intent = getActivity().getBaseContext().getPackageManager().getLaunchIntentForPackage(getActivity().getBaseContext().getPackageName());
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                                                                getActivity().finish();
+
+                                                                Intent intent = getActivity().getBaseContext().getPackageManager().getLaunchIntentForPackage(getActivity().getBaseContext().getPackageName());
+                                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                        }else{
+                                            phone.setError("Phone number is invalid.");
+                                        }
+                                    }else{
+                                        password.setError("Should have one uppercase and lowercase character, one digit number, and one special character.");
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
             }
         });
 
