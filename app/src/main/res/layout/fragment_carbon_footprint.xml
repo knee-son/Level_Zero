@@ -31,7 +31,7 @@
 
             <GridLayout
                 android:id="@+id/griddy"
-                android:layout_width="365dp"
+                android:layout_width="match_parent"
                 android:layout_height="157dp"
                 android:layout_gravity="center"
                 android:alignmentMode="alignMargins"
@@ -43,7 +43,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView1"
                     style="@style/trans"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
@@ -59,8 +59,9 @@
                         android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="71dp"
-                            android:layout_height="83dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="-28dp"
                             android:alpha="0.7"
                             android:src="@drawable/baseline_directions_car_24" />
 
@@ -68,7 +69,7 @@
                             style="@style/trans"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="-28dp"
                             android:text="@string/transport"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -76,7 +77,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
@@ -93,8 +94,11 @@
                         android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="71dp"
-                            android:layout_height="83dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="-28dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
                             android:alpha="0.7"
                             android:src="@drawable/baseline_fastfood_24"
                             />
@@ -102,7 +106,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="-28dp"
                             android:text="@string/food"
                             style="@style/food"
                             android:textSize="16sp" />
@@ -111,7 +115,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
@@ -122,14 +126,15 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="153dp"
+                        android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="71dp"
-                            android:layout_height="83dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="-28dp"
                             android:alpha="0.7"
                             android:src="@drawable/baseline_electrical_services_24"
                             />
@@ -137,7 +142,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="-28dp"
                             android:text="@string/electricity"
                             style="@style/elec"
                             android:textSize="16sp" />
