@@ -95,6 +95,8 @@
                 style="@style/FIELDS"/>
 
 
+
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <ProgressBar
@@ -118,7 +120,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:cornerRadius="15dp"
-            style="@style/FIELDS"/>
+            style="@style/brown"/>
 
         <TextView
             android:id="@+id/newAccount"

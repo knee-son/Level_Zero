@@ -128,7 +128,7 @@ public class CarbonFootprintFragment extends Fragment {
                 entries.add(new PieEntry(Float.parseFloat(electricityData), "Electricity"));
 
                 PieDataSet pieDataSet = new PieDataSet(entries, null);
-                pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+                pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
                 pieDataSet.setDrawValues(true);
                 pieDataSet.setValueTextSize(12f);
                 pieDataSet.setValueTextColor(Color.BLACK);
@@ -136,8 +136,8 @@ public class CarbonFootprintFragment extends Fragment {
                 PieData pieData = new PieData(pieDataSet);
                 Legend legend = pieChart.getLegend();
                 legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
-
-                pieChart.setEntryLabelColor(Color.BLACK);
+                legend.setTextSize(15f);
+                legend.setTextColor(Color.GRAY);
                 pieChart.getDescription().setEnabled(false);
 
                 pieChart.setData(pieData);

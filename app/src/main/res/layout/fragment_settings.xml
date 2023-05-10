@@ -53,11 +53,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_background"
-            android:padding="8dp">
+            android:padding="8dp"
+            style="@style/brown">
 
             <TextView
                 android:id="@+id/text_editProfile"
-                style="@style/textINPUT"
+                style="@style/FIELDS"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -91,7 +92,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_background"
-            android:padding="8dp">
+            android:padding="8dp"
+            style="@style/brown">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -99,7 +101,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="32dp"
                 android:text="@string/language"
-                style="@style/textINPUT"
+                style="@style/FIELDS"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:id="@+id/text_editLanguage" />
@@ -129,7 +131,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_background"
-            android:padding="8dp">
+            android:padding="8dp"
+            style="@style/brown">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -167,7 +170,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_background"
-            android:padding="8dp">
+            android:padding="8dp"
+            style="@style/brown">
 
             <TextView
                 android:id="@+id/text_aboutApp"
@@ -205,7 +209,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_background"
-            android:padding="8dp">
+            android:padding="8dp"
+            style="@style/brown">
 
             <TextView
                 android:layout_width="wrap_content"
