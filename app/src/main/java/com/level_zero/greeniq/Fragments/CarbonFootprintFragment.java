@@ -1,6 +1,7 @@
 package com.level_zero.greeniq.Fragments;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -155,7 +156,17 @@ public class CarbonFootprintFragment extends Fragment {
                     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                         View view = super.getView(position, convertView, parent);
                         TextView textView = view.findViewById(android.R.id.text1);
-                        textView.setTextColor(Color.BLACK);
+
+                        int currentNightMode = getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+                        switch (currentNightMode) {
+                            case Configuration.UI_MODE_NIGHT_NO:
+                                textView.setTextColor(Color.BLACK); // Set the text color for the light theme
+                                break;
+                            case Configuration.UI_MODE_NIGHT_YES:
+                                textView.setTextColor(Color.WHITE); // Set the text color for the dark theme
+                                break;
+                        }
+
                         textView.setAlpha(0.9f);
                         return view;
                     }
