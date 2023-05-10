@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,7 +27,8 @@ public class EditLanguageFragment extends Fragment {
         languageManager.updateResource(languageManager.getLang());
     }
     private @NonNull FragmentEditLanguageBinding binding;
-    private ImageButton eng, fil;
+    private Button eng;
+    private Button fil;
     private Button btn;
     private TextView txt;
 

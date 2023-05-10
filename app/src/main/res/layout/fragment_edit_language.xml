@@ -11,53 +11,56 @@
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_height="100dp"
+
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textLanguage"
+            style="@style/TEXT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/language"
-            android:textSize="20sp"
-            style="@style/TEXT"/>
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btn_theme"
+            style="@style/FIELDS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/location"
-            style="@style/FIELDS"/>
+
+            />
+
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_weight=".2"
         android:orientation="vertical">
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_fil"
+            style="@style/FIELDS"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ph" />
+            android:layout_height="60dp"
+            android:drawableLeft="@drawable/phil"
+            android:drawablePadding="8dp"
+            android:text="FILIPINO" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/eng"
+        <Button
             android:id="@+id/btn_eng"
-            android:layout_weight="1"/>
+            style="@style/FIELDS"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawableLeft="@drawable/english"
+            android:drawablePadding="8dp"
+            android:text="English" />
 
     </LinearLayout>
+
+
 
 </LinearLayout>
