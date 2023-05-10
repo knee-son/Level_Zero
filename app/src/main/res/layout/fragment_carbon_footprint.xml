@@ -93,7 +93,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="@string/transport"
-                            style="@style/TextAppearance.AppCompat"
+                            style="@style/trans"
                             android:textSize="16sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -127,7 +127,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="@string/food"
-                            style="@style/TextAppearance.AppCompat"
+                            style="@style/food"
                             android:textSize="16sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -161,7 +161,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="@string/electricity"
-                            style="@style/TextAppearance.AppCompat"
+                            style="@style/elec"
                             android:textSize="16sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

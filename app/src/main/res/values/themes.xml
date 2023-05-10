@@ -44,6 +44,20 @@
         <item name="android:textColor">#FFFFFF</item>
         <item name="cardBackgroundColor">@color/neutral_mild</item>
     </style>
+    <style name="trans" >
+        <item name="android:textColor">#000000</item>
+        <item name="android:backgroundTint">#1B3F5C</item>
+    </style>
+
+    <style name="food">
+        <item name="android:textColor">#312F2F</item>
+        <item name="android:backgroundTint">#B7CEAC </item>
+    </style>
+
+    <style name="elec">
+        <item name="android:textColor">#000000</item>
+        <item name="android:backgroundTint">#F7DFC2 </item>
+    </style>
 
     <style name="RELATIVE">
         <item name="android:background">#8A9C02</item>
