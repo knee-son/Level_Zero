@@ -43,7 +43,7 @@
 
         <Button
             android:id="@+id/btn_fil"
-            style="@style/FIELDS"
+            style="@style/brown"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:drawableLeft="@drawable/phil"
@@ -52,7 +52,7 @@
 
         <Button
             android:id="@+id/btn_eng"
-            style="@style/FIELDS"
+            style="@style/brown"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:drawableLeft="@drawable/english"

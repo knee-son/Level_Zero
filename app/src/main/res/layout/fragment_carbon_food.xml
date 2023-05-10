@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:text="@string/calculate1"
         android:layout_marginLeft="10dp"
-        style="@style/FIELDS"/>
+        style="@style/brown"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"

@@ -35,7 +35,7 @@
     </style>
 
     <style name="RELATIVE">
-        <item name="android:background">#7F8181</item>
+        <item name="android:background">#BC7F8181</item>
         <item name="android:tint">#FFFFFF</item>
     </style>
 

@@ -57,7 +57,7 @@
             android:textAlignment="center"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:text="@string/calculate2"
         android:layout_marginLeft="10dp"
-        style="@style/FIELDS"/>
+        style="@style/brown"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"

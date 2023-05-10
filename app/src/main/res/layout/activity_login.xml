@@ -62,7 +62,8 @@
             android:hint="@string/email"
             android:id="@+id/userEmailLog"
             android:textColorHint="@color/white"
-            app:startIconDrawable="@drawable/ic_email">
+            app:startIconDrawable="@drawable/ic_email"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

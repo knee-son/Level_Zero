@@ -57,7 +57,7 @@
         android:layout_marginTop="112dp"
         android:layout_marginEnd="550dp"
         android:layout_marginBottom="550dp"
-        android:backgroundTint="@color/grey_font"
+        style="@style/brown"
         android:text="Done" />
 
 </RelativeLayout>

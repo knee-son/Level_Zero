@@ -29,7 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        style="@style/TEXT"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:textSize="18sp"
@@ -51,7 +51,7 @@
             android:text="USERNAME"
             android:layout_gravity="center"
             android:background="@drawable/round_background"
-            style="@style/textINPUT"/>
+            style="@style/FIELDS"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -68,7 +68,7 @@
             android:inputType="text"
             android:text="PASSWORD"
             android:background="@drawable/round_background"
-            style="@style/textINPUT"/>
+            style="@style/FIELDS"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -83,7 +83,7 @@
             android:inputType="text"
             android:text="PHONE NUMBER"
             android:background="@drawable/round_background"
-            style="@style/textINPUT"
+            style="@style/FIELDS"
             android:layout_gravity="center"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:text="LOCATION"
-            style="@style/textINPUT"
+            style="@style/FIELDS"
             android:background="@drawable/round_background"
             android:layout_gravity="center"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -108,7 +108,7 @@
         android:id="@+id/saveProfile"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        style="@style/FIELDS"
+        style="@style/brown"
         android:text="@string/save_details"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="12sp"
@@ -121,7 +121,7 @@
         android:id="@+id/saveAvatar"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        style="@style/FIELDS"
+        style="@style/brown"
         android:text="@string/save_avatar"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="12sp"
