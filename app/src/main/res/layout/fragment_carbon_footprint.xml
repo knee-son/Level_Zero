@@ -25,12 +25,37 @@
             android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="GreenIQ Carbon Footprint Tracker"
+                style="@style/TEXT"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:fontFamily="sans-serif-thin"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"/>
+
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/piechart"
                 android:layout_width="match_parent"
                 android:layout_height="370dp"
                 android:layout_gravity="center"
                 android:layout_margin="5dp" />
+
+            <TextView
+                android:id="@+id/subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Choose field of consumption:"
+                style="@style/TEXT"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-thin"
+                android:layout_marginBottom="5dp"/>
 
             <GridLayout
                 android:id="@+id/griddy"

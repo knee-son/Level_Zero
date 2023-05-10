@@ -108,7 +108,7 @@ public class HomeFragment extends Fragment {
         phone.setText(userPhone);
         location.setText(userLocation);
         coin.setText(userCoin);
-        greeniq.setText("GreenIQ - "+userUserName);
+        greeniq.setText("GreenIQ profile | "+userUserName);
 
         slideModels = new ArrayList<>();
         retrieveDataAndPopulateList();

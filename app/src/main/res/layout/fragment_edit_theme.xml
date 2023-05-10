@@ -57,7 +57,7 @@
         android:layout_marginTop="112dp"
         android:layout_marginEnd="550dp"
         android:layout_marginBottom="550dp"
-        style="@style/brown"
+        style="@style/accent_card"
         android:text="Done" />
 
 </RelativeLayout>

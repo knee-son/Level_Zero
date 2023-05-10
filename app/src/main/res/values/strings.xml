@@ -11,7 +11,7 @@
     <string name="carbon_footprint">Footprint</string>
     <string name="air_quality">Air Quality</string>
     <string name="welcome_user">Welcome, user!</string>
-    <string name="enter_google_email_and_password">Enter Google email and password:</string>
+    <string name="enter_google_email_and_password">Login using email and password:</string>
     <string name="email">EMAIL</string>
     <string name="password">PASSWORD</string>
     <string name="login">LOGIN</string>
