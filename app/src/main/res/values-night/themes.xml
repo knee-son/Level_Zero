@@ -34,6 +34,11 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="FIELDS2">
+        <item name="android:background">#464B7A16</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="RELATIVE">
         <item name="android:background">#BC7F8181</item>
         <item name="itemIconTint">#241E1E</item>
