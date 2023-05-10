@@ -9,31 +9,6 @@
     android:orientation="vertical"
     style="@style/SCREEN">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        style="@style/RELATIVE">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="11dp"
-            style="@style/RELATIVE">
-
-            <TextView
-                android:id="@+id/back1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_centerVertical="true"
-                android:text="CARBON FOOTPRINT TRACKER"
-                style="@style/TEXT"
-                android:textStyle="bold"/>
-        </RelativeLayout>
-
-    </RelativeLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -49,10 +24,10 @@
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/piechart"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp" />
+                android:layout_margin="25dp" />
 
             <GridLayout
                 android:id="@+id/griddy"
@@ -62,38 +37,39 @@
                 android:alignmentMode="alignMargins"
                 android:columnCount="3"
                 android:columnOrderPreserved="false"
-                android:rowCount="1">
+                android:rowCount="1"
+                android:layout_marginTop="5dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView1"
+                    style="@style/trans"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="3dp"
-                    style="@style/trans">
+                    app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp"
-                        >
+                        android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="65dp"
-                            android:layout_height="80dp"
+                            android:layout_width="71dp"
+                            android:layout_height="83dp"
+                            android:alpha="0.7"
                             android:src="@drawable/baseline_directions_car_24" />
 
                         <TextView
+                            style="@style/trans"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="@string/transport"
-                            style="@style/trans"
                             android:textSize="16sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -117,8 +93,9 @@
                         android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="65dp"
-                            android:layout_height="80dp"
+                            android:layout_width="71dp"
+                            android:layout_height="83dp"
+                            android:alpha="0.7"
                             android:src="@drawable/baseline_fastfood_24"
                             />
 
@@ -151,8 +128,9 @@
                         android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="65dp"
-                            android:layout_height="80dp"
+                            android:layout_width="71dp"
+                            android:layout_height="83dp"
+                            android:alpha="0.7"
                             android:src="@drawable/baseline_electrical_services_24"
                             />
 
@@ -170,7 +148,9 @@
             <ListView
                 android:id="@+id/listviewHistory"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"/>
+                android:layout_height="250dp"
+                android:layout_marginTop="25dp"
+                style = "@style/elec"/>
 
         </LinearLayout>
 

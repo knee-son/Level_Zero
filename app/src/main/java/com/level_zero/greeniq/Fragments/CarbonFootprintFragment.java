@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -167,9 +168,21 @@ public class CarbonFootprintFragment extends Fragment {
                     String decimal = String.format("%.2f", floatValue);
                     // Add the data to the ArrayList
                     dataList.add(date + " - Total Carbon: " + decimal);
+//                    dataList.setTextColor(Color.RED);
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, dataList);
+//                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, dataList);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dataList) {
+                    @NonNull
+                    @Override
+                    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                        View view = super.getView(position, convertView, parent);
+                        TextView textView = view.findViewById(android.R.id.text1);
+                        textView.setTextColor(Color.BLACK);
+                        textView.setAlpha(0.9f);
+                        return view;
+                    }
+                };
                 listView.setAdapter(adapter);
             }
 

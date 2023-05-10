@@ -1,10 +1,13 @@
 package com.level_zero.greeniq;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -18,7 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import java.util.Objects;
 
 public class LoginActivity extends AppCompat {
 
@@ -37,8 +39,6 @@ public class LoginActivity extends AppCompat {
         password = findViewById(R.id.userPasswordLog);
 
         AppCompatButton login = findViewById(R.id.loginButton);
-
-        //login.setOnClickListener(view -> loginUser());
 
         login.setOnClickListener(view -> {
             if(email.equals("") || password.equals("")){
@@ -84,7 +84,6 @@ public class LoginActivity extends AppCompat {
 
                             }
                         });
-
             }
         });
     }
@@ -129,12 +128,6 @@ public class LoginActivity extends AppCompat {
                                 bundle.putString("id", userDB);
                                 bundle.putString("password", passwordDB);
 
-//                                for (String s : new String[]{emailDB, locationDB, phoneNumberDB, userNameDB, profileDB})
-//                                    System.out.println(s);
-
-//                                HomeFragment fragobj = new HomeFragment();
-//                                fragobj.setArguments(bundle);
-
                                 intent.putExtras(bundle);
                                 startActivity(intent);
                             }
@@ -142,7 +135,8 @@ public class LoginActivity extends AppCompat {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
+                            
+                            Log.e(TAG, "Error reading from database", error.toException());
                         }
                     });
                     Toast.makeText(getApplicationContext(),"Login success!", Toast.LENGTH_SHORT).show();
