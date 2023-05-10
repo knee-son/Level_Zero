@@ -13,56 +13,42 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.level_zero.greeniq.History;
 import com.level_zero.greeniq.LanguageManager;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentCarbonFootprintBinding;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 
 public class CarbonFootprintFragment extends Fragment {
-
-    private LanguageManager languageManager;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        languageManager = new LanguageManager(context);
+        LanguageManager languageManager = new LanguageManager(context);
         languageManager.updateResource(languageManager.getLang());
     }
     private FragmentCarbonFootprintBinding binding;
     private PieChart pieChart;
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference, databaseReferenceData;
-    private Calendar calendar;
-    private SimpleDateFormat simpleDateFormat;
     private ListView listView;
-    private CardView cardView1, cardView2, cardView3;
     private ArrayList<String> dataList;
     String currentUser;
 
@@ -73,43 +59,34 @@ public class CarbonFootprintFragment extends Fragment {
         binding = FragmentCarbonFootprintBinding.inflate(inflater, container, false);
         pieChart = binding.piechart;
         listView = binding.listviewHistory;
-        cardView1 = binding.cardView1;
-        cardView2 = binding.cardView2;
-        cardView3 = binding.cardView3;
+        CardView cardView1 = binding.cardView1;
+        CardView cardView2 = binding.cardView2;
+        CardView cardView3 = binding.cardView3;
 
-        Bundle bundle = getActivity().getIntent().getExtras();
+        Bundle bundle = requireActivity().getIntent().getExtras();
         currentUser = bundle.getString("id");
 
-        firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("Carbon History");
         databaseReferenceData = firebaseDatabase.getReference("Carbon Data");
 
-        calendar = Calendar.getInstance();
-        simpleDateFormat = new SimpleDateFormat("EEE, MMMM d, yyyy");
+//        Calendar calendar = Calendar.getInstance();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, MMMM d, yyyy");
 
         displayPieChart();
         displayDataHistory();
 
-        cardView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(CarbonFootprintFragment.this).navigate(R.id.action_carbonFootprintFragment_to_carbonTransportFragment);
-            }
-        });
+        cardView1.setOnClickListener(view -> NavHostFragment
+            .findNavController(CarbonFootprintFragment.this)
+            .navigate(R.id.action_carbonFootprintFragment_to_carbonTransportFragment));
 
-        cardView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(CarbonFootprintFragment.this).navigate(R.id.action_carbonFootprintFragment_to_carbonFoodFragment);
-            }
-        });
+        cardView2.setOnClickListener(view -> NavHostFragment
+            .findNavController(CarbonFootprintFragment.this)
+            .navigate(R.id.action_carbonFootprintFragment_to_carbonFoodFragment));
 
-        cardView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(CarbonFootprintFragment.this).navigate(R.id.action_carbonFootprintFragment_to_carbonElectricityFragment);
-            }
-        });
+        cardView3.setOnClickListener(view -> NavHostFragment
+            .findNavController(CarbonFootprintFragment.this)
+            .navigate(R.id.action_carbonFootprintFragment_to_carbonElectricityFragment));
 
         return binding.getRoot();
     }
@@ -124,9 +101,9 @@ public class CarbonFootprintFragment extends Fragment {
 
                 List<PieEntry> entries = new ArrayList<>();
 
-                entries.add(new PieEntry(Float.parseFloat(transportData), "Transport")  );
-                entries.add(new PieEntry(Float.parseFloat(foodData), "Food"));
-                entries.add(new PieEntry(Float.parseFloat(electricityData), "Electricity"));
+                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(transportData)), "Transport")  );
+                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(foodData)), "Food"));
+                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(electricityData)), "Electricity"));
 
                 PieDataSet pieDataSet = new PieDataSet(entries, null);
                 pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
@@ -164,8 +141,8 @@ public class CarbonFootprintFragment extends Fragment {
                     // Retrieve the date and totalCarbon values
                     String date = childSnapshot.child("date").getValue(String.class);
                     String totalCarbon = childSnapshot.child("totalCarbon").getValue(String.class);
-                    float floatValue = Float.parseFloat(totalCarbon);
-                    String decimal = String.format("%.2f", floatValue);
+                    float floatValue = Float.parseFloat(Objects.requireNonNull(totalCarbon));
+                    String decimal = String.format(Locale.US, "%.2f", floatValue);
                     // Add the data to the ArrayList
                     dataList.add(date + " - Total Carbon: " + decimal);
 //                    dataList.setTextColor(Color.RED);
