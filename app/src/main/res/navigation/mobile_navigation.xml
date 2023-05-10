@@ -134,6 +134,9 @@
         <argument
             android:name="profilePicture"
             app:argType="string" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/editLanguageFragment"
