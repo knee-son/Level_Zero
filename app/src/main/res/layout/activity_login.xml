@@ -63,6 +63,7 @@
             android:id="@+id/userEmailLog"
             android:textColorHint="@color/white"
             app:startIconDrawable="@drawable/ic_email"
+            style="@style/textINPUT"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -84,7 +85,8 @@
             android:textColorHint="@color/white"
             android:id="@+id/userPasswordLog"
             app:passwordToggleEnabled="true"
-            app:startIconDrawable="@drawable/ic_baseline_lock_24">
+            app:startIconDrawable="@drawable/ic_baseline_lock_24"
+            style="@style/textINPUT">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -121,7 +123,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:cornerRadius="15dp"
-            style="@style/brown"/>
+            style="@style/accent_card"/>
 
         <TextView
             android:id="@+id/newAccount"

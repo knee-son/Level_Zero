@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/SCREEN"
-    tools:context=".Fragments.WasteScheduleFragment">
+    tools:context=".Fragments.WasteScheduleFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="380dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/cebucityschedule"
-        android:importantForAccessibility="no" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="30dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cebucityschedule"
+            android:importantForAccessibility="no" />
+    </androidx.cardview.widget.CardView>
 
 
 </LinearLayout>

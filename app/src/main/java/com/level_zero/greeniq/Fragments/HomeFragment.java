@@ -65,9 +65,6 @@ public class HomeFragment extends Fragment {
         languageManager.updateResource(languageManager.getLang());
     }
     private FragmentHomeBinding binding;
-
-    private TextView email, username, phone, location, coin;
-    private ImageView avatar, settings;
     private ImageSlider imageSlider;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference, databaseReferenceCertificate;
@@ -86,13 +83,16 @@ public class HomeFragment extends Fragment {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        email = binding.emailTV;
-        username = binding.userNameTV;
-        phone = binding.phoneNumberTV;
-        location = binding.locationTV;
-        avatar = binding.avatarIV;
-        settings = binding.settings;
-        coin = binding.coinTV;
+        TextView email = binding.emailTV;
+        TextView username = binding.userNameTV;
+        TextView phone = binding.phoneNumberTV;
+        TextView location = binding.locationTV;
+        TextView coin = binding.coinTV;
+        TextView greeniq = binding.greeniqUser;
+
+        ImageView avatar = binding.avatarIV;
+        ImageView settings = binding.settings;
+
         imageSlider = binding.imageSlider;
 
         Bundle bundle = getActivity().getIntent().getExtras();
@@ -108,6 +108,7 @@ public class HomeFragment extends Fragment {
         phone.setText(userPhone);
         location.setText(userLocation);
         coin.setText(userCoin);
+        greeniq.setText("GreenIQ - "+userUserName);
 
         slideModels = new ArrayList<>();
         retrieveDataAndPopulateList();
@@ -172,14 +173,14 @@ public class HomeFragment extends Fragment {
         titleAnimation.setStartDelay(400);
 
         ObjectAnimator profileAnimation = ObjectAnimator.ofFloat(binding.profile, "translationX", 0);
-        profileAnimation.setDuration(300);
+        profileAnimation.setDuration(600);
 
         ObjectAnimator certificateAnimation = ObjectAnimator.ofFloat(binding.certificate, "translationX", 0);
-        certificateAnimation.setDuration(300);
+        certificateAnimation.setDuration(600);
         certificateAnimation.setStartDelay(100);
 
         ObjectAnimator calendarAnimation = ObjectAnimator.ofFloat(binding.calendar, "translationX", 0);
-        calendarAnimation.setDuration(300);
+        calendarAnimation.setDuration(600);
         calendarAnimation.setStartDelay(200);
 
 // Start the animations

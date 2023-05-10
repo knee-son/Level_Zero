@@ -29,6 +29,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -210,6 +211,8 @@ public class AirQualityFragment extends Fragment {
                 barChart.getLegend().setEnabled(false); // Disable the legend
                 barChart.getBarData().setValueTextColor(color); // Set the color of the data labels
 
+                barChart.animateY(400, Easing.EaseOutQuart);
+
                 // Refresh the chart
                 barChart.invalidate();
             }
@@ -227,19 +230,19 @@ public class AirQualityFragment extends Fragment {
         binding = null;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        Animation scaleAnimation = new ScaleAnimation(
-                1.0f,
-                1.0f,
-                0.1f,
-                1.0f,
-                Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 1.0f
-        );
-        scaleAnimation.setDuration(500);
-        binding.chart.startAnimation(scaleAnimation);
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//
+//        Animation scaleAnimation = new ScaleAnimation(
+//                1.0f,
+//                1.0f,
+//                0.1f,
+//                1.0f,
+//                Animation.RELATIVE_TO_SELF, 0.5f,
+//                Animation.RELATIVE_TO_SELF, 1.0f
+//        );
+//        scaleAnimation.setDuration(500);
+//        binding.chart.startAnimation(scaleAnimation);
+//    }
 }

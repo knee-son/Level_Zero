@@ -41,199 +41,156 @@
 
     </RelativeLayout>
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        android:id="@+id/editProfile">
+        android:orientation="vertical"
+        android:layout_margin="15dp">
 
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/editProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_background"
-            android:padding="8dp"
-            style="@style/brown">
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp">
 
-            <TextView
-                android:id="@+id/text_editProfile"
-                style="@style/FIELDS"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="32dp"
-                android:text="@string/edit_profile"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/round_background">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="238dp"
-                android:layout_toEndOf="@+id/text_editProfile"
-                android:contentDescription="@string/proceed"
-                android:src="@drawable/baseline_arrow_forward_ios_24" />
+                <TextView
+                    android:id="@+id/text_editProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="17dp"
+                    android:text="@string/edit_profile"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        android:id="@+id/editLanguage">
-
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_background"
-            android:padding="8dp"
-            style="@style/brown">
+            app:cardBackgroundColor="@android:color/transparent"
+            android:id="@+id/editLanguage"
+            app:cardElevation="0dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="32dp"
-                android:text="@string/language"
-                style="@style/FIELDS"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:id="@+id/text_editLanguage" />
+                android:background="@drawable/round_background"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="14dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="256dp"
-                android:layout_toEndOf="@+id/text_editLanguage"
-                android:contentDescription="@string/proceed"
-                android:src="@drawable/baseline_arrow_forward_ios_24" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="17dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:id="@+id/text_editLanguage"
+                    android:text="@string/language" />
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        android:id="@+id/editTheme">
-
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_background"
-            android:padding="8dp"
-            style="@style/brown">
+            app:cardBackgroundColor="@android:color/transparent"
+            android:id="@+id/editTheme"
+            app:cardElevation="0dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="32dp"
-                android:text="@string/theme"
-                style="@style/textINPUT"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:id="@+id/text_editTheme" />
+                android:background="@drawable/round_background"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="14dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="285dp"
-                android:layout_toEndOf="@+id/text_editTheme"
-                android:contentDescription="@string/proceed"
-                android:src="@drawable/baseline_arrow_forward_ios_24" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="17dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:id="@+id/text_editTheme"
+                    android:text="@string/theme" />
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        android:id="@+id/aboutButton">
-
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_background"
-            android:padding="8dp"
-            style="@style/brown">
+            app:cardBackgroundColor="@android:color/transparent"
+            android:id="@+id/aboutButton"
+            app:cardElevation="0dp">
 
-            <TextView
-                android:id="@+id/text_aboutApp"
-                style="@style/textINPUT"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="32dp"
-                android:text="@string/about_application"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:background="@drawable/round_background"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="14dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="181dp"
-                android:layout_toEndOf="@+id/text_aboutApp"
-                android:contentDescription="@string/proceed"
-                android:src="@drawable/baseline_arrow_forward_ios_24" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="17dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:id="@+id/text_aboutApp"
+                    android:text="@string/about_application" />
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        android:id="@+id/logoutButton">
-
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_background"
-            android:padding="8dp"
-            style="@style/brown">
+            app:cardBackgroundColor="@android:color/transparent"
+            android:id="@+id/logoutButton"
+            app:cardElevation="0dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="32dp"
-                android:text="@string/logout"
-                style="@style/textINPUT"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:id="@+id/text_logout" />
+                android:background="@drawable/round_background"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="14dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="277dp"
-                android:layout_toEndOf="@+id/text_logout"
-                android:contentDescription="@string/proceed"
-                android:src="@drawable/baseline_arrow_forward_ios_24" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="17dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="@string/logout"
+                    android:id="@+id/text_logout" />
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 </LinearLayout>
