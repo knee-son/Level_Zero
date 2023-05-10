@@ -60,7 +60,7 @@
     </style>
 
     <style name="RELATIVE">
-        <item name="android:background">#8A9C02</item>
+        <item name="android:background">#9A8A9C02</item>
         <item name="android:tint">#FFFFFF</item>
     </style>
 

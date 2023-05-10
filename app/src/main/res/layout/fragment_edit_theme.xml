@@ -21,14 +21,14 @@
             android:drawableRight="@drawable/ic_default"
             style="@style/IMAGEVIEW"
             android:drawablePadding="8dp"
-            android:checked="true"
+            android:checked="false"
             />
 
         <RadioButton
             android:id="@+id/btnDark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
+            android:checked="false"
             android:drawableRight="@drawable/ic_nightmode"
             style="@style/IMAGEVIEW"
             android:drawablePadding="8dp"
@@ -39,7 +39,7 @@
             android:id="@+id/btnLight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
+            android:checked="false"
             android:drawableRight="@drawable/ic_lightmode"
             style="@style/IMAGEVIEW"
             android:drawablePadding="8dp"
