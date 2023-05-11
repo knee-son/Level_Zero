@@ -6,13 +6,7 @@
     android:layout_height="match_parent"
     style="@style/SCREEN"
     tools:context=".RegisterActivity">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ellipse_1"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-100dp"
-        tools:layout_editor_absoluteY="-97dp" />
+
 
     <LinearLayout
         android:id="@+id/details"
@@ -66,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_background"
                 android:inputType="text"
-                android:text="okaokaloid@gmail.com" />
+                 />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -86,7 +80,7 @@
                 android:inputType="text"
                 android:background="@drawable/round_background"
                 style="@style/FIELDS"
-                android:text="test123"/>
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -105,7 +99,7 @@
                 android:inputType="text"
                 android:background="@drawable/round_background"
                 style="@style/FIELDS"
-                android:text="terts"/>
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -124,7 +118,7 @@
                 android:inputType="text"
                 android:background="@drawable/round_background"
                 style="@style/FIELDS"
-                android:text="09876543210"/>
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -143,7 +137,7 @@
                 android:inputType="text"
                 android:background="@drawable/round_background"
                 style="@style/FIELDS"
-                android:text="Talisay City, Cebu"/>
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ProgressBar
@@ -165,7 +159,6 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             style="@style/brown"
-
             android:text="@string/register"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -184,12 +177,5 @@
             android:onClick="openLogin"/>
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ellipse_1"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="300dp"
-        tools:layout_editor_absoluteY="600dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
