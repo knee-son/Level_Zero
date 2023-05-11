@@ -71,8 +71,6 @@
     </style>
 
     <style name="calendar"  parent="Theme.MaterialComponents.Light.NoActionBar">
-<!--        <item name="android:textColorSecondary">@color/black</item>-->
-<!--        <item name="android:textColor">@color/neutral_mild</item>-->
         <item name="colorSecondary">@color/background_light</item>
     </style>
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatDelegate;
@@ -20,6 +21,7 @@ public class EditThemeFragment extends Fragment {
 
     private FragmentEditThemeBinding binding;
     private RadioGroup btn_theme;
+    private ImageView back;
 
     public EditThemeFragment() {
         // Required empty public constructor
@@ -33,7 +35,16 @@ public class EditThemeFragment extends Fragment {
         binding = FragmentEditThemeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        back = binding.back1;
+
         btn_theme = view.findViewById(R.id.btn_theme);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(EditThemeFragment.this).navigate(R.id.action_editThemeFragment_to_settingsFragment);
+            }
+        });
         btn_theme.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

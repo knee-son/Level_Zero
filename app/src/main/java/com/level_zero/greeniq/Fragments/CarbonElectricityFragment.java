@@ -91,6 +91,7 @@ public class CarbonElectricityFragment extends Fragment {
         imageSlider.setImageList(slideModels,ScaleTypes.CENTER_CROP);
 
         ArrayAdapter<String> electricityAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, electricityType);
+        electricityAdapter.setDropDownViewResource(R.layout.spinner_item_custom);
         typeSpinner.setAdapter(electricityAdapter);
 
         typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

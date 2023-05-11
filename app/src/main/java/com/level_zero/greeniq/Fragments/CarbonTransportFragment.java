@@ -78,6 +78,10 @@ public class CarbonTransportFragment extends Fragment {
         imageSlider = binding.imageTransport;
         back = binding.back1;
 
+        ArrayAdapter<String> transportAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, transportType);
+        transportAdapter.setDropDownViewResource(R.layout.spinner_item_custom);
+        typeSpinner.setAdapter(transportAdapter);
+
         Bundle bundle = getActivity().getIntent().getExtras();
         currentUser = bundle.getString("id");
 
@@ -92,9 +96,6 @@ public class CarbonTransportFragment extends Fragment {
         slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/infomercial%2F336226796_670980624799049_635249469790701069_n.png?alt=media&token=5a9f5492-6918-483f-bcdb-c5f1f561dfe8", null, ScaleTypes.CENTER_CROP));
 
         imageSlider.setImageList(slideModels,ScaleTypes.CENTER_CROP);
-
-        ArrayAdapter<String> transportAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, transportType);
-        typeSpinner.setAdapter(transportAdapter);
 
         typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -113,8 +114,15 @@ public class CarbonTransportFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                valueDatabase();
-                addtoHistory();
+                String fetchAmount = amountEditText.getText().toString();
+
+                if(fetchAmount.equals("")){
+                    amountEditText.setError("Fill this field.");
+                }else{
+                    amountEditText.setError(null);
+                    valueDatabase();
+                    addtoHistory();
+                }
             }
         });
 

@@ -33,6 +33,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="android:backgroundTint">@color/background_light</item>
+        <item name="boxStrokeWidth">0dp</item>
     </style>
 
     <style name="FIELDS">
@@ -40,29 +41,24 @@
         <item name="android:backgroundTint">@color/background_light</item>
     </style>
 
-    <style name="FIELDS2">
-        <item name="android:background">@color/background_light</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="brown">
+    <style name="accent_card">
         <item name="android:textColor">#FFFFFF</item>
         <item name="cardBackgroundColor">@color/neutral_mild</item>
         <item name="android:backgroundTint">@color/background_light</item>
     </style>
     <style name="trans" >
         <item name="android:textColor">#C8000000</item>
-        <item name="android:backgroundTint">#39A7FF</item>
+        <item name="android:backgroundTint">#BD2451</item>
     </style>
 
     <style name="food">
         <item name="android:textColor">#C8000000</item>
-        <item name="android:backgroundTint">#88F655</item>
+        <item name="android:backgroundTint">#FE6600</item>
     </style>
 
     <style name="elec">
         <item name="android:textColor">#C8000000</item>
-        <item name="android:backgroundTint">#FF558C</item>
+        <item name="android:backgroundTint">#F4C600</item>
     </style>
 
     <style name="RELATIVE">

@@ -8,10 +8,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="waste_info">Waste Info</string>
-    <string name="carbon_footprint">Carbon Footprint</string>
+    <string name="carbon_footprint">Footprint</string>
     <string name="air_quality">Air Quality</string>
     <string name="welcome_user">Welcome, user!</string>
-    <string name="enter_google_email_and_password">Enter Google email and password:</string>
+    <string name="enter_google_email_and_password">Login using email and password:</string>
     <string name="email">EMAIL</string>
     <string name="password">PASSWORD</string>
     <string name="login">LOGIN</string>
@@ -74,4 +74,5 @@
     <string name="save_details">SAVE DETAILS</string>
     <string name="back">back</string>
     <string name="proceed">proceed</string>
+    <string name="choose_field_of_consumption">Choose field of consumption:</string>
 </resources>

@@ -146,6 +146,9 @@
         <action
             android:id="@+id/action_editLanguageFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_editLanguageFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/editThemeFragment"

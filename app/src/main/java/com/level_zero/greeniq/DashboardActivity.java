@@ -2,6 +2,7 @@ package com.level_zero.greeniq;
 
 import static androidx.navigation.Navigation.findNavController;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -40,7 +41,7 @@ public class DashboardActivity extends AppCompat {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
     }
 }

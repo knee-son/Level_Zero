@@ -1,6 +1,9 @@
 package com.level_zero.greeniq.Fragments;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -13,10 +16,13 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
@@ -46,22 +52,29 @@ public class CarbonFootprintFragment extends Fragment {
         languageManager.updateResource(languageManager.getLang());
     }
     private FragmentCarbonFootprintBinding binding;
+    private ScrollView scrollView;
     private PieChart pieChart;
     private DatabaseReference databaseReference, databaseReferenceData;
     private ListView listView;
     private ArrayList<String> dataList;
     String currentUser;
+    int currentNightMode;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentCarbonFootprintBinding.inflate(inflater, container, false);
+
         pieChart = binding.piechart;
         listView = binding.listviewHistory;
         CardView cardView1 = binding.cardView1;
         CardView cardView2 = binding.cardView2;
         CardView cardView3 = binding.cardView3;
+
+        scrollView = binding.scrollView;
+
+        currentNightMode = getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
 
         Bundle bundle = requireActivity().getIntent().getExtras();
         currentUser = bundle.getString("id");
@@ -106,19 +119,32 @@ public class CarbonFootprintFragment extends Fragment {
                 entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(electricityData)), "Electricity"));
 
                 PieDataSet pieDataSet = new PieDataSet(entries, null);
-                pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
                 pieDataSet.setDrawValues(true);
                 pieDataSet.setValueTextSize(12f);
                 pieDataSet.setValueTextColor(Color.BLACK);
+                switch (currentNightMode) {
+                    case Configuration.UI_MODE_NIGHT_NO:
+                        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                        break;
+                    case Configuration.UI_MODE_NIGHT_YES:
+                        pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
+                        break;
+                }
 
                 PieData pieData = new PieData(pieDataSet);
                 Legend legend = pieChart.getLegend();
+                legend.setXEntrySpace(30);
                 legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
                 legend.setTextSize(15f);
                 legend.setTextColor(Color.GRAY);
-                pieChart.getDescription().setEnabled(false);
+                legend.setYOffset(16f);
 
+                pieChart.setCenterTextOffset(0,50f);
+                pieChart.setTransparentCircleAlpha(0);
+                pieChart.setHoleColor(Color.alpha(0));
+                pieChart.getDescription().setEnabled(false);
                 pieChart.setData(pieData);
+                pieChart.animateY(1500, Easing.EaseOutBounce);
                 pieChart.invalidate();
             }
 
@@ -148,19 +174,28 @@ public class CarbonFootprintFragment extends Fragment {
 //                    dataList.setTextColor(Color.RED);
                 }
 
-//                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, dataList);
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dataList) {
                     @NonNull
                     @Override
                     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                         View view = super.getView(position, convertView, parent);
                         TextView textView = view.findViewById(android.R.id.text1);
-                        textView.setTextColor(Color.BLACK);
+
+                        switch (currentNightMode) {
+                            case Configuration.UI_MODE_NIGHT_NO:
+                                textView.setTextColor(Color.BLACK); // Set the text color for the light theme
+                                break;
+                            case Configuration.UI_MODE_NIGHT_YES:
+                                textView.setTextColor(Color.WHITE); // Set the text color for the dark theme
+                                break;
+                        }
+                        textView.setTextSize(14f);
                         textView.setAlpha(0.9f);
                         return view;
                     }
                 };
                 listView.setAdapter(adapter);
+                scrollView.scrollTo(0, 0);
             }
 
             @Override
@@ -169,7 +204,6 @@ public class CarbonFootprintFragment extends Fragment {
             }
         });
     }
-
 
     @Override
     public void onDestroyView() {
