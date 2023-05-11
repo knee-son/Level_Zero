@@ -93,4 +93,11 @@
         style="@style/accent_card"
         android:text="Done" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ellipse_1"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="550dp"
+        android:layout_marginLeft="-100dp" />
 </RelativeLayout>

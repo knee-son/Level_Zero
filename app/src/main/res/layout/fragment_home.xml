@@ -56,7 +56,7 @@
                 android:layout_marginTop="35dp"
                 android:elevation="0dp"
                 app:cardCornerRadius="30dp"
-                style="@style/accent_card">
+                style="@style/FIELDS">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="170dp"
@@ -146,12 +146,12 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/title"
                 style="@style/accent_card"
-                android:layout_width="294dp"
+                android:layout_width="289dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
                 android:layout_marginTop="0dp"
+                android:layout_marginRight="25dp"
                 android:alpha="0"
                 android:elevation="0dp"
                 app:cardCornerRadius="15dp">

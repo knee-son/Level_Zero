@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Fragments.EditProfileFragment"
     style="@style/SCREEN">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,6 +47,7 @@
             </RelativeLayout>
 
         </RelativeLayout>
+
         <androidx.cardview.widget.CardView
             android:layout_width="170dp"
             android:layout_height="170dp"
@@ -149,7 +151,7 @@
             android:id="@+id/saveProfile"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            style="@style/accent_card"
+            style="@style/brown"
             android:text="@string/save_details"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="12sp"
@@ -162,7 +164,7 @@
             android:id="@+id/saveAvatar"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            style="@style/accent_card"
+            style="@style/brown"
             android:text="@string/save_avatar"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="12sp"
@@ -172,5 +174,14 @@
             app:cornerRadius="10dp"
             android:layout_marginBottom="50dp"/>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ellipse_1"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="-100dp"
+            tools:layout_editor_absoluteY="-97dp" />
+
     </LinearLayout>
+
 </ScrollView>

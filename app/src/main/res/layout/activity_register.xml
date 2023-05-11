@@ -6,7 +6,13 @@
     android:layout_height="match_parent"
     style="@style/SCREEN"
     tools:context=".RegisterActivity">
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ellipse_1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-100dp"
+        tools:layout_editor_absoluteY="-97dp" />
 
     <LinearLayout
         android:id="@+id/details"
@@ -158,7 +164,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            style="@style/accent_card"
+            style="@style/brown"
 
             android:text="@string/register"
             android:textSize="15sp"
@@ -178,5 +184,12 @@
             android:onClick="openLogin"/>
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ellipse_1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="300dp"
+        tools:layout_editor_absoluteY="600dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
