@@ -6,23 +6,56 @@
     style="@style/SCREEN"
     tools:context=".Fragments.EditThemeFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/RELATIVE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="11dp">
+
+            <TextView
+                android:id="@+id/toolbar_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/back1"
+                android:text="@string/theme"
+                style="@style/TEXT"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/back1"
+                style="@style/IMAGEVIEW"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="14dp"
+                android:contentDescription="@string/back"
+                android:src="@drawable/baseline_arrow_back_24" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
     <RadioGroup
         android:id="@+id/btn_theme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp">
 
         <RadioButton
             android:id="@+id/btnDefault"
+            style="@style/IMAGEVIEW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Default"
-            android:textSize="30dp"
-            android:drawableRight="@drawable/ic_default"
-            style="@style/IMAGEVIEW"
-            android:drawablePadding="8dp"
             android:checked="false"
-            />
+            android:drawableRight="@drawable/ic_default"
+            android:drawablePadding="8dp"
+            android:text="Default"
+            android:textSize="24sp" />
 
         <RadioButton
             android:id="@+id/btnDark"
@@ -33,7 +66,7 @@
             style="@style/IMAGEVIEW"
             android:drawablePadding="8dp"
             android:text="Dark"
-            android:textSize="30dp"/>
+            android:textSize="24sp"/>
 
         <RadioButton
             android:id="@+id/btnLight"
@@ -44,7 +77,7 @@
             style="@style/IMAGEVIEW"
             android:drawablePadding="8dp"
             android:text="Light"
-            android:textSize="30dp"/>
+            android:textSize="24dp"/>
     </RadioGroup>
 
     <Button
@@ -54,7 +87,7 @@
         android:layout_below="@+id/btn_theme"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="550dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="550dp"
         android:layout_marginBottom="550dp"
         style="@style/accent_card"

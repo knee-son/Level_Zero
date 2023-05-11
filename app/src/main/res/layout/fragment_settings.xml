@@ -32,8 +32,8 @@
             <ImageView
                 android:id="@+id/back1"
                 style="@style/IMAGEVIEW"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:layout_marginStart="14dp"
                 android:contentDescription="@string/back"
                 android:src="@drawable/baseline_arrow_back_24" />

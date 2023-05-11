@@ -86,6 +86,7 @@ public class CarbonFoodFragment extends Fragment {
         simpleDateFormat = new SimpleDateFormat("EEE, MMMM d, yyyy");
 
         ArrayAdapter<String> foodAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, foodType);
+        foodAdapter.setDropDownViewResource(R.layout.spinner_item_custom);
         typeSpinner.setAdapter(foodAdapter);
 
         List<SlideModel> slideModels = new ArrayList<>();
@@ -112,8 +113,15 @@ public class CarbonFoodFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                valueDatabase();
-                addtoHistory();
+                String fetchAmount = amountEditText.getText().toString();
+
+                if(fetchAmount.equals("")){
+                    amountEditText.setError("Fill this field.");
+                }else{
+                    amountEditText.setError(null);
+                    valueDatabase();
+                    addtoHistory();
+                }
             }
         });
 

@@ -13,7 +13,7 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="700dp"
         style="@style/SCREEN">
 
         <LinearLayout
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Choose field of consumption:"
+                android:text="@string/choose_field_of_consumption"
                 style="@style/TEXT"
                 android:textSize="15sp"
                 android:textStyle="bold"

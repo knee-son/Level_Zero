@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ public class EditLanguageFragment extends Fragment {
     private Button fil;
     private Button btn;
     private TextView txt;
+    private ImageView back;
 
     public EditLanguageFragment() {
         // Required empty public constructor
@@ -45,7 +47,16 @@ public class EditLanguageFragment extends Fragment {
         btn = binding.btnTheme;
         eng = binding.btnEng;
         fil = binding.btnFil;
+        back = binding.back1;
+
         LanguageManager lang = new LanguageManager(getContext());
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(EditLanguageFragment.this).navigate(R.id.action_editLanguageFragment_to_settingsFragment);
+            }
+        });
 
         eng.setOnClickListener(view -> {
             lang.updateResource("en");

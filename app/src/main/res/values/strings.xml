@@ -74,4 +74,5 @@
     <string name="save_details">SAVE DETAILS</string>
     <string name="back">back</string>
     <string name="proceed">proceed</string>
+    <string name="choose_field_of_consumption">Choose field of consumption:</string>
 </resources>

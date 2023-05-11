@@ -20,6 +20,7 @@
                 android:id="@+id/settings"
                 android:layout_width="33dp"
                 android:layout_height="33dp"
+                android:layout_marginStart="14dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/baseline_settings_24" />
 
@@ -29,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:layout_marginRight="11dp"
             android:fontFamily="sans-serif"
             android:text="@string/welcome_user"

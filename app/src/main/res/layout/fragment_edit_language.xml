@@ -3,16 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
     android:orientation="vertical"
     tools:context=".Fragments.EditLanguageFragment"
     style="@style/SCREEN">
 
     <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/RELATIVE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="11dp">
+
+            <TextView
+                android:id="@+id/toolbar_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/back1"
+                android:text="@string/language"
+                style="@style/TEXT"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/back1"
+                style="@style/IMAGEVIEW"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="14dp"
+                android:contentDescription="@string/back"
+                android:src="@drawable/baseline_arrow_back_24" />
+        </RelativeLayout>
+
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-
+        android:padding="15dp"
         android:orientation="vertical">
 
         <TextView
@@ -28,9 +59,7 @@
             style="@style/FIELDS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/location"
-
-            />
+            android:text="@string/location" />
 
 
     </LinearLayout>
@@ -38,7 +67,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight=".2"
+        android:padding="15dp"
         android:orientation="vertical">
 
         <Button

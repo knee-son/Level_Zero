@@ -48,17 +48,17 @@
     </style>
     <style name="trans" >
         <item name="android:textColor">#C8000000</item>
-        <item name="android:backgroundTint">#39A7FF</item>
+        <item name="android:backgroundTint">#BD2451</item>
     </style>
 
     <style name="food">
         <item name="android:textColor">#C8000000</item>
-        <item name="android:backgroundTint">#88F655</item>
+        <item name="android:backgroundTint">#FE6600</item>
     </style>
 
     <style name="elec">
         <item name="android:textColor">#C8000000</item>
-        <item name="android:backgroundTint">#FF558C</item>
+        <item name="android:backgroundTint">#F4C600</item>
     </style>
 
     <style name="RELATIVE">
