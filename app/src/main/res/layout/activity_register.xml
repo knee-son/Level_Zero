@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_background"
                 android:inputType="text"
-                android:text="okaokaloid@gmail.com" />
+                 />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -80,7 +80,7 @@
                 android:inputType="text"
                 android:background="@drawable/round_background"
                 style="@style/FIELDS"
-                android:text="test123"/>
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -99,7 +99,7 @@
                 android:inputType="text"
                 android:background="@drawable/round_background"
                 style="@style/FIELDS"
-                android:text="terts"/>
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -118,7 +118,7 @@
                 android:inputType="text"
                 android:background="@drawable/round_background"
                 style="@style/FIELDS"
-                android:text="09876543210"/>
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -137,7 +137,7 @@
                 android:inputType="text"
                 android:background="@drawable/round_background"
                 style="@style/FIELDS"
-                android:text="Talisay City, Cebu"/>
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ProgressBar
@@ -158,8 +158,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            style="@style/accent_card"
-
+            style="@style/brown"
             android:text="@string/register"
             android:textSize="15sp"
             android:textStyle="bold"

@@ -73,7 +73,7 @@
     </RelativeLayout>
 
     <Button
-        style="@style/accent_card"
+        style="@style/brown"
         android:id="@+id/calculateButtonTransport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

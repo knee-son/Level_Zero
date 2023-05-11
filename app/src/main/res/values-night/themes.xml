@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
     <style name="Theme.GreenIQ" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -53,6 +53,7 @@
         <item name="android:textColor">#FFFFFF</item>
         <item name="cardBackgroundColor">#45341A</item>
         <item name="android:backgroundTint">#FF45341A</item>
+
     </style>
 
     <style name="trans" >
