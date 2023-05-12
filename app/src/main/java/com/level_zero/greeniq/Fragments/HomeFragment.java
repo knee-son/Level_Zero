@@ -6,7 +6,14 @@ import android.animation.ObjectAnimator;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BlurMaskFilter;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -18,6 +25,7 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.CalendarView;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +35,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -108,25 +117,31 @@ public class HomeFragment extends Fragment {
         phone.setText(userPhone);
         location.setText(userLocation);
         coin.setText(userCoin);
-        greeniq.setText("GreenIQ profile | "+userUserName);
+        greeniq.setText("🌳 GreenIQ profile | "+userUserName);
 
         slideModels = new ArrayList<>();
         retrieveDataAndPopulateList();
 
-//        ObjectAnimator slideLeft = ObjectAnimator.ofFloat(myImage, "translationX", 0f, -myImage.getWidth());
-//        slideLeft.setDuration(1000);
-//
-//        AnimatorSet animatorSet = new AnimatorSet();
-//        animatorSet.playTogether(slideLeft);
+        settings.setOnClickListener(view -> NavHostFragment
+            .findNavController(HomeFragment.this)
+            .navigate(R.id.action_homeFragment_to_settingsFragment2));
 
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_homeFragment_to_settingsFragment2);
-            }
+        Glide
+            .with(this)
+            .load(userAvatar)
+            .error(R.drawable.defaultpfp)
+            .placeholder(R.drawable.defaultpfp)
+            .into(avatar);
+
+        ScrollView scrollView = binding.scrollview;
+        View imageView1 = binding.view1;
+        View imageView2 = binding.view2;
+        scrollView.setOnScrollChangeListener(
+                (view, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+                    int scrollDistance = view.getTop() - scrollY;
+                    imageView1.setTranslationY(scrollDistance*2.1f);
+                    imageView2.setTranslationY(scrollDistance*2.1f);
         });
-
-        Glide.with(this).load(userAvatar).error(R.drawable.defaultpfp).placeholder(R.drawable.defaultpfp).into(avatar);
 
         return binding.getRoot();
     }
@@ -156,11 +171,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
-//// Get references to your views
-//        View bindingProfile = findViewById(R.id.binding_profile);
-//        View bindingCertificate = findViewById(R.id.binding_certificate);
-//        View bindingCalendar = findViewById(R.id.binding_calendar);
 
 // Set initial positions of views
         binding.profile.setTranslationX(binding.profile.getWidth());

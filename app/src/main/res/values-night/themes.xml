@@ -21,6 +21,7 @@
 
     <style name="TEXT" format = "color">
         <item name="android:textColor">#EFD177</item>
+        <item name="android:textColorHint">#EFD177</item>
     </style>
 
 

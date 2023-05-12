@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompat {
                                                 }
                                             });
                                 }else{
-                                    email.setError("Email does not exists.");
+                                    email.setError("Email does not exist.");
                                 }
                             }
 

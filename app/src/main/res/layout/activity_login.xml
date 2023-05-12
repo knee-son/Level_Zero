@@ -72,7 +72,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_background"
                 android:inputType="text"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:text="test1@gmail.com" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -93,7 +94,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_background"
                 android:inputType="textPassword"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:text="aA12345678*" />
 
 
         </com.google.android.material.textfield.TextInputLayout>

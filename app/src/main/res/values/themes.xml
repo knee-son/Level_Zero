@@ -25,6 +25,7 @@
 
     <style name="TEXT" format = "color">
         <item name="android:textColor">#000</item>
+        <item name="android:textColorHint">#000</item>
     </style>
 
     <style name="brown">
@@ -74,6 +75,11 @@
         <item name="colorSecondary">@color/neutral_mild</item>
         <item name="android:textColorSecondary">@color/black</item>
         <item name="android:selectedWeekBackgroundColor">@color/neutral_mild</item>
+    </style>
+
+    <style name="top_bar">
+        <item name="android:tint">#9A8A9C02</item>
+        <item name="android:textColor">#9A8A9C02</item>
     </style>
 
     <color name="my_bar_color">#80F1E8</color>
