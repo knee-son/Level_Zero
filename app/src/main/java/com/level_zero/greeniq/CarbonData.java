@@ -6,6 +6,9 @@ public class CarbonData {
     private String electricityTotal;
 
     public CarbonData() {
+        this.transportTotal = "0.0";
+        this.foodTotal = "0.0";
+        this.electricityTotal = "0.0";
     }
 
     public CarbonData(String transportTotal, String foodTotal, String electricityTotal) {

@@ -13,7 +13,6 @@ public class LanguageManager {
     private final Context ct;
     private final SharedPreferences sharedPreferences;
     public LanguageManager(Context ctx){
-
         ct = ctx;
         sharedPreferences = ct.getSharedPreferences("LANG",Context.MODE_PRIVATE);
     }

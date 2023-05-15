@@ -48,6 +48,7 @@ public class CarbonFootprintFragment extends Fragment {
         LanguageManager languageManager = new LanguageManager(context);
         languageManager.updateResource(languageManager.getLang());
     }
+
     private FragmentCarbonFootprintBinding binding;
     private ScrollView scrollView;
     private PieChart pieChart;
@@ -165,7 +166,6 @@ public class CarbonFootprintFragment extends Fragment {
                     String decimal = String.format(Locale.US, "%.2f", floatValue);
                     // Add the data to the ArrayList
                     dataList.add(date + " - Total Carbon: " + decimal);
-//                    dataList.setTextColor(Color.RED);
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dataList) {
@@ -189,6 +189,7 @@ public class CarbonFootprintFragment extends Fragment {
                     }
                 };
                 listView.setAdapter(adapter);
+                listView.invalidate();
                 scrollView.scrollTo(0, 0);
             }
 

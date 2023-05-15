@@ -252,10 +252,9 @@ public class EditProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        back.setOnClickListener(view1 ->
-            NavHostFragment
-            .findNavController(EditProfileFragment.this)
-            .navigate(R.id.action_editProfileFragment_to_settingsFragment));
+        back.setOnClickListener(view1 -> NavHostFragment
+            .findNavController(this)
+            .popBackStack());
     }
     @Override
     public void onDestroyView() {

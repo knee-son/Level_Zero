@@ -64,7 +64,7 @@ public class EditThemeFragment extends Fragment {
 
     private void navigateToSettingsFragment() {
         NavHostFragment
-            .findNavController(EditThemeFragment.this)
-            .navigate(R.id.action_editThemeFragment_to_settingsFragment);
+            .findNavController(this)
+            .popBackStack();
     }
 }

@@ -24,7 +24,6 @@ public class Profile {
     public String getUserName() {
         return userName;
     }
-
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -32,7 +31,6 @@ public class Profile {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -40,7 +38,6 @@ public class Profile {
     public String getProfilePicture() {
         return profilePicture;
     }
-
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
@@ -48,7 +45,6 @@ public class Profile {
     public String getLocation() {
         return location;
     }
-
     public void setLocation(String location) {
         this.location = location;
     }
@@ -56,7 +52,6 @@ public class Profile {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -64,7 +59,6 @@ public class Profile {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -72,7 +66,6 @@ public class Profile {
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
@@ -80,7 +73,6 @@ public class Profile {
     public String getCoin() {
         return coin;
     }
-
     public void setCoin(String coin) {
         this.coin = coin;
     }

@@ -88,8 +88,8 @@ public class SettingsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         back.setOnClickListener(view1 -> NavHostFragment
-            .findNavController(SettingsFragment.this)
-            .navigate(R.id.action_settingsFragment_to_homeFragment));
+            .findNavController(this)
+            .popBackStack());
     }
 
     @Override

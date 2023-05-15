@@ -45,10 +45,6 @@ public class EditLanguageFragment extends Fragment {
 
         LanguageManager lang = new LanguageManager(getContext());
 
-        back.setOnClickListener(view -> NavHostFragment
-            .findNavController(EditLanguageFragment.this)
-            .navigate(R.id.action_editLanguageFragment_to_settingsFragment));
-
         eng.setOnClickListener(view -> {
             lang.updateResource("en");
             btn.setText(R.string.done);
@@ -61,9 +57,13 @@ public class EditLanguageFragment extends Fragment {
             txt.setText(R.string.language);
         });
 
+        back.setOnClickListener(v -> NavHostFragment
+            .findNavController(this)
+            .popBackStack());
+
         btn.setOnClickListener(v -> NavHostFragment
-            .findNavController(EditLanguageFragment.this)
-            .navigate(R.id.action_editLanguageFragment_to_homeFragment));
+            .findNavController(this)
+            .popBackStack());
 
         return binding.getRoot();
     }

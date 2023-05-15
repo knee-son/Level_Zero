@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -50,6 +51,7 @@ public class CarbonElectricityFragment extends Fragment {
     private DatabaseReference databaseReference;
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
+    private FragmentActivity thisActivity;
     String typeValue, currentUser;
     double footprintElectricity;
 
@@ -60,6 +62,7 @@ public class CarbonElectricityFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentCarbonElectricityBinding.inflate(inflater, container, false);
+        thisActivity = requireActivity();
 
         Spinner typeSpinner = binding.typeSpinnerElectricity;
         Button button = binding.calculateButtonElectricity;
@@ -101,9 +104,9 @@ public class CarbonElectricityFragment extends Fragment {
             addToHistory();
         });
 
-        back.setOnClickListener(view -> NavHostFragment.findNavController(
-            CarbonElectricityFragment.this).navigate(
-                R.id.action_carbonElectricityFragment_to_carbonFootprintFragment));
+        back.setOnClickListener(v -> NavHostFragment
+            .findNavController(this)
+            .popBackStack());
 
         return binding.getRoot();
     }
@@ -129,7 +132,7 @@ public class CarbonElectricityFragment extends Fragment {
                     return;
                 }else {
                     Toast.makeText(
-                        getActivity(),
+                        thisActivity,
                         String.format(Locale.US,
                         "Your electricity carbon footprint is %.2f Kg CO",
                         valueElectricity),
@@ -163,7 +166,7 @@ public class CarbonElectricityFragment extends Fragment {
         databaseReference.child(currentUser).child("electricityTotal").setValue(String.valueOf(footprintElectricity));
     }
     private void displayErrorDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
         builder.setTitle("Error!");
 
         builder.setMessage("Invalid input:\nPlease enter a numeric value.");

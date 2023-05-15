@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -51,6 +52,7 @@ public class CarbonTransportFragment extends Fragment {
     private EditText amountEditText;
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
+    private FragmentActivity thisActivity;
     String typeValue, currentUser;
     double footprintValue;
 
@@ -61,6 +63,7 @@ public class CarbonTransportFragment extends Fragment {
 
 
         binding = FragmentCarbonTransportBinding.inflate(inflater, container, false);
+        thisActivity = requireActivity();
 
         Spinner typeSpinner = binding.typeSpinnerTransport;
         amountEditText = binding.amountValueTransport;
@@ -111,9 +114,9 @@ public class CarbonTransportFragment extends Fragment {
             }
         });
 
-        back.setOnClickListener(view -> NavHostFragment.findNavController(
-                CarbonTransportFragment.this)
-                .navigate(R.id.action_carbonTransportFragment_to_carbonFootprintFragment));
+        back.setOnClickListener(view -> NavHostFragment
+            .findNavController(this)
+            .popBackStack());
 
         return binding.getRoot();
     }
@@ -133,14 +136,14 @@ public class CarbonTransportFragment extends Fragment {
                 double total = valueTransport + valueFood + valueElectricity;
                 String currentDate = simpleDateFormat.format(calendar.getTime());
 
-                if(valueTransport == 0)
-                {
+                if(valueTransport == 0) {
                     displayErrorDialog();
                     return;
                 }else{
-                    Toast.makeText(getActivity(), String.format(Locale.US,
+                    Toast.makeText(thisActivity, String.format(Locale.US,
                         "Your transport carbon footprint is %.2f Kg CO",
-                        valueTransport), Toast.LENGTH_SHORT).show();
+                        valueTransport),
+                        Toast.LENGTH_SHORT).show();
                 }
 
                 History history = new History(currentDate, String.valueOf(total));

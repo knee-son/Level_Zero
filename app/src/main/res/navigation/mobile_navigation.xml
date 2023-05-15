@@ -63,7 +63,11 @@
         android:id="@+id/wasteScheduleFragment"
         android:name="com.level_zero.greeniq.Fragments.WasteScheduleFragment"
         android:label="fragment_waste_schedule"
-        tools:layout="@layout/fragment_waste_schedule" />
+        tools:layout="@layout/fragment_waste_schedule" >
+        <action
+            android:id="@+id/action_wasteScheduleFragment_to_wasteManagementFragment"
+            app:destination="@id/wasteManagementFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.level_zero.greeniq.Fragments.SettingsFragment"
@@ -113,7 +117,11 @@
         android:id="@+id/wasteEventFragment"
         android:name="com.level_zero.greeniq.Fragments.WasteEventFragment"
         android:label="fragment_waste_event"
-        tools:layout="@layout/fragment_waste_event" />
+        tools:layout="@layout/fragment_waste_event" >
+        <action
+            android:id="@+id/action_wasteEventFragment_to_wasteManagementFragment"
+            app:destination="@id/wasteManagementFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.level_zero.greeniq.Fragments.EditProfileFragment"

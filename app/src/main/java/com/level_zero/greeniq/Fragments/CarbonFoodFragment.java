@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -54,6 +55,7 @@ public class CarbonFoodFragment extends Fragment {
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
     private String typeValue, currentUser;
+    private FragmentActivity thisActivity;
     double footprintFood;
     private final String[] foodType = {"Pork", "Poultry", "Beef", "Fish", "Vegetables"};
 
@@ -61,6 +63,7 @@ public class CarbonFoodFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentCarbonFoodBinding.inflate(inflater, container, false);
+        thisActivity = requireActivity();
 
         Spinner typeSpinner = binding.typeSpinnerFood;
         amountEditText = binding.amountValueFood;
@@ -110,7 +113,9 @@ public class CarbonFoodFragment extends Fragment {
             }
         });
 
-        back.setOnClickListener(view -> NavHostFragment.findNavController(CarbonFoodFragment.this).navigate(R.id.action_carbonFoodFragment_to_carbonFootprintFragment));
+        back.setOnClickListener(v -> NavHostFragment
+            .findNavController(this)
+            .popBackStack());
 
         return binding.getRoot();
     }
@@ -138,10 +143,10 @@ public class CarbonFoodFragment extends Fragment {
                     displayErrorDialog();
                     return;
                 }else {
-                    Toast.makeText(getActivity(), String.format(
-                            Locale.US,
-                            "Your food carbon footprint is %.2f Kg CO",
-                            valueFood),
+                    Toast.makeText(thisActivity, String.format(
+                        Locale.US,
+                        "Your food carbon footprint is %.2f Kg CO",
+                        valueFood),
                         Toast.LENGTH_SHORT).show();
                 }
                 firebaseDatabase.getReference("Carbon History").child(currentUser).child(currentDate).setValue(history);
@@ -166,15 +171,15 @@ public class CarbonFoodFragment extends Fragment {
 
         switch (typeValue) {
             case "Pork":
-                footprintFood = amount * 7.6; break;
+                footprintFood = amount * 0.0076; break;
             case "Poultry":
-                footprintFood = amount * 6.9; break;
+                footprintFood = amount * 0.0069; break;
             case "Beef":
-                footprintFood = amount * 27; break;
+                footprintFood = amount * 0.027; break;
             case "Fish":
-                footprintFood = amount * 11; break;
+                footprintFood = amount * 0.011; break;
             case "Vegetables":
-                footprintFood = amount * 2; break;
+                footprintFood = amount * 0.002; break;
         }
 
         databaseReference.child(currentUser).child("foodTotal").setValue(String.valueOf(footprintFood));
