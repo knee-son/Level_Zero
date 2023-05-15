@@ -12,68 +12,67 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/RELATIVE"
-        android:layout_marginBottom="10dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
+        android:padding="16dp">
+        <ImageView
+            android:id="@+id/back2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="11dp">
-
-            <ImageView
-                android:id="@+id/back2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_centerVertical="true"
-                style="@style/IMAGEVIEW"
-                android:src="@drawable/baseline_arrow_back_24" />
-        </RelativeLayout>
-
+            android:layout_marginStart="7dp"
+            android:layout_centerVertical="true"
+            style="@style/IMAGEVIEW"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:contentDescription="@string/back" />
     </RelativeLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/select_usage_of_electricity_for_today"
-        android:textSize="18sp"
-        style="@style/TEXT"
-        android:layout_marginTop="20dp"/>
-
-    <Spinner
-        style="@style/accent_card"
-        android:id="@+id/typeSpinnerElectricity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown"
-        android:layout_gravity="center" />
-
-    <Button
-        android:id="@+id/calculateButtonElectricity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:text="@string/calculate"
-        style="@style/brown"/>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp">
-
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/image_Electricity"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:iss_auto_cycle="true"
-            app:iss_corner_radius="15"
-            app:iss_delay="0"
-            app:iss_error_image="@color/neutral"
-            app:iss_period="3000"
-            app:iss_placeholder="@color/neutral" >
+            android:layout_height="wrap_content"
+            android:text="@string/select_usage_of_electricity_for_today"
+            android:textSize="18sp"
+            style="@style/TEXT"/>
 
-        </com.denzcoskun.imageslider.ImageSlider>
+        <Spinner
+            style="@style/accent_card"
+            android:id="@+id/typeSpinnerElectricity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:layout_margin="7dp"
+            android:padding="3dp"
+            android:layout_gravity="center" />
 
-    </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="10dp">
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/image_Electricity"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="15"
+                app:iss_delay="0"
+                app:iss_error_image="@color/neutral"
+                app:iss_period="3000"
+                app:iss_placeholder="@color/neutral" >
+            </com.denzcoskun.imageslider.ImageSlider>
+        </androidx.cardview.widget.CardView>
 
+        <Button
+            android:id="@+id/calculateButtonElectricity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/calculate"
+            android:layout_gravity="center"
+            style="@style/brown"/>
+
+    </LinearLayout>
 
 </LinearLayout>

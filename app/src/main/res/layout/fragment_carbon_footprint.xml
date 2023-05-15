@@ -13,8 +13,7 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="700dp"
-        style="@style/SCREEN">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,8 +21,8 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="18dp"
             android:layout_marginRight="18dp"
-            android:layout_marginBottom="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="85dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -184,9 +183,8 @@
                 android:id="@+id/listviewHistory"
                 style="@style/elec"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:layout_marginBottom="60dp"
                 android:background="@drawable/round_background"
                 android:backgroundTint="#3C955330"
                 android:padding="7dp" />

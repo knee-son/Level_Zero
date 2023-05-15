@@ -1,126 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.AirQualityFragment"
-    android:orientation="vertical"
-    android:padding="20dp"
     style="@style/SCREEN">
-
-    <TextView
-        android:id="@+id/textView"
-        style="@style/FIELDS"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/air_quality1"
-        android:textAlignment="center"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/round_background"
-        app:layout_constraintVertical_bias="0.023" />
+        tools:context=".Fragments.AirQualityFragment"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/chart"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681" />
+        <TextView
+            android:id="@+id/textView"
+            style="@style/FIELDS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/air_quality1"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_background" />
 
-    <TextView
-        android:id="@+id/AQItv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/click_button_to_get_air_quality"
-        android:textAlignment="center"
-        style="@style/FIELDS"
-        android:textSize="20dp"
-        android:background="@drawable/round_background"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382" />
+        <TextView
+            style="@style/TEXT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/nearest_city"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp" />
 
-    <TextView
-        android:id="@+id/nearestCity"
-        style="@style/TEXT"
-        android:layout_width="224dp"
-        android:layout_height="31dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/nearest_city"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.158" />
+        <TextView
+            android:id="@+id/nearestCityTv"
+            style="@style/FIELDS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/click_button_to_get_nearest_city"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:background="@drawable/round_background"
+            android:textStyle="bold"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginTop="5dp"/>
 
-    <TextView
-        android:id="@+id/nearestCityTv"
-        style="@style/FIELDS"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/click_button_to_get_nearest_city"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:background="@drawable/round_background"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224"/>
+        <TextView
+            style="@style/TEXT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/nearest_city_aqi"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp" />
 
-    <TextView
-        android:id="@+id/et"
-        style="@style/TEXT"
-        android:layout_width="224dp"
-        android:layout_height="31dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/nearest_city_aqi"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.298" />
+        <TextView
+            android:id="@+id/AQItv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/click_button_to_get_air_quality"
+            android:textAlignment="center"
+            style="@style/FIELDS"
+            android:textSize="20sp"
+            android:background="@drawable/round_background"
+            android:textStyle="bold"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginTop="5dp" />
 
-    <Button
-        android:id="@+id/button4"
-        style="@style/brown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:onClick="get"
-        android:text="@string/get_air_quality"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/chart"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="@id/chart"
-        app:layout_constraintTop_toTopOf="@id/chart"
-        app:layout_constraintVertical_bias="0.789" />
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="35dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/button4"
+            style="@style/brown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="get"
+            android:text="@string/get_air_quality"
+            android:textSize="20sp"
+            android:layout_marginTop="35dp" />
 
-
+    </LinearLayout>
+</ScrollView>

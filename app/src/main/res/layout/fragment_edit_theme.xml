@@ -52,9 +52,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:drawableRight="@drawable/ic_default"
+            android:drawableEnd="@drawable/ic_default"
             android:drawablePadding="8dp"
-            android:text="Default"
+            android:text="@string/_default"
             android:textSize="24sp" />
 
         <RadioButton
@@ -62,10 +62,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:drawableRight="@drawable/ic_nightmode"
+            android:drawableEnd="@drawable/ic_nightmode"
             style="@style/IMAGEVIEW"
             android:drawablePadding="8dp"
-            android:text="Dark"
+            android:text="@string/dark"
             android:textSize="24sp"/>
 
         <RadioButton
@@ -73,11 +73,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:drawableRight="@drawable/ic_lightmode"
+            android:drawableEnd="@drawable/ic_lightmode"
             style="@style/IMAGEVIEW"
             android:drawablePadding="8dp"
-            android:text="Light"
-            android:textSize="24dp"/>
+            android:text="@string/light"
+            android:textSize="24sp"/>
     </RadioGroup>
 
     <Button
@@ -91,13 +91,5 @@
         android:layout_marginEnd="550dp"
         android:layout_marginBottom="550dp"
         style="@style/accent_card"
-        android:text="Done" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ellipse_1"
-        tools:ignore="MissingConstraints"
-        android:layout_marginTop="550dp"
-        android:layout_marginLeft="-100dp" />
+        android:text="@string/done" />
 </RelativeLayout>
