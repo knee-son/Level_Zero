@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +17,6 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.animation.Easing;
@@ -28,7 +25,6 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,6 +40,8 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Objects;
 
 public class AirQualityFragment extends Fragment {
 
@@ -78,32 +76,28 @@ public class AirQualityFragment extends Fragment {
     private void get(View v) {
         String apikey="28b92be4-41a2-4905-983f-280e20cef31a";
         String url="https://api.airvisual.com/v2/nearest_city?key="+apikey;
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        RequestQueue queue = Volley.newRequestQueue(requireActivity());
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONObject data = response.getJSONObject("data");
-                    String city = data.getString("city");
-                    nearestCityTv.setText(city);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
+            try {
+                JSONObject data = response.getJSONObject("data");
+                String city = data.getString("city");
+                nearestCityTv.setText(city);
 
-                    JSONObject current = data.getJSONObject("current");
-                    JSONObject pollution = current.getJSONObject("pollution");
+                JSONObject current = data.getJSONObject("current");
+                JSONObject pollution = current.getJSONObject("pollution");
 
-                    int aqius = pollution.getInt("aqius");
-                    String[] levels = {"Good", "Moderate", "Alarming", "Unhealthy", "Very Unhealthy", "Hazardous"};
-                    int levelIndex = Math.min(aqius / 50, levels.length - 1);
-                    String level = aqius + " - " + levels[levelIndex];
+                int aqi_us = pollution.getInt("aqius");
+                String[] levels = {"Good", "Moderate", "Alarming", "Unhealthy", "Very Unhealthy", "Hazardous"};
+                int levelIndex = Math.min(aqi_us / 50, levels.length - 1);
+                String level = aqi_us + " - " + levels[levelIndex];
 
-                    AQI.setText(level);
+                AQI.setText(level);
 
-                    set(String.valueOf(aqius));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                set(String.valueOf(aqi_us));
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-
         }, error -> Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show());
         queue.add(request);
     }
@@ -122,7 +116,7 @@ public class AirQualityFragment extends Fragment {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                TypedArray a = getContext().getTheme().obtainStyledAttributes(R.style.TEXT, new int[]{android.R.attr.textColor});
+                TypedArray a = requireContext().getTheme().obtainStyledAttributes(R.style.TEXT, new int[]{android.R.attr.textColor});
                 int color = a.getColor(0, 0);
                 a.recycle();
 
@@ -132,7 +126,7 @@ public class AirQualityFragment extends Fragment {
                 String[] daysOfWeek = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
                 int[] values = new int[7];
                 for (int i = 0; i < daysOfWeek.length; i++) {
-                    values[i] = Integer.parseInt(dataSnapshot.child(daysOfWeek[i]).getValue().toString());
+                    values[i] = Integer.parseInt(Objects.requireNonNull(dataSnapshot.child(daysOfWeek[i]).getValue()).toString());
                 }
 
                 // Create an array of BarEntry objects
@@ -144,7 +138,7 @@ public class AirQualityFragment extends Fragment {
                 // Create an array of BarDataSet objects
                 BarDataSet[] dataSets = new BarDataSet[7];
                 for (int i = 0; i < dataSets.length; i++) {
-                    dataSets[i] = new BarDataSet(Arrays.asList(entries[i]), daysOfWeek[i]);
+                    dataSets[i] = new BarDataSet(Collections.singletonList(entries[i]), daysOfWeek[i]);
                     dataSets[i].setColor(barColor);
                     dataSets[i].setValueTextColor(color);
                     dataSets[i].setValueTextSize(12f);

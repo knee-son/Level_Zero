@@ -8,21 +8,36 @@
     android:orientation="vertical"
     style="@style/SCREEN">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/RELATIVE"
-        android:padding="16dp">
+        android:padding="13dp"
+        style="@style/RELATIVE">
         <ImageView
+            style="@style/IMAGEVIEW"
             android:id="@+id/back3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
             android:layout_centerVertical="true"
-            style="@style/IMAGEVIEW"
             android:src="@drawable/baseline_arrow_back_24"
-            android:contentDescription="@string/back" />
-    </RelativeLayout>
+            android:contentDescription="@string/back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/greeniq_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/food_carbon_footprint"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:alpha="0.7"
+            style="@style/TEXT"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,28 +59,30 @@
             android:background="@android:drawable/btn_dropdown"
             android:layout_margin="7dp"
             android:padding="3dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:contentDescription="@string/food" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
             <EditText
                 android:id="@+id/amountValueFood"
                 android:hint="@string/input"
-                android:textAlignment="center"
                 android:layout_width="wrap_content"
+                android:layout_height="50dp"
                 android:inputType="numberDecimal"
-                android:layout_height="wrap_content"
-                style="@style/TEXT"/>
-
+                android:layout_marginEnd="10dp"
+                style="@style/TEXT"
+                android:autofillHints="@string/food_consumption_in_kg" />
             <TextView
                 style="@style/TEXT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_toEndOf="@id/amountValueFood"
+                android:layout_centerVertical="true"
                 android:text="@string/food_consumption_in_kg"
                 android:textSize="18sp" />
         </RelativeLayout>
@@ -93,7 +110,7 @@
             android:layout_height="wrap_content"
             android:text="@string/calculate1"
             android:layout_gravity="center"
-            style="@style/brown"/>
+            style="@style/accent_card"/>
 
     </LinearLayout>
 

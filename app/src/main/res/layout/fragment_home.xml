@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:padding="11dp"
         style="@style/RELATIVE">
-
         <ImageView
             android:id="@+id/settings"
             android:layout_width="33dp"
@@ -25,8 +24,8 @@
             android:contentDescription="@string/settings"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed" />
-
+            android:layout_centerVertical="true"
+            />
         <TextView
             android:id="@+id/greeniq_user"
             android:layout_width="wrap_content"
@@ -40,9 +39,7 @@
             style="@style/TEXT"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -62,7 +59,7 @@
                 android:id="@+id/view2"
                 android:layout_width="330dp"
                 android:layout_height="330dp"
-                android:layout_marginEnd="-75dp"
+                android:layout_marginEnd="-115dp"
                 android:layout_marginBottom="-290dp"
                 android:background="@drawable/ellipse_2"
                 android:alpha="0.8"

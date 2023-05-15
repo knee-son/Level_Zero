@@ -32,13 +32,12 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="20dp"
                     android:layout_toEndOf="@+id/back1"
-                    android:text="EDIT PROFILE"
+                    android:text="@string/edit_profile"
                     style="@style/TEXT"
                     android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/back1"
-                    style="@style/IMAGEVIEW"
                     android:layout_width="33dp"
                     android:layout_height="33dp"
                     android:layout_marginStart="14dp"
@@ -58,22 +57,23 @@
 
             <ImageView
                 android:id="@+id/editAvatar"
-                style="@style/IMAGEVIEW"
                 android:layout_width="match_parent"
                 android:layout_height="169dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/defaultpfp" />
+                android:src="@drawable/defaultpfp"
+                android:background="@color/neutral_heavy"
+                android:contentDescription="@string/your_photo"/>
         </androidx.cardview.widget.CardView>
 
         <TextView
+            android:id="@+id/emailProfile"
+            style="@style/TEXT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/TEXT"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:text="EMAIL"
-            android:id="@+id/emailProfile"
+            android:text="@string/email"
             android:layout_gravity="center"/>
 
 
@@ -88,7 +88,7 @@
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="USERNAME"
+                android:text="@string/username"
                 android:layout_gravity="center"
                 android:background="@drawable/round_background"
                 style="@style/FIELDS"/>
@@ -107,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="PASSWORD"
+                android:text="@string/password"
                 android:background="@drawable/round_background"
                 style="@style/FIELDS"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -123,7 +123,7 @@
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="PHONE NUMBER"
+                android:text="@string/phone_number"
                 android:background="@drawable/round_background"
                 style="@style/FIELDS"
                 android:layout_gravity="center"/>
@@ -141,7 +141,7 @@
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="LOCATION"
+                android:text="@string/location"
                 style="@style/FIELDS"
                 android:background="@drawable/round_background"
                 android:layout_gravity="center"/>
@@ -156,7 +156,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_gravity="center"
             app:cornerRadius="10dp" />
 
@@ -169,7 +169,6 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             app:cornerRadius="10dp"
             android:layout_marginBottom="50dp"/>

@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         tools:context=".Fragments.AirQualityFragment"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="20dp"
+        android:layout_marginBottom="80dp">
 
         <TextView
             android:id="@+id/textView"
@@ -23,7 +24,6 @@
             android:textAlignment="center"
             android:textSize="40sp"
             android:textStyle="bold"
-            android:layout_marginTop="15dp"
             android:background="@drawable/round_background" />
 
         <TextView

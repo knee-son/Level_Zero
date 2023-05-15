@@ -1,27 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Fragments.WasteScheduleFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/SCREEN"
-    tools:context=".Fragments.WasteScheduleFragment"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_margin="15dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/todaySchedule"
+        style="@style/accent_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_background"
+        android:fontFamily="sans-serif-thin"
+        android:padding="15dp"
+        android:text="@string/today_s_schedule"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
         app:cardCornerRadius="30dp"
-        android:layout_gravity="center">
+        app:layout_constraintBottom_toTopOf="@+id/btn_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todaySchedule">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="380dp"
+            android:importantForAccessibility="no"
             android:scaleType="fitCenter"
-            android:src="@drawable/cebucityschedule"
-            android:importantForAccessibility="no" />
+            android:src="@drawable/cebucityschedule" />
     </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/btn_back"
+        style="@style/accent_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="80dp"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -70,7 +70,7 @@
                 android:background="@drawable/round_background"
                 android:inputType="text"
                 android:textColor="@color/white"
-                android:text="test1@gmail.com" />
+                android:text="@string/test1_gmail_com" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -92,7 +92,7 @@
                 android:background="@drawable/round_background"
                 android:inputType="textPassword"
                 android:textColor="@color/white"
-                android:text="aA12345678*" />
+                android:text="@string/login_password" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -123,7 +123,7 @@
             android:id="@+id/newAccount"
             style="@style/TEXT"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:onClick="openRegister"

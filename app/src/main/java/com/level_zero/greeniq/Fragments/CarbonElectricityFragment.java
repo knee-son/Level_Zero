@@ -1,14 +1,10 @@
 package com.level_zero.greeniq.Fragments;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -18,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -40,26 +35,21 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class CarbonElectricityFragment extends Fragment {
-
-    private LanguageManager languageManager;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        languageManager = new LanguageManager(context);
+        LanguageManager languageManager = new LanguageManager(context);
         languageManager.updateResource(languageManager.getLang());
     }
     private FragmentCarbonElectricityBinding binding;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private Spinner typeSpinner;
-    private Button button;
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
-    private ImageView back;
-    private ImageSlider imageSlider;
     String typeValue, currentUser;
     double footprintElectricity;
 
@@ -71,18 +61,18 @@ public class CarbonElectricityFragment extends Fragment {
 
         binding = FragmentCarbonElectricityBinding.inflate(inflater, container, false);
 
-        typeSpinner = binding.typeSpinnerElectricity;
-        button = binding.calculateButtonElectricity;
-        back = binding.back2;
-        imageSlider = binding.imageElectricity;
+        Spinner typeSpinner = binding.typeSpinnerElectricity;
+        Button button = binding.calculateButtonElectricity;
+        ImageView back = binding.back2;
+        ImageSlider imageSlider = binding.imageElectricity;
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("Carbon Data");
 
         calendar = Calendar.getInstance();
-        simpleDateFormat = new SimpleDateFormat("EEE, MMMM d, yyyy");
+        simpleDateFormat = new SimpleDateFormat("EEE, MMMM d, yyyy", Locale.US);
 
-        Bundle bundle = getActivity().getIntent().getExtras();
+        Bundle bundle = requireActivity().getIntent().getExtras();
         currentUser = bundle.getString("id");
 
         List<SlideModel> slideModels = new ArrayList<>();
@@ -97,8 +87,7 @@ public class CarbonElectricityFragment extends Fragment {
         typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String value = parent.getItemAtPosition(position).toString();
-                typeValue = value;
+                typeValue = parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -107,25 +96,19 @@ public class CarbonElectricityFragment extends Fragment {
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                valueDatabase();
-                addtoHistory();
-            }
+        button.setOnClickListener(view -> {
+            valueDatabase();
+            addToHistory();
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(CarbonElectricityFragment.this).navigate(R.id.action_carbonElectricityFragment_to_carbonFootprintFragment);
-            }
-        });
+        back.setOnClickListener(view -> NavHostFragment.findNavController(
+            CarbonElectricityFragment.this).navigate(
+                R.id.action_carbonElectricityFragment_to_carbonFootprintFragment));
 
         return binding.getRoot();
     }
 
-    private void addtoHistory() {
+    private void addToHistory() {
         databaseReference.child(currentUser).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -133,20 +116,24 @@ public class CarbonElectricityFragment extends Fragment {
                 String foodData = snapshot.child("foodTotal").getValue(String.class);
                 String electricityData = snapshot.child("electricityTotal").getValue(String.class);
 
-                double valueTransport = Double.valueOf(transportData);
-                double valueFood = Double.valueOf(foodData);
-                double valueElectricity = Double.valueOf(electricityData);
+                double valueTransport = Double.parseDouble(transportData != null ? transportData : "0");
+                double valueFood = Double.parseDouble(foodData != null ? foodData : "0");
+                double valueElectricity = Double.parseDouble(electricityData != null ? electricityData : "0");
 
                 double total = valueTransport + valueFood + valueElectricity;
                 String currentDate = simpleDateFormat.format(calendar.getTime());
 
                 if(valueElectricity == 0)
                 {
-                    displayErrorDialog("Invalid input:\nPlease enter a numeric value.");
+                    displayErrorDialog();
                     return;
                 }else {
-                    Toast.makeText(getActivity(), String.format("Your electricity carbon footprint is %.2f Kg CO", valueElectricity), Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(
+                        getActivity(),
+                        String.format(Locale.US,
+                        "Your electricity carbon footprint is %.2f Kg CO",
+                        valueElectricity),
+                        Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -164,28 +151,24 @@ public class CarbonElectricityFragment extends Fragment {
 
     private void valueDatabase() {
 
-        if (typeValue.equals("Low Usage")) {
-            footprintElectricity = 24 * 1.35;
-        } else if (typeValue.equals("Medium Usage")) {
-            footprintElectricity = 24 * 5;
-        } else if (typeValue.equals("High Usage")) {
-            footprintElectricity = 24 * 17;
+        switch (typeValue) {
+            case "Low Usage":
+                footprintElectricity = 24 * 1.35; break;
+            case "Medium Usage":
+                footprintElectricity = 24 * 5; break;
+            case "High Usage":
+                footprintElectricity = 24 * 17; break;
         }
 
         databaseReference.child(currentUser).child("electricityTotal").setValue(String.valueOf(footprintElectricity));
     }
-    private void displayErrorDialog(String message){
+    private void displayErrorDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Error!");
 
-        builder.setMessage(message);
+        builder.setMessage("Invalid input:\nPlease enter a numeric value.");
 
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
         builder.show();
     }
     public void onDestroyView() {

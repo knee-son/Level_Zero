@@ -1,16 +1,10 @@
 package com.level_zero.greeniq.Fragments;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -36,31 +30,27 @@ import com.google.firebase.database.ValueEventListener;
 import com.level_zero.greeniq.History;
 import com.level_zero.greeniq.LanguageManager;
 import com.level_zero.greeniq.R;
-import com.level_zero.greeniq.databinding.FragmentCarbonTransportBinding;;import java.text.SimpleDateFormat;
+import com.level_zero.greeniq.databinding.FragmentCarbonTransportBinding;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class CarbonTransportFragment extends Fragment {
-
-    private LanguageManager languageManager;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        languageManager = new LanguageManager(context);
+        LanguageManager languageManager = new LanguageManager(context);
         languageManager.updateResource(languageManager.getLang());
     }
     private FragmentCarbonTransportBinding binding;
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
     private EditText amountEditText;
-    private Button button;
-    private Spinner typeSpinner;
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
-    private ImageSlider imageSlider;
-    private ImageView back;
     String typeValue, currentUser;
     double footprintValue;
 
@@ -72,21 +62,21 @@ public class CarbonTransportFragment extends Fragment {
 
         binding = FragmentCarbonTransportBinding.inflate(inflater, container, false);
 
-        typeSpinner = binding.typeSpinnerTransport;
+        Spinner typeSpinner = binding.typeSpinnerTransport;
         amountEditText = binding.amountValueTransport;
-        button = binding.calculateButtonTransport;
-        imageSlider = binding.imageTransport;
-        back = binding.back1;
+        Button button = binding.calculateButtonTransport;
+        ImageSlider imageSlider = binding.imageTransport;
+        ImageView back = binding.back1;
 
         ArrayAdapter<String> transportAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, transportType);
         transportAdapter.setDropDownViewResource(R.layout.spinner_item_custom);
         typeSpinner.setAdapter(transportAdapter);
 
-        Bundle bundle = getActivity().getIntent().getExtras();
+        Bundle bundle = requireActivity().getIntent().getExtras();
         currentUser = bundle.getString("id");
 
         calendar = Calendar.getInstance();
-        simpleDateFormat = new SimpleDateFormat("EEE, MMMM d, yyyy");
+        simpleDateFormat = new SimpleDateFormat("EEE, MMMM d, yyyy", Locale.US);
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("Carbon Data");
@@ -100,8 +90,7 @@ public class CarbonTransportFragment extends Fragment {
         typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String value = parent.getItemAtPosition(position).toString();
-                typeValue = value;
+                typeValue = parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -110,33 +99,26 @@ public class CarbonTransportFragment extends Fragment {
             }
         });
         
-        button.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(view -> {
+            String fetchAmount = amountEditText.getText().toString();
 
-            @Override
-            public void onClick(View view) {
-                String fetchAmount = amountEditText.getText().toString();
-
-                if(fetchAmount.equals("")){
-                    amountEditText.setError("Fill this field.");
-                }else{
-                    amountEditText.setError(null);
-                    valueDatabase();
-                    addtoHistory();
-                }
+            if(fetchAmount.equals("")){
+                amountEditText.setError("Fill this field.");
+            }else{
+                amountEditText.setError(null);
+                valueDatabase();
+                addToHistory();
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(CarbonTransportFragment.this).navigate(R.id.action_carbonTransportFragment_to_carbonFootprintFragment);
-            }
-        });
+        back.setOnClickListener(view -> NavHostFragment.findNavController(
+                CarbonTransportFragment.this)
+                .navigate(R.id.action_carbonTransportFragment_to_carbonFootprintFragment));
 
         return binding.getRoot();
     }
 
-    private void addtoHistory() {
+    private void addToHistory() {
         databaseReference.child(currentUser).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -144,19 +126,21 @@ public class CarbonTransportFragment extends Fragment {
                 String foodData = snapshot.child("foodTotal").getValue(String.class);
                 String electricityData = snapshot.child("electricityTotal").getValue(String.class);
 
-                double valueTransport = Double.valueOf(transportData);
-                double valueFood = Double.valueOf(foodData);
-                double valueElectricity = Double.valueOf(electricityData);
+                double valueTransport = Double.parseDouble(transportData != null ? transportData : "0");
+                double valueFood = Double.parseDouble(foodData != null ? foodData : "0");
+                double valueElectricity = Double.parseDouble(electricityData != null ? electricityData : "0");
 
                 double total = valueTransport + valueFood + valueElectricity;
                 String currentDate = simpleDateFormat.format(calendar.getTime());
 
                 if(valueTransport == 0)
                 {
-                    displayErrorDialog("Invalid input:\nPlease enter a numeric value.");
+                    displayErrorDialog();
                     return;
                 }else{
-                    Toast.makeText(getActivity(), String.format("Your transport carbon footprint is %.2f Kg CO", valueTransport), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), String.format(Locale.US,
+                        "Your transport carbon footprint is %.2f Kg CO",
+                        valueTransport), Toast.LENGTH_SHORT).show();
                 }
 
                 History history = new History(currentDate, String.valueOf(total));
@@ -173,37 +157,33 @@ public class CarbonTransportFragment extends Fragment {
 
     private void valueDatabase() {
 
-        double amount = 0;
+        double amount;
 
         try {
-            amount = Double.parseDouble(amountEditText.getText().toString());;
+            amount = Double.parseDouble(amountEditText.getText().toString());
         } catch (NumberFormatException e) {
-            displayErrorDialog("Invalid input:\nPlease enter a numeric value.");
+            displayErrorDialog();
             return;
         }
 
-        if (typeValue.equals("Private")) {
-            footprintValue = amount * (5.8 / 100 * 2.3035);
-        } else if (typeValue.equals("Public")) {
-            footprintValue = amount * (18.181818182 / 100 * 2.3035);
-        } else if (typeValue.equals("Motorcycle")) {
-            footprintValue = amount * (1.8867924528 / 100 * 2.3035);
+        switch (typeValue) {
+            case "Private":
+                footprintValue = amount * (5.8 / 100 * 2.3035); break;
+            case "Public":
+                footprintValue = amount * (18.181818182 / 100 * 2.3035); break;
+            case "Motorcycle":
+                footprintValue = amount * (1.8867924528 / 100 * 2.3035); break;
         }
 
         databaseReference.child(currentUser).child("transportTotal").setValue(String.valueOf(footprintValue));
     }
-    private void displayErrorDialog(String message){
+    private void displayErrorDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Error!");
 
-        builder.setMessage(message);
+        builder.setMessage("Invalid input:\nPlease enter a numeric value.");
 
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
         builder.show();
     }
     public void onDestroyView() {

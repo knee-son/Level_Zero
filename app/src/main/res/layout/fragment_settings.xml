@@ -32,7 +32,6 @@
 
             <ImageView
                 android:id="@+id/back1"
-                style="@style/IMAGEVIEW"
                 android:layout_width="33dp"
                 android:layout_height="33dp"
                 android:layout_marginStart="14dp"

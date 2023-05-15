@@ -1,69 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.WasteEventFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.WasteEventFragment"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:gravity="center"
-    style="@style/SCREEN">
+    android:layout_margin="15dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/currentEvent"
+        style="@style/accent_card"
+        android:text="@string/current_event"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif-thin"
+        android:background="@drawable/round_background"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titleEvent"
+        style="@style/TEXT"
+        android:text="@string/title_event"
+        android:textSize="44sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TITLE EVENT"
-        android:fontFamily="cursive"
-        android:textSize="44sp"
-        style="@style/TEXT"
-        android:textStyle="bold"/>
+        android:layout_marginTop="213dp"
+        app:layout_constraintBottom_toTopOf="@+id/detailsEvent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentEvent" />
 
     <TextView
         android:id="@+id/detailsEvent"
+        style="@style/TEXT"
+        android:text="@string/details"
+        android:textSize="16sp"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="details"
-        android:textSize="16sp"
-        style="@style/TEXT"
-        android:textStyle="bold" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
+        app:layout_constraintTop_toBottomOf="@id/detailsEvent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content" >
         <TextView
             android:id="@+id/startDate"
+            style="@style/TEXT"
+            android:text="@string/start_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="START DATE"
             android:textSize="16sp"
-            style="@style/TEXT"
-            android:textStyle="bold"
-            android:layout_gravity="center" />
-
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/center"
+            style="@style/TEXT"
+            android:text="@string/tilde"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/startDate"
-            android:text=" ~ "
             android:textSize="16sp"
-            style="@style/TEXT"
-            android:textStyle="bold"
-            android:layout_gravity="center" />
-
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/endDate"
+            style="@style/TEXT"
+            android:text="@string/end_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="END DATE"
             android:layout_toEndOf="@id/center"
             android:textSize="16sp"
-            style="@style/TEXT"
-            android:textStyle="bold"
-            android:layout_gravity="center" />
+            android:textStyle="bold" />
     </RelativeLayout>
 
-
-</LinearLayout>
+    <Button
+        android:id="@+id/btn_back"
+        style="@style/accent_card"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="80dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

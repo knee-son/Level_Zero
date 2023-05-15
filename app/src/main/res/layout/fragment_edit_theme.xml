@@ -29,7 +29,6 @@
 
             <ImageView
                 android:id="@+id/back1"
-                style="@style/IMAGEVIEW"
                 android:layout_width="33dp"
                 android:layout_height="33dp"
                 android:layout_marginStart="14dp"
@@ -43,12 +42,11 @@
         android:id="@+id/btn_theme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="160dp">
 
         <RadioButton
             android:id="@+id/btnDefault"
-            style="@style/IMAGEVIEW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
@@ -63,7 +61,6 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:drawableEnd="@drawable/ic_nightmode"
-            style="@style/IMAGEVIEW"
             android:drawablePadding="8dp"
             android:text="@string/dark"
             android:textSize="24sp"/>
@@ -74,7 +71,6 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:drawableEnd="@drawable/ic_lightmode"
-            style="@style/IMAGEVIEW"
             android:drawablePadding="8dp"
             android:text="@string/light"
             android:textSize="24sp"/>

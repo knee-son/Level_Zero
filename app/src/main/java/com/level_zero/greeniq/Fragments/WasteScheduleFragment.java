@@ -15,12 +15,10 @@ import com.level_zero.greeniq.databinding.FragmentWasteScheduleBinding;
 
 public class WasteScheduleFragment extends Fragment {
 
-    private LanguageManager languageManager;
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        languageManager = new LanguageManager(context);
+        LanguageManager languageManager = new LanguageManager(context);
         languageManager.updateResource(languageManager.getLang());
     }
     private FragmentWasteScheduleBinding binding;

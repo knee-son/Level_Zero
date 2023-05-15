@@ -1,7 +1,5 @@
 package com.level_zero.greeniq.Fragments;
 
-import static androidx.navigation.Navigation.findNavController;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -25,15 +23,12 @@ import com.level_zero.greeniq.LoginActivity;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentSettingsBinding;
 
-
 public class SettingsFragment extends Fragment {
-
-    private LanguageManager languageManager;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        languageManager = new LanguageManager(context);
+        LanguageManager languageManager = new LanguageManager(context);
         languageManager.updateResource(languageManager.getLang());
     }
     private FragmentSettingsBinding binding;
@@ -47,42 +42,24 @@ public class SettingsFragment extends Fragment {
 
         back = binding.back1;
 
-        binding.editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SettingsFragment.this).navigate(R.id.action_settingsFragment_to_editProfileFragment);
-            }
-        });
-        binding.aboutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                aboutApplication();
-            }
+        binding.editProfile.setOnClickListener(view -> NavHostFragment
+            .findNavController(SettingsFragment.this)
+            .navigate(R.id.action_settingsFragment_to_editProfileFragment));
+        binding.aboutButton.setOnClickListener(view -> aboutApplication());
+
+        binding.logoutButton.setOnClickListener(view -> {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getActivity(), LoginActivity.class)
+                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
         });
 
-        binding.logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
-            }
-        });
+        binding.editLanguage.setOnClickListener(view -> NavHostFragment
+            .findNavController(SettingsFragment.this)
+            .navigate(R.id.action_settingsFragment_to_editLanguageFragment));
 
-        binding.editLanguage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SettingsFragment.this).navigate(R.id.action_settingsFragment_to_editLanguageFragment);
-            }
-        });
-
-        binding.editTheme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavHostFragment.findNavController(SettingsFragment.this).navigate(R.id.action_settingsFragment_to_editThemeFragment);
-            }
-        });
-
-
+        binding.editTheme.setOnClickListener(v -> NavHostFragment
+            .findNavController(SettingsFragment.this)
+            .navigate(R.id.action_settingsFragment_to_editThemeFragment));
 
         return binding.getRoot();
     }
@@ -95,19 +72,13 @@ public class SettingsFragment extends Fragment {
         TextView messageView = customLayout.findViewById(R.id.dialog_message);
         AppCompatButton okButton = customLayout.findViewById(R.id.button);
 
-        titleView.setText("About Application");
-        messageView.setText("Recycling and waste management are critical points that contributes to protection and preservation of the environment. \n\nThis app provides a convenient, efficient, and user-friendly visual to manage household waste by informing users on proper waste sorting, tracking them of their recycling efforts, and enabling them to connect with local recycling facilities.");
-
+        titleView.setText(R.string.about_application_lowercase);
+        messageView.setText(R.string.dialog);
 
         builder.setView(customLayout);
         AlertDialog dialog = builder.create();
 
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+        okButton.setOnClickListener(view -> dialog.dismiss());
 
         dialog.show();
     }
@@ -116,12 +87,9 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SettingsFragment.this).navigate(R.id.action_settingsFragment_to_homeFragment);
-            }
-        });
+        back.setOnClickListener(view1 -> NavHostFragment
+            .findNavController(SettingsFragment.this)
+            .navigate(R.id.action_settingsFragment_to_homeFragment));
     }
 
     @Override

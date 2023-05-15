@@ -10,8 +10,8 @@ import android.util.Log;
 import java.util.Locale;
 
 public class LanguageManager {
-    private Context ct;
-    private SharedPreferences sharedPreferences;
+    private final Context ct;
+    private final SharedPreferences sharedPreferences;
     public LanguageManager(Context ctx){
 
         ct = ctx;
@@ -37,6 +37,6 @@ public class LanguageManager {
     public void setLang(String code){
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("lang",code);
-        editor.commit();
+        editor.apply();
     }
 }

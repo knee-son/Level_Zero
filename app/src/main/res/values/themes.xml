@@ -51,16 +51,19 @@
         <item name="cardBackgroundColor">@color/neutral_mild</item>
         <item name="android:backgroundTint">@color/background_light</item>
     </style>
+
+    <style name="transparent">
+        <item name="alpha">0.7</item>
+    </style>
+
     <style name="trans" >
         <item name="android:textColor">#C8000000</item>
         <item name="android:backgroundTint">#BD2451</item>
     </style>
-
     <style name="food">
         <item name="android:textColor">#C8000000</item>
         <item name="android:backgroundTint">#FE6600</item>
     </style>
-
     <style name="elec">
         <item name="android:textColor">#C8000000</item>
         <item name="android:backgroundTint">#F4C600</item>

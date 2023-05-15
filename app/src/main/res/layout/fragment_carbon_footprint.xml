@@ -22,20 +22,19 @@
             android:layout_marginLeft="18dp"
             android:layout_marginRight="18dp"
             android:orientation="vertical"
-            android:paddingBottom="85dp">
+            android:paddingBottom="95dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="GreenIQ Carbon Footprint Tracker"
+                android:text="@string/greeniq_carbon_footprint_tracker"
                 style="@style/accent_card"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:fontFamily="sans-serif-thin"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="27dp"
                 android:background="@drawable/round_background"
                 android:padding="7dp"/>
 
@@ -88,11 +87,13 @@
                         android:padding="16dp">
 
                         <ImageView
+                            style="@style/trans"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="-28dp"
                             android:alpha="0.7"
-                            android:src="@drawable/baseline_directions_car_24" />
+                            android:src="@drawable/baseline_directions_car_24"
+                            android:contentDescription="@string/transport" />
 
                         <TextView
                             style="@style/trans"
@@ -100,7 +101,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="-28dp"
                             android:text="@string/transport"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -130,6 +131,7 @@
                             android:layout_marginRight="5dp"
                             android:alpha="0.7"
                             android:src="@drawable/baseline_fastfood_24"
+                            android:contentDescription="@string/food"
                             />
 
                         <TextView
@@ -166,6 +168,7 @@
                             android:layout_marginTop="-28dp"
                             android:alpha="0.7"
                             android:src="@drawable/baseline_electrical_services_24"
+                            android:contentDescription="@string/electricity"
                             />
 
                         <TextView
@@ -180,13 +183,14 @@
             </GridLayout>
 
             <ListView
+                android:orientation="vertical"
                 android:id="@+id/listviewHistory"
                 style="@style/elec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/round_background"
-                android:backgroundTint="#3C955330"
+                android:backgroundTint="#3E303D95"
                 android:padding="7dp" />
 
         </LinearLayout>

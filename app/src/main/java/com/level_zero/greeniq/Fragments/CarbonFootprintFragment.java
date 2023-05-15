@@ -1,7 +1,5 @@
 package com.level_zero.greeniq.Fragments;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -16,7 +14,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -74,7 +71,7 @@ public class CarbonFootprintFragment extends Fragment {
 
         scrollView = binding.scrollView;
 
-        currentNightMode = getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        currentNightMode = requireContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
 
         Bundle bundle = requireActivity().getIntent().getExtras();
         currentUser = bundle.getString("id");
@@ -82,9 +79,6 @@ public class CarbonFootprintFragment extends Fragment {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("Carbon History");
         databaseReferenceData = firebaseDatabase.getReference("Carbon Data");
-
-//        Calendar calendar = Calendar.getInstance();
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, MMMM d, yyyy");
 
         displayPieChart();
         displayDataHistory();

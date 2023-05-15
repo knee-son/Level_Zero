@@ -19,25 +19,19 @@ import com.level_zero.greeniq.databinding.FragmentEditLanguageBinding;
 
 public class EditLanguageFragment extends Fragment {
 
-    private LanguageManager languageManager;
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        languageManager = new LanguageManager(context);
+        LanguageManager languageManager = new LanguageManager(context);
         languageManager.updateResource(languageManager.getLang());
     }
-    private @NonNull FragmentEditLanguageBinding binding;
-    private Button eng;
-    private Button fil;
+    private FragmentEditLanguageBinding binding;
     private Button btn;
     private TextView txt;
-    private ImageView back;
 
     public EditLanguageFragment() {
         // Required empty public constructor
     }
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,45 +39,34 @@ public class EditLanguageFragment extends Fragment {
 
         txt = binding.textLanguage;
         btn = binding.btnTheme;
-        eng = binding.btnEng;
-        fil = binding.btnFil;
-        back = binding.back1;
+        Button eng = binding.btnEng;
+        Button fil = binding.btnFil;
+        ImageView back = binding.back1;
 
         LanguageManager lang = new LanguageManager(getContext());
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(EditLanguageFragment.this).navigate(R.id.action_editLanguageFragment_to_settingsFragment);
-            }
-        });
+        back.setOnClickListener(view -> NavHostFragment
+            .findNavController(EditLanguageFragment.this)
+            .navigate(R.id.action_editLanguageFragment_to_settingsFragment));
 
         eng.setOnClickListener(view -> {
             lang.updateResource("en");
-            btn.setText("DONE");
-            txt.setText("LANGUAGE");
-
-            //getParentFragmentManager().beginTransaction().detach(this).attach(this).commit();
+            btn.setText(R.string.done);
+            txt.setText(R.string.language);
         });
 
         fil.setOnClickListener(view -> {
             lang.updateResource("fil");
-            btn.setText("ITAPOS");
-            txt.setText("WIKA");
-            //getParentFragmentManager().beginTransaction().detach(this).attach(this).commit();
+            btn.setText(R.string.done);
+            txt.setText(R.string.language);
         });
 
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavHostFragment.findNavController(EditLanguageFragment.this).navigate(R.id.action_editLanguageFragment_to_homeFragment);
-            }
-        });
+        btn.setOnClickListener(v -> NavHostFragment
+            .findNavController(EditLanguageFragment.this)
+            .navigate(R.id.action_editLanguageFragment_to_homeFragment));
 
         return binding.getRoot();
     }
-
 
     @Override
     public void onDestroyView() {

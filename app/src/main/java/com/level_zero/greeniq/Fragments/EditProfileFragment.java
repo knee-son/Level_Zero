@@ -27,8 +27,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,35 +37,27 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.UploadTask;
 import com.level_zero.greeniq.LanguageManager;
-import com.level_zero.greeniq.Profile;
 import com.level_zero.greeniq.R;
 import com.level_zero.greeniq.databinding.FragmentEditProfileBinding;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.UUID;
 
 public class EditProfileFragment extends Fragment {
 
-    private LanguageManager languageManager;
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        languageManager = new LanguageManager(context);
+        LanguageManager languageManager = new LanguageManager(context);
         languageManager.updateResource(languageManager.getLang());
     }
     private FragmentEditProfileBinding binding;
     private TextInputLayout userName, phone, location, password;
-    private TextView email;
     private Uri imagePath;
     private ImageView avatar;
-
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     private ImageView back;
 
@@ -77,127 +67,115 @@ public class EditProfileFragment extends Fragment {
         binding = FragmentEditProfileBinding.inflate(inflater, container, false);
         back = binding.back1;
 
-        firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("User");
-        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
         userName = binding.editUsername;
         password = binding.editPassword;
         phone = binding.editPhone;
         location = binding.editLocation;
-        email = binding.emailProfile;
+        TextView email = binding.emailProfile;
 
         avatar = binding.editAvatar;
 
-        Bundle bundle = getActivity().getIntent().getExtras();
+        Bundle bundle = requireActivity().getIntent().getExtras();
         String userEmail = bundle.getString("email");
         String userUserName = bundle.getString("userName");
         String userPhone = bundle.getString("phoneNumber");
         String userLocation = bundle.getString("location");
         String userAvatar = bundle.getString("profilePicture");
-        String userCoin = bundle.getString("coin");
         String userPassword = bundle.getString("password");
         String userId = bundle.getString("id");
 
         email.setText(userEmail);
-        userName.getEditText().setText(userUserName);
-        phone.getEditText().setText(userPhone);
-        location.getEditText().setText(userLocation);
-        password.getEditText().setText(userPassword);
+        Objects.requireNonNull(userName.getEditText()).setText(userUserName);
+        Objects.requireNonNull(phone.getEditText()).setText(userPhone);
+        Objects.requireNonNull(location.getEditText()).setText(userLocation);
+        Objects.requireNonNull(password.getEditText()).setText(userPassword);
 
         Glide.with(this).load(userAvatar).error(R.drawable.defaultpfp).placeholder(R.drawable.defaultpfp).into(avatar);
 
-        avatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent pictureIntent = new Intent(Intent.ACTION_PICK);
-//                pictureIntent.setType("image/*");
-//                startActivityForResult(pictureIntent, 1);
-
-                Intent pictureIntent = new Intent(Intent.ACTION_PICK);
-                pictureIntent.setType("image/*");
-                getResult.launch(pictureIntent);
-            }
+        avatar.setOnClickListener(view -> {
+            Intent pictureIntent = new Intent(Intent.ACTION_PICK);
+            pictureIntent.setType("image/*");
+            getResult.launch(pictureIntent);
         });
 
-        binding.saveProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String fetchUserName = userName.getEditText().getText().toString();
-                String fetchPhone = phone.getEditText().getText().toString();
-                String fetchLocation = location.getEditText().getText().toString();
-                String fetchPassword = password.getEditText().getText().toString();
+        binding.saveProfile.setOnClickListener(view -> {
+            String fetchUserName = userName.getEditText().getText().toString();
+            String fetchPhone = phone.getEditText().getText().toString();
+            String fetchLocation = location.getEditText().getText().toString();
+            String fetchPassword = password.getEditText().getText().toString();
 
-                databaseReference.orderByChild("userName").equalTo(fetchUserName)
-                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if(snapshot.exists()){
-                                    userName.setError("Username exists.");
-                                }else{
-                                    userName.setError(null);
-                                    if(fetchPassword.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$")){
-                                        password.setError(null);
-                                        if(fetchPhone.matches("^(09|\\+639)\\d{9}$")){
-                                            phone.setError(null);
+            databaseReference.orderByChild("userName").equalTo(fetchUserName)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()){
+                                userName.setError("Username exists.");
+                            }else{
+                                userName.setError(null);
+                                if(fetchPassword.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–{}:;',?/*~$^+=<>]).{8,20}$")){
+                                    password.setError(null);
+                                    if(fetchPhone.matches("^(09|\\+639)\\d{9}$")){
+                                        phone.setError(null);
 
-                                            firebaseUser.updatePassword(fetchPassword)
-                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        firebaseUser.updatePassword(fetchPassword)
+                                            .addOnCompleteListener(task -> {
+                                                if(task.isSuccessful()){
+                                                    Query query = databaseReference.orderByChild("id").equalTo(userId);
+                                                    query.addListenerForSingleValueEvent(new ValueEventListener() {
                                                         @Override
-                                                        public void onComplete(@NonNull Task<Void> task) {
-                                                            if(task.isSuccessful()){
-                                                                Query query = databaseReference.orderByChild("id").equalTo(userId);
-                                                                query.addListenerForSingleValueEvent(new ValueEventListener() {
-                                                                    @Override
-                                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                                                                            dataSnapshot.getRef().child("userName").setValue(fetchUserName);
-                                                                            dataSnapshot.getRef().child("password").setValue(fetchPassword);
-                                                                            dataSnapshot.getRef().child("phoneNumber").setValue(fetchPhone);
-                                                                            dataSnapshot.getRef().child("location").setValue(fetchLocation);
+                                                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                                                            for(DataSnapshot dataSnapshot : snapshot1.getChildren()){
+                                                                dataSnapshot.getRef().child("userName").setValue(fetchUserName);
+                                                                dataSnapshot.getRef().child("password").setValue(fetchPassword);
+                                                                dataSnapshot.getRef().child("phoneNumber").setValue(fetchPhone);
+                                                                dataSnapshot.getRef().child("location").setValue(fetchLocation);
 
-                                                                            Toast.makeText(getContext(), "Updating data of "+userEmail, Toast.LENGTH_SHORT).show();
-                                                                        }
-                                                                    }
-
-                                                                    @Override
-                                                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                                                    }
-                                                                });
-
-                                                                getActivity().finish();
-
-                                                                Intent intent = getActivity().getBaseContext().getPackageManager().getLaunchIntentForPackage(getActivity().getBaseContext().getPackageName());
-                                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                                startActivity(intent);
+                                                                Toast.makeText(getContext(), "Updating data of "+userEmail, Toast.LENGTH_SHORT).show();
                                                             }
                                                         }
+
+                                                        @Override
+                                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                                        }
                                                     });
-                                        }else{
-                                            phone.setError("Phone number is invalid.");
-                                        }
+
+                                                    requireActivity().finish();
+
+                                                    Intent intent =
+                                                        requireActivity()
+                                                        .getBaseContext()
+                                                        .getPackageManager()
+                                                        .getLaunchIntentForPackage(
+                                                            requireActivity()
+                                                            .getBaseContext()
+                                                            .getPackageName());
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    startActivity(intent);
+                                                }
+                                            });
                                     }else{
-                                        password.setError("Should have one uppercase and lowercase character, one digit number, and one special character.");
+                                        phone.setError("Phone number is invalid.");
                                     }
+                                }else{
+                                    password.setError("Should have one uppercase and lowercase character, one digit number, and one special character.");
                                 }
                             }
+                        }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                            }
-                        });
-            }
+                        }
+                    });
         });
 
-        binding.saveAvatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveImage();
-            }
-        });
+        binding.saveAvatar.setOnClickListener(view -> saveImage());
 
         return binding.getRoot();
     }
@@ -210,36 +188,25 @@ public class EditProfileFragment extends Fragment {
                 true);
 
         FirebaseStorage.getInstance().getReference("images/"+ UUID.randomUUID().toString())
-                .putFile(imagePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        if(task.isSuccessful()){
-                            task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Uri> task) {
-                                    if(task.isSuccessful()){
-                                        savedImage(task.getResult().toString());
-                                    }
-                                }
-                            });
-                            Toast.makeText(getActivity(),"Saved Image", Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(getActivity(),"Failed to Save Image", Toast.LENGTH_SHORT).show();
-                        }
-                        progressDialog.dismiss();
+                .putFile(imagePath).addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(task1 -> {
+                            if(task1.isSuccessful())
+                                savedImage(task1.getResult().toString());
+                        });
+                        Toast.makeText(getActivity(),"Saved Image", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getActivity(),"Failed to Save Image", Toast.LENGTH_SHORT).show();
                     }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                        double progress = 100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount();
-                        progressDialog.setMessage(" Uploading " +(int)progress+"%");
-
-                    }
+                    progressDialog.dismiss();
+                }).addOnProgressListener(snapshot -> {
+                    double progress = 100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount();
+                    progressDialog.setMessage(" Uploading " +(int)progress+"%");
                 });
     }
 
     private void savedImage(String url) {
-        Bundle bundle = getActivity().getIntent().getExtras();
+        Bundle bundle = requireActivity().getIntent().getExtras();
         String userId = bundle.getString("id");
         Query query = databaseReference.orderByChild("id").equalTo(userId);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -274,7 +241,7 @@ public class EditProfileFragment extends Fragment {
     private void getImage(){
         Bitmap bitmap = null;
         try{
-            bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imagePath);
+            bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), imagePath);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -285,12 +252,10 @@ public class EditProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(EditProfileFragment.this).navigate(R.id.action_editProfileFragment_to_settingsFragment);
-            }
-        });
+        back.setOnClickListener(view1 ->
+            NavHostFragment
+            .findNavController(EditProfileFragment.this)
+            .navigate(R.id.action_editProfileFragment_to_settingsFragment));
     }
     @Override
     public void onDestroyView() {

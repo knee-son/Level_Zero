@@ -1,12 +1,10 @@
 package com.level_zero.greeniq;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -28,7 +26,6 @@ public class RegisterActivity extends AppCompat {
     private TextInputLayout email, password, userName, location, phoneNumber;
     private FirebaseAuth firebaseAuth;
     private String fetchEmail, fetchUsername, fetchPassword, fetchPhone, fetchLocation;
-    private FirebaseUser currentUser;
     private DatabaseReference databaseReference, databaseReferenceCarbon, databaseReferenceCertificate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +87,8 @@ public class RegisterActivity extends AppCompat {
                                 userName.setError("Username already exists.");
                             }else{
                                 userName.setError(null);
-                                if(fetchEmail.matches("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}")){
-                                    if(fetchPassword.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$")){
+                                if(fetchEmail.matches("[A-Za-z\\d._%+-]+@[A-Za-z\\d.-]+\\.[A-Za-z]{2,}")){
+                                    if(fetchPassword.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–{}:;',?/*~$^+=<>]).{8,20}$")){
                                         if(fetchPhone.matches("^(09|\\+639)\\d{9}$")){
                                             try {
                                                 firebaseAuth.createUserWithEmailAndPassword(fetchEmail, fetchPassword).addOnCompleteListener(task -> {
