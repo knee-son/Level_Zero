@@ -30,12 +30,12 @@
                 android:layout_gravity="center"
                 android:text="@string/greeniq_carbon_footprint_tracker"
                 style="@style/accent_card"
+                android:background="@color/background_light"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:fontFamily="sans-serif-thin"
                 android:layout_marginBottom="27dp"
-                android:background="@drawable/round_background"
                 android:padding="7dp"/>
 
             <com.github.mikephil.charting.charts.PieChart

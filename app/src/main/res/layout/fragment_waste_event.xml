@@ -35,8 +35,7 @@
         android:layout_marginTop="213dp"
         app:layout_constraintBottom_toTopOf="@+id/detailsEvent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentEvent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/detailsEvent"
@@ -46,10 +45,10 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <RelativeLayout
         app:layout_constraintTop_toBottomOf="@id/detailsEvent"
@@ -95,5 +94,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:layout_marginBottom="80dp" />
+        android:layout_marginBottom="55dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
