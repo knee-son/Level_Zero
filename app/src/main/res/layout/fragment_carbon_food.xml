@@ -108,7 +108,7 @@
             android:id="@+id/calculateButtonFood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/calculate1"
+            android:text="@string/calculate"
             android:layout_gravity="center"
             style="@style/accent_card"/>
 

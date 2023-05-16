@@ -51,18 +51,15 @@
     <string name="nearest_city_aqi">Nearest City AQI:</string>
     <string name="get_air_quality">Get Air quality</string>
     <string name="select_usage_of_electricity_for_today">Select usage of electricity for today:</string>
-    <string name="calculate">calculate</string>
+    <string name="calculate">Calculate</string>
     <string name="select_type_of_food_you_ve_cooked">Select type of food you\'ve cooked:</string>
     <string name="input">Input</string>
     <string name="food_consumption_in_kg">Food consumption (in grams)</string>
-    <string name="calculate1">Calculate</string>
     <string name="transport">Transport</string>
     <string name="food">Food</string>
     <string name="electricity">Electricity</string>
     <string name="select_type_of_your_transport">Select type of your transport:</string>
-    <string name="input1">Input</string>
     <string name="distance_of_travel">Distance of travel (in km)</string>
-    <string name="calculate2">Calculate</string>
     <string name="save">SAVE</string>
     <string name="schedule_of_activities">SCHEDULE OF ACTIVITIES:</string>
     <string name="recycling_sites_near_you">🗑 Recycling sites near you:</string>
@@ -72,7 +69,7 @@
     <string name="save_details">SAVE DETAILS</string>
     <string name="back">back</string>
     <string name="proceed">proceed</string>
-    <string name="choose_field_of_consumption">Choose field of consumption:</string>
+    <string name="choose_field_of_consumption">Choose consumption for today:</string>
     <string name="light">Light</string>
     <string name="dark">Dark</string>
     <string name="_default">Default</string>
@@ -94,5 +91,5 @@
     <string name="login_password">aA12345678*</string>
     <string name="greeniq_profile">🌳 GreenIQ profile | </string>
     <string name="about_application_lowercase">About Application</string>
-    <string name="dialog">Recycling and waste management are critical points that contributes to protection and preservation of the environment./n/nThis app provides a convenient, efficient, and user-friendly visual to manage household waste by informing users on proper waste sorting, tracking them of their recycling efforts, and enabling them to connect with local recycling facilities.</string>
+    <string name="dialog">Recycling and waste management are critical points that contributes to protection and preservation of the environment. This app provides a convenient, efficient, and user-friendly visual to manage household waste by informing users on proper waste sorting, tracking them of their recycling efforts, and enabling them to connect with local recycling facilities.</string>
 </resources>
