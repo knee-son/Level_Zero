@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
-
     <string name="done">Tapos Na</string>
-    <string name="text_theme">Subukin ang tema</string>
     <string name="app_name">GreenIQ</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notipikasyon</string>
-    <string name="hello_blank_fragment">Kumusta, blankong pahina</string>
+    <string name="home">Home</string>
     <string name="waste_info">Impormasyon</string>
     <string name="carbon_footprint">Footprint</string>
     <string name="air_quality">Kalidad ng Hangin</string>
     <string name="welcome_user">Kumusta, user!</string>
-    <string name="enter_google_email_and_password">Punin ang email at password:</string>
+    <string name="enter_email">Punin ang email at password:</string>
     <string name="email">EMAIL</string>
     <string name="password">PASSWORD</string>
     <string name="login">MAG LOGIN</string>
@@ -36,39 +20,35 @@
     <string name="phone_number">NUMERO</string>
     <string name="username">PANGALAN</string>
     <string name="settings">SETTINGS</string>
-    <string name="edit_profile">ISAAYOS ANG PROFILE</string>
+    <string name="edit_profile">MAGSAAYOS NG PROFILE</string>
     <string name="language">WIKA</string>
     <string name="theme">TEMA</string>
     <string name="about_application">TUNGKOL SA APLIKASYON</string>
     <string name="logout">MAG LOGOUT</string>
-    <string name="test">TEST</string>
-    <string name="test1">test</string>
-    <string name="ok">OK</string>
+    <string name="ok">MAGPATULOY</string>
     <string name="air_quality1">Kalidad ng Hangin (AQI)</string>
-    <string name="click_button_to_get_air_quality">pindutin ang ibaba para makakuha ng kalidad</string>
+    <string name="click_button_to_get_air_quality">pumindot sa ibaba upang makakuha ng kalidad</string>
     <string name="nearest_city">Kasalukuyang Lungsod:</string>
-    <string name="click_button_to_get_nearest_city">pindutin ang ibaba para makakuha ng lungsod</string>
+    <string name="click_button_to_get_nearest_city">pumindot sa ibaba upang makakuha ng lungsod</string>
     <string name="nearest_city_aqi">AQI ng Lungsod:</string>
     <string name="get_air_quality">Ipakita ang AQI</string>
-    <string name="select_usage_of_electricity_for_today">Pumili mula sa kagamitan ng kuryente:</string>
+    <string name="select_usage_of_electricity">Pumili mula sa kagamitan ng kuryente:</string>
     <string name="calculate">Kalkulahin</string>
-    <string name="select_type_of_food_you_ve_cooked">Pumili ng uri ng ulam:</string>
+    <string name="select_type_of_food">Pumili ng uri ng ulam:</string>
     <string name="input">Itala</string>
-    <string name="food_consumption_in_kg">Konsumpsyon sa ulam (grams)</string>
+    <string name="food_consumption_in_g">Konsumpsyon sa ulam (grams)</string>
     <string name="transport">Transportasyon</string>
     <string name="food">Pagkain</string>
     <string name="electricity">Kuryente</string>
     <string name="select_type_of_your_transport">Piliin ang uri ng sasakyan:</string>
     <string name="distance_of_travel">Distansya (km)</string>
-    <string name="save">IPASYA</string>
     <string name="schedule_of_activities">SKEDYUL NG MGA GAWAIN:</string>
-    <string name="recycling_sites_near_you">🗑 Recycling site sa lugar:</string>
+    <string name="recycling_sites_near_you">🗑 Recycling sites sa lugar:</string>
     <string name="today_s_schedule">ISKEDYUL NGAYONG ARAW</string>
-    <string name="current_event">KASALUKUYANG EVENT</string>
-    <string name="save_avatar">IPASA ANG AVATAR</string>
+    <string name="current_event">KASALUKUYANG KAGANAPAN</string>
+    <string name="save_avatar">IPASA ANG LITRATO</string>
     <string name="save_details">IPASA ANG DETALYE</string>
     <string name="back">bumalik</string>
-    <string name="proceed">ipagpatuloy</string>
     <string name="choose_field_of_consumption">Pumili ng uri ng konsumpsyon:</string>
     <string name="light">Light</string>
     <string name="dark">Dark</string>
@@ -80,16 +60,15 @@
     <string name="food_carbon_footprint">Carbon Footprint (Pagkain)</string>
     <string name="filipino">PILIPINO</string>
     <string name="english">INGLES</string>
-    <string name="title_event">PAMAGAT NG EVENT</string>
+    <string name="title_event">PAMAGAT</string>
     <string name="details">detalye</string>
     <string name="start_date">UMPISA</string>
-    <string name="tilde">~</string>
     <string name="end_date">WAGAS</string>
     <string name="usual_shift">DATING GAWAIN</string>
     <string name="greeniq_carbon_footprint_tracker">Carbon Footprint Hatid ng GreenIQ</string>
-    <string name="test1_gmail_com">test1@gmail.com</string>
+    <string name="login_email">test1@gmail.com</string>
     <string name="login_password">aA12345678*</string>
     <string name="greeniq_profile">"🌳 GreenIQ profile | "</string>
     <string name="about_application_lowercase">Tungkol sa Aplikasyon</string>
-    <string name="dialog">Recycling and waste management are critical points that contributes to protection and preservation of the environment. This app provides a convenient, efficient, and user-friendly visual to manage household waste by informing users on proper waste sorting, tracking them of their recycling efforts, and enabling them to connect with local recycling facilities.</string>
+    <string name="dialog">Ang pag-recycle at ang pagpapabawas ng basura ay isa mga mahalagang gawain na nakatutulong sa proteksyon at pangangalaga ng ating kapaligiran. \n\nAng app na ito ay madaling gamitin, mabilis, at user-friendly sa interface upang mapamahalaan ang pagbawas ng basura sa kanilang bahay. Sa pamamagitan ng pagbibigay ng impormasyon sa mga user tungkol sa tamang paghihiwalay ng basura, pagsubaybay sa kanilang mga carbon footprint at AQI, at sa pag-recycle. Pati na rin sa pagbibigay-daan sa kanila na makipag-ugnayan sa mga lokal na pasilidad sa pag-rerecycle.</string>
 </resources>

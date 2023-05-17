@@ -47,7 +47,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/select_type_of_food_you_ve_cooked"
+            android:text="@string/select_type_of_food"
             android:textSize="18sp"
             style="@style/TEXT"/>
 
@@ -76,14 +76,14 @@
                 android:inputType="numberDecimal"
                 android:layout_marginEnd="10dp"
                 style="@style/TEXT"
-                android:autofillHints="@string/food_consumption_in_kg" />
+                android:autofillHints="@string/food_consumption_in_g" />
             <TextView
                 style="@style/TEXT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/amountValueFood"
                 android:layout_centerVertical="true"
-                android:text="@string/food_consumption_in_kg"
+                android:text="@string/food_consumption_in_g"
                 android:textSize="18sp" />
         </RelativeLayout>
 

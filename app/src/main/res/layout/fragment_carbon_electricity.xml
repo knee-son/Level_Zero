@@ -46,7 +46,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/select_usage_of_electricity_for_today"
+            android:text="@string/select_usage_of_electricity"
             android:textSize="18sp"
             style="@style/TEXT"/>
         <Spinner

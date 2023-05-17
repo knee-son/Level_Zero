@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="sans-serif-thin"
-            android:text="@string/enter_google_email_and_password"
+            android:text="@string/enter_email"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -70,7 +70,7 @@
                 android:background="@drawable/round_background"
                 android:inputType="text"
                 android:textColor="@color/white"
-                android:text="@string/test1_gmail_com" />
+                android:text="@string/login_email" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout

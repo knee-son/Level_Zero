@@ -109,9 +109,9 @@ public class CarbonFootprintFragment extends Fragment {
 
                 List<PieEntry> entries = new ArrayList<>();
 
-                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(transportData)), "Transport")  );
-                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(foodData)), "Food"));
-                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(electricityData)), "Electricity"));
+                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(transportData)), getString(R.string.transport)) );
+                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(foodData)), getString(R.string.food)));
+                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(electricityData)), getString(R.string.electricity)));
 
                 PieDataSet pieDataSet = new PieDataSet(entries, null);
                 pieDataSet.setDrawValues(true);

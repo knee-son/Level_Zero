@@ -65,15 +65,10 @@ public class SettingsFragment extends Fragment {
     }
 
     private void aboutApplication() {
-        View customLayout = getLayoutInflater().inflate(R.layout.dialog_custom, null);
+        View customLayout = getLayoutInflater().inflate(R.layout.dialog_about_application, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
-        TextView titleView = customLayout.findViewById(R.id.dialog_title);
-        TextView messageView = customLayout.findViewById(R.id.dialog_message);
         AppCompatButton okButton = customLayout.findViewById(R.id.button);
-
-        titleView.setText(R.string.about_application_lowercase);
-        messageView.setText(R.string.dialog);
 
         builder.setView(customLayout);
         AlertDialog dialog = builder.create();

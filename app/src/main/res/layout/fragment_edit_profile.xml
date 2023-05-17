@@ -71,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:textStyle="bold"
             android:textSize="18sp"
             android:text="@string/email"
@@ -149,7 +150,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/saveProfile"
-            android:layout_width="280dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/brown"
             android:text="@string/save_details"
@@ -157,12 +158,14 @@
             android:textSize="12sp"
             android:textStyle="bold"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="-5dp"
             android:layout_gravity="center"
-            app:cornerRadius="10dp" />
+            app:cornerRadius="10dp"
+            android:padding="10dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/saveAvatar"
-            android:layout_width="280dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/brown"
             android:text="@string/save_avatar"
@@ -171,7 +174,8 @@
             android:textStyle="bold"
             android:layout_gravity="center"
             app:cornerRadius="10dp"
-            android:layout_marginBottom="50dp"/>
+            android:padding="10dp"
+            android:layout_marginBottom="60dp"/>
 
     </LinearLayout>
 
