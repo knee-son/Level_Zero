@@ -74,9 +74,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:inputType="numberDecimal"
+                android:layout_marginTop="-10dp"
+                android:layout_marginBottom="-10dp"
                 android:layout_marginEnd="10dp"
                 style="@style/TEXT"
-                android:autofillHints="@string/food_consumption_in_g" />
+                android:autofillHints="@string/food_consumption_in_g"
+                android:padding="5dp" />
             <TextView
                 style="@style/TEXT"
                 android:layout_width="wrap_content"

@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.level_zero.greeniq.databinding.FragmentAirQualityBinding;
 
 public class LoginActivity extends AppCompat {
 
@@ -41,7 +42,8 @@ public class LoginActivity extends AppCompat {
         AppCompatButton login = findViewById(R.id.loginButton);
 
         login.setOnClickListener(view -> {
-            if(email.equals("") || password.equals("")){
+            if(email.getEditText().getText().toString().equals("")
+                    || password.getEditText().getText().toString().equals("")){
                 email.setError("All fields must not empty");
                 password.setError("All fields must not empty");
             }else{
@@ -107,41 +109,26 @@ public class LoginActivity extends AppCompat {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot.exists()){
-                                String emailDB = snapshot.child(userId).child("email").getValue(String.class);
-                                String locationDB = snapshot.child(userId).child("location").getValue(String.class);
-                                String phoneNumberDB = snapshot.child(userId).child("phoneNumber").getValue(String.class);
-                                String userNameDB = snapshot.child(userId).child("userName").getValue(String.class);
-                                String profileDB = snapshot.child(userId).child("profilePicture").getValue(String.class);
-                                String coinDB = snapshot.child(userId).child("coin").getValue(String.class);
-                                String userDB = snapshot.child(userId).child("id").getValue(String.class);
-                                String passwordDB = snapshot.child(userId).child("password").getValue(String.class);
+                                DataSnapshot userSnapshot = snapshot.child(userId);
+                                String[] keys = {"email", "location", "phoneNumber", "userName", "profilePicture", "coin", "id", "password"};
 
                                 Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
 
-                                Bundle bundle = new Bundle();
-                                bundle.putString("email", emailDB);
-                                bundle.putString("location", locationDB);
-                                bundle.putString("phoneNumber", phoneNumberDB);
-                                bundle.putString("userName", userNameDB);
-                                bundle.putString("profilePicture", profileDB);
-                                bundle.putString("coin", coinDB);
-                                bundle.putString("id", userDB);
-                                bundle.putString("password", passwordDB);
+                                for (String key : keys)
+                                    intent.putExtra(key, userSnapshot.child(key).getValue(String.class));
 
-                                intent.putExtras(bundle);
                                 startActivity(intent);
                             }
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            
-                            Log.e(TAG, "Error reading from database", error.toException());
+
                         }
                     });
-                    Toast.makeText(getApplicationContext(),"Login success!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.login_success), Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(getApplicationContext(),"Login failed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),getString(R.string.login_failed), Toast.LENGTH_SHORT).show();
                 }
 
                 progressBar.setVisibility(View.GONE);
@@ -150,7 +137,7 @@ public class LoginActivity extends AppCompat {
         } catch (NullPointerException e){
             Toast.makeText(getApplicationContext(),e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
         } catch (IllegalArgumentException e){
-            Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.youve_left_a_field_empty), Toast.LENGTH_SHORT).show();
         }
     }
 

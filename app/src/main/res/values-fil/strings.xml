@@ -35,7 +35,7 @@
     <string name="select_usage_of_electricity">Pumili mula sa kagamitan ng kuryente:</string>
     <string name="calculate">Kalkulahin</string>
     <string name="select_type_of_food">Pumili ng uri ng ulam:</string>
-    <string name="input">Itala</string>
+    <string name="input">I-type</string>
     <string name="food_consumption_in_g">Konsumpsyon sa ulam (grams)</string>
     <string name="transport">Transportasyon</string>
     <string name="food">Pagkain</string>
@@ -55,7 +55,7 @@
     <string name="_default">Default</string>
     <string name="your_photo">iyong litrato</string>
     <string name="coin">COIN</string>
-    <string name="transport_carbon_footprint">Carbon Footprint (Transportasyon)</string>
+    <string name="transport_carbon_footprint">Footprint (Transportasyon)</string>
     <string name="electricity_carbon_footprint">Carbon Footprint (Kuryente)</string>
     <string name="food_carbon_footprint">Carbon Footprint (Pagkain)</string>
     <string name="filipino">PILIPINO</string>
@@ -71,4 +71,11 @@
     <string name="greeniq_profile">"🌳 GreenIQ profile | "</string>
     <string name="about_application_lowercase">Tungkol sa Aplikasyon</string>
     <string name="dialog">Ang pag-recycle at ang pagpapabawas ng basura ay isa mga mahalagang gawain na nakatutulong sa proteksyon at pangangalaga ng ating kapaligiran. \n\nAng app na ito ay madaling gamitin, mabilis, at user-friendly sa interface upang mapamahalaan ang pagbawas ng basura sa kanilang bahay. Sa pamamagitan ng pagbibigay ng impormasyon sa mga user tungkol sa tamang paghihiwalay ng basura, pagsubaybay sa kanilang mga carbon footprint at AQI, at sa pag-recycle. Pati na rin sa pagbibigay-daan sa kanila na makipag-ugnayan sa mga lokal na pasilidad sa pag-rerecycle.</string>
+
+    <string name="login_success">Login success!</string>
+    <string name="login_failed">Login failed!</string>
+    <string name="all_fields_must_not_empty">All fields must not be empty.</string>
+    <string name="account_registered_for">\"Account registered for \"</string>
+    <string name="updating_profile_for">"Updating profile for "</string>
+    <string name="failed_to_save_iamge">Failed to Save Image</string>
 </resources>

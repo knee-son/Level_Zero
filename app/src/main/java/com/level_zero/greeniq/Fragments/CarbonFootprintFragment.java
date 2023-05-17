@@ -109,9 +109,9 @@ public class CarbonFootprintFragment extends Fragment {
 
                 List<PieEntry> entries = new ArrayList<>();
 
-                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(transportData)), getString(R.string.transport)) );
-                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(foodData)), getString(R.string.food)));
-                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(electricityData)), getString(R.string.electricity)));
+                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(transportData)), requireContext().getString(R.string.transport)) );
+                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(foodData)), requireContext().getString(R.string.food)));
+                entries.add(new PieEntry(Float.parseFloat(Objects.requireNonNull(electricityData)), requireContext().getString(R.string.electricity)));
 
                 PieDataSet pieDataSet = new PieDataSet(entries, null);
                 pieDataSet.setDrawValues(true);
@@ -165,7 +165,7 @@ public class CarbonFootprintFragment extends Fragment {
                     float floatValue = Float.parseFloat(Objects.requireNonNull(totalCarbon));
                     String decimal = String.format(Locale.US, "%.2f", floatValue);
                     // Add the data to the ArrayList
-                    dataList.add(date + " - Total Carbon: " + decimal);
+                    dataList.add(date + " - "+getString(R.string.total_carbon)+": " + decimal);
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dataList) {

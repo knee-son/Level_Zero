@@ -22,7 +22,6 @@ import com.level_zero.greeniq.databinding.ActivityRegisterBinding;
 import java.util.Objects;
 
 public class RegisterActivity extends AppCompat {
-
     private TextInputLayout email, password, userName, location, phoneNumber;
     private FirebaseAuth firebaseAuth;
     private String fetchEmail, fetchUsername, fetchPassword, fetchPhone, fetchLocation;
@@ -67,11 +66,11 @@ public class RegisterActivity extends AppCompat {
         fetchLocation = location.getEditText().getText().toString();
 
         if(fetchEmail.equals("") || fetchPassword.equals("") || fetchUsername.equals("") || fetchLocation.equals("") || fetchPhone.equals("")){
-            email.setError("All fields must not empty");
-            userName.setError("All fields must not empty");
-            password.setError("All fields must not empty");
-            phoneNumber.setError("All fields must not empty");
-            location.setError("All fields must not empty");
+            email.setError(getString(R.string.all_fields_must_not_empty));
+            userName.setError(getString(R.string.all_fields_must_not_empty));
+            password.setError(getString(R.string.all_fields_must_not_empty));
+            phoneNumber.setError(getString(R.string.all_fields_must_not_empty));
+            location.setError(getString(R.string.all_fields_must_not_empty));
         } else{
             email.setError(null);
             userName.setError(null);
@@ -84,7 +83,7 @@ public class RegisterActivity extends AppCompat {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot.exists()){
-                                userName.setError("Username already exists.");
+                                userName.setError(getString(R.string.user_already_exists));
                             }else{
                                 userName.setError(null);
                                 if(fetchEmail.matches("[A-Za-z\\d._%+-]+@[A-Za-z\\d.-]+\\.[A-Za-z]{2,}")){
@@ -101,35 +100,34 @@ public class RegisterActivity extends AppCompat {
                                                         databaseReferenceCarbon.child(userId).setValue(new CarbonData("1", "1", "1"));
                                                         databaseReferenceCertificate.child(fetchUsername).child("default").setValue(new Certificate(emptyCert));
                                                         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                                                        Toast.makeText(getApplicationContext(),"Account registered for , "+fetchUsername+"!", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(getApplicationContext(),getString(R.string.account_registered_for)+fetchUsername+"!", Toast.LENGTH_SHORT).show();
                                                     } else {
-                                                        Toast.makeText(getApplicationContext(),"Registration failed!", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(getApplicationContext(), getString(R.string.registration_failed), Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
 
                                             } catch (NullPointerException e){
                                                 Toast.makeText(getApplicationContext(),e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                                             } catch (IllegalArgumentException e){
-                                                Toast.makeText(getApplicationContext(),"You've left a field empty!", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(getApplicationContext(),getString(R.string.youve_left_a_field_empty), Toast.LENGTH_SHORT).show();
                                             }
                                             phoneNumber.setError(null);
                                         }else{
-                                            phoneNumber.setError("Invalid Phone number!");
+                                            phoneNumber.setError(getString(R.string.invalid_phone_number));
                                         }
                                         password.setError(null);
                                     }else{
-                                        password.setError("Should have one uppercase and lowercase character, one digit number, and one special character.");
+                                        password.setError(getString(R.string.field_should_have));
                                     }
                                     email.setError(null);
                                 }else{
-                                    email.setError("Invalid Email!");
+                                    email.setError(getString(R.string.invalid_email));
                                 }
                             }
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
                         }
                     });
         }

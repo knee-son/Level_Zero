@@ -12,7 +12,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,10 +52,10 @@ public class CarbonTransportFragment extends Fragment {
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
     private FragmentActivity thisActivity;
-    String typeValue, currentUser;
+    String currentUser;
     double footprintValue;
 
-    String[] transportType = {"Private", "Public", "Motorcycle"};
+    String[] transportType;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,6 +69,11 @@ public class CarbonTransportFragment extends Fragment {
         Button button = binding.calculateButtonTransport;
         ImageSlider imageSlider = binding.imageTransport;
         ImageView back = binding.back1;
+
+        if (Locale.getDefault().getLanguage().equals("fil"))
+            transportType = new String[] {"Pribadong Sasakyan", "Pampublikong Sasakyan", "Motorsiklo"};
+        else
+            transportType = new String[] {"Private Vehicle", "Public Transport", "Motorcycle"};
 
         ArrayAdapter<String> transportAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, transportType);
         transportAdapter.setDropDownViewResource(R.layout.spinner_item_custom);
@@ -89,18 +93,6 @@ public class CarbonTransportFragment extends Fragment {
         slideModels.add(new SlideModel("https://firebasestorage.googleapis.com/v0/b/greeniq-ce821.appspot.com/o/infomercial%2F336226796_670980624799049_635249469790701069_n.png?alt=media&token=5a9f5492-6918-483f-bcdb-c5f1f561dfe8", null, ScaleTypes.CENTER_CROP));
 
         imageSlider.setImageList(slideModels,ScaleTypes.CENTER_CROP);
-
-        typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                typeValue = parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
         
         button.setOnClickListener(view -> {
             String fetchAmount = amountEditText.getText().toString();
@@ -141,7 +133,7 @@ public class CarbonTransportFragment extends Fragment {
                     return;
                 }else{
                     Toast.makeText(thisActivity, String.format(Locale.US,
-                        "Your transport carbon footprint is %.2f Kg CO",
+                        thisActivity.getString(R.string.your_transport_carbon_footprint)+" %.2f Kg CO",
                         valueTransport),
                         Toast.LENGTH_SHORT).show();
                 }
@@ -153,7 +145,6 @@ public class CarbonTransportFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
@@ -169,23 +160,18 @@ public class CarbonTransportFragment extends Fragment {
             return;
         }
 
-        switch (typeValue) {
-            case "Private":
-                footprintValue = amount * (5.8 / 100 * 2.3035); break;
-            case "Public":
-                footprintValue = amount * (18.181818182 / 100 * 2.3035); break;
-            case "Motorcycle":
-                footprintValue = amount * (1.8867924528 / 100 * 2.3035); break;
-        }
+//      private, public, motorcycle
+        double[] values = {(5.8/100*2.3035), (18.181818182/100*2.3035), (1.8867924528/100*2.3035)};
+
+        Spinner typeSpinner = binding.typeSpinnerTransport;
+        footprintValue = amount*values[typeSpinner.getSelectedItemPosition()];
 
         databaseReference.child(currentUser).child("transportTotal").setValue(String.valueOf(footprintValue));
     }
     private void displayErrorDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Error!");
-
         builder.setMessage("Invalid input:\nPlease enter a numeric value.");
-
         builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
         builder.show();
     }

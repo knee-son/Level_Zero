@@ -114,7 +114,7 @@ public class EditProfileFragment extends Fragment {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot.exists()){
-                                userName.setError("Username exists.");
+                                userName.setError(getString(R.string.user_already_exists));
                             }else{
                                 userName.setError(null);
                                 if(fetchPassword.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–{}:;',?/*~$^+=<>]).{8,20}$")){
@@ -135,7 +135,7 @@ public class EditProfileFragment extends Fragment {
                                                                 dataSnapshot.getRef().child("phoneNumber").setValue(fetchPhone);
                                                                 dataSnapshot.getRef().child("location").setValue(fetchLocation);
 
-                                                                Toast.makeText(getContext(), "Updating data of "+userEmail, Toast.LENGTH_SHORT).show();
+                                                                Toast.makeText(getContext(), getString(R.string.updating_profile_for)+userEmail, Toast.LENGTH_SHORT).show();
                                                             }
                                                         }
 
@@ -160,10 +160,10 @@ public class EditProfileFragment extends Fragment {
                                                 }
                                             });
                                     }else{
-                                        phone.setError("Phone number is invalid.");
+                                        phone.setError(getString(R.string.invalid_phone_number));
                                     }
                                 }else{
-                                    password.setError("Should have one uppercase and lowercase character, one digit number, and one special character.");
+                                    password.setError(getString(R.string.field_should_have));
                                 }
                             }
                         }
@@ -183,8 +183,8 @@ public class EditProfileFragment extends Fragment {
     private void saveImage() {
         ProgressDialog progressDialog = ProgressDialog.show(
                 getActivity(),
-                "Saving image...",
-                "Please wait...",
+                getString(R.string.saving_image),
+                getString(R.string.please_wait),
                 true);
 
         FirebaseStorage.getInstance().getReference("images/"+ UUID.randomUUID().toString())
@@ -194,14 +194,14 @@ public class EditProfileFragment extends Fragment {
                             if(task1.isSuccessful())
                                 savedImage(task1.getResult().toString());
                         });
-                        Toast.makeText(getActivity(),"Saved Image", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.saved_image), Toast.LENGTH_SHORT).show();
                     }else {
-                        Toast.makeText(getActivity(),"Failed to Save Image", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.failed_to_save_iamge), Toast.LENGTH_SHORT).show();
                     }
                     progressDialog.dismiss();
                 }).addOnProgressListener(snapshot -> {
                     double progress = 100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount();
-                    progressDialog.setMessage(" Uploading " +(int)progress+"%");
+                    progressDialog.setMessage(getString(R.string.uploading) + (int)progress+"%");
                 });
     }
 

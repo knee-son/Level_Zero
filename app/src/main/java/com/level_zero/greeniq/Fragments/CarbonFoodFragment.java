@@ -12,7 +12,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,10 +53,9 @@ public class CarbonFoodFragment extends Fragment {
     private EditText amountEditText;
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
-    private String typeValue, currentUser;
+    private String currentUser;
     private FragmentActivity thisActivity;
     double footprintFood;
-    private final String[] foodType = {"Pork", "Poultry", "Beef", "Fish", "Vegetables"};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -65,7 +63,6 @@ public class CarbonFoodFragment extends Fragment {
         binding = FragmentCarbonFoodBinding.inflate(inflater, container, false);
         thisActivity = requireActivity();
 
-        Spinner typeSpinner = binding.typeSpinnerFood;
         amountEditText = binding.amountValueFood;
         Button button = binding.calculateButtonFood;
         ImageView back = binding.back3;
@@ -77,8 +74,16 @@ public class CarbonFoodFragment extends Fragment {
         calendar = Calendar.getInstance();
         simpleDateFormat = new SimpleDateFormat("EEE, MMMM d, yyyy", Locale.US);
 
+        String[] foodType;
+        if (Locale.getDefault().getLanguage().equals("fil"))
+            foodType = new String[] {"Baboy", "Manok", "Baka", "Isda", "Gulay"};
+        else
+            foodType = new String[] {"Pork", "Poultry", "Beef", "Fish", "Vegetables"};
+
         ArrayAdapter<String> foodAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, foodType);
         foodAdapter.setDropDownViewResource(R.layout.spinner_item_custom);
+
+        Spinner typeSpinner = binding.typeSpinnerFood;
         typeSpinner.setAdapter(foodAdapter);
 
         List<SlideModel> slideModels = new ArrayList<>();
@@ -89,23 +94,11 @@ public class CarbonFoodFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance("https://greeniq-ce821-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference = firebaseDatabase.getReference("Carbon Data");
 
-        typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                typeValue = parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
-
         button.setOnClickListener(view -> {
             String fetchAmount = amountEditText.getText().toString();
 
             if(fetchAmount.equals("")){
-                amountEditText.setError("Fill this field.");
+                amountEditText.setError(getString(R.string.youve_left_a_field_empty));
             }else{
                 amountEditText.setError(null);
                 valueDatabase();
@@ -145,7 +138,7 @@ public class CarbonFoodFragment extends Fragment {
                 }else {
                     Toast.makeText(thisActivity, String.format(
                         Locale.US,
-                        "Your food carbon footprint is %.2f Kg CO",
+                        thisActivity.getString(R.string.your_food_carbon_footprint)+" %.2f Kg CO",
                         valueFood),
                         Toast.LENGTH_SHORT).show();
                 }
@@ -154,7 +147,6 @@ public class CarbonFoodFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
@@ -169,18 +161,11 @@ public class CarbonFoodFragment extends Fragment {
             return;
         }
 
-        switch (typeValue) {
-            case "Pork":
-                footprintFood = amount * 0.0076; break;
-            case "Poultry":
-                footprintFood = amount * 0.0069; break;
-            case "Beef":
-                footprintFood = amount * 0.027; break;
-            case "Fish":
-                footprintFood = amount * 0.011; break;
-            case "Vegetables":
-                footprintFood = amount * 0.002; break;
-        }
+//      pork, poultry, beef, fish, vegetables
+        double[] values = {0.0076, 0.0069, 0.027, 0.011, 0.002};
+
+        Spinner typeSpinner = binding.typeSpinnerFood;
+        footprintFood = amount*values[typeSpinner.getSelectedItemPosition()];
 
         databaseReference.child(currentUser).child("foodTotal").setValue(String.valueOf(footprintFood));
     }

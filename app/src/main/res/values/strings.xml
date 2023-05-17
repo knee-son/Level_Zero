@@ -72,4 +72,25 @@
     <string name="login_email">test1@gmail.com</string>
     <string name="login_password">aA12345678*</string>
     <string name="greeniq_profile">🌳 GreenIQ profile | </string>
+
+    <string name="login_success">Login success!</string>
+    <string name="login_failed">Login failed!</string>
+    <string name="youve_left_a_field_empty">You\'ve left a field empty!</string>
+    <string name="user_already_exists">Username already exists.</string>
+    <string name="all_fields_must_not_empty">All fields must not be empty.</string>
+    <string name="account_registered_for">Account registered for </string>
+    <string name="registration_failed">Registration failed!</string>
+    <string name="invalid_phone_number">Invalid Phone number!</string>
+    <string name="field_should_have">Field should have at least 8 characters: one uppercase and lowercase character, one digit number, and one special character.</string>
+    <string name="invalid_email">Invalid Email!</string>
+    <string name="updating_profile_for">"Updating profile for "</string>
+    <string name="saving_image">Saving image…</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="saved_image">Saved Image</string>
+    <string name="failed_to_save_iamge">Failed to Save Image</string>
+    <string name="uploading">" Uploading "</string>
+    <string name="total_carbon">Total Carbon</string>
+    <string name="your_food_carbon_footprint">Your food carbon footprint is</string>
+    <string name="your_electricity_carbon_footprint">Your electricity carbon footprint is</string>
+    <string name="your_transport_carbon_footprint">Your transport carbon footprint is</string>
 </resources>
