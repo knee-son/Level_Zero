@@ -54,7 +54,6 @@ public class CarbonTransportFragment extends Fragment {
     private FragmentActivity thisActivity;
     String currentUser;
     double footprintValue;
-
     String[] transportType;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -133,7 +132,7 @@ public class CarbonTransportFragment extends Fragment {
                     return;
                 }else{
                     Toast.makeText(thisActivity, String.format(Locale.US,
-                        thisActivity.getString(R.string.your_transport_carbon_footprint)+" %.2f Kg CO",
+                        thisActivity.getString(R.string.your_transport_carbon_footprint)+"%.2f Kg CO",
                         valueTransport),
                         Toast.LENGTH_SHORT).show();
                 }
@@ -171,7 +170,7 @@ public class CarbonTransportFragment extends Fragment {
     private void displayErrorDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Error!");
-        builder.setMessage("Invalid input:\nPlease enter a numeric value.");
+        builder.setMessage(requireActivity().getString(R.string.invalid_input));
         builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
         builder.show();
     }

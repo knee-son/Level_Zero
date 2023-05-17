@@ -70,12 +70,27 @@
     <string name="login_password">aA12345678*</string>
     <string name="greeniq_profile">"🌳 GreenIQ profile | "</string>
     <string name="about_application_lowercase">Tungkol sa Aplikasyon</string>
-    <string name="dialog">Ang pag-recycle at ang pagpapabawas ng basura ay isa mga mahalagang gawain na nakatutulong sa proteksyon at pangangalaga ng ating kapaligiran. \n\nAng app na ito ay madaling gamitin, mabilis, at user-friendly sa interface upang mapamahalaan ang pagbawas ng basura sa kanilang bahay. Sa pamamagitan ng pagbibigay ng impormasyon sa mga user tungkol sa tamang paghihiwalay ng basura, pagsubaybay sa kanilang mga carbon footprint at AQI, at sa pag-recycle. Pati na rin sa pagbibigay-daan sa kanila na makipag-ugnayan sa mga lokal na pasilidad sa pag-rerecycle.</string>
+    <string name="dialog">Ang pag-recycle at ang pagpapabawas ng basura ay isa sa mga mahalagang gawain na nakatutulong sa proteksyon at pangangalaga ng ating kapaligiran. \n\nAng app na ito ay madaling gamitin, mabilis, at user-friendly sa interface upang mapamahalaan ang pagbawas ng basura sa kanilang bahay. Sa pamamagitan ng pagbibigay ng impormasyon sa mga user tungkol sa tamang paghihiwalay ng basura, pagsubaybay sa kanilang mga carbon footprint at AQI, at sa pag-recycle. Pati na rin sa pagbibigay-daan sa kanila na makipag-ugnayan sa mga lokal na pasilidad sa pag-rerecycle.</string>
 
-    <string name="login_success">Login success!</string>
-    <string name="login_failed">Login failed!</string>
+    <string name="login_success">Na log-in ng maayos!</string>
+    <string name="login_failed">Hindi tagumpay ang pag log-in!</string>
+    <string name="youve_left_a_field_empty">Blanko ang nakasulat!</string>
+    <string name="user_already_exists">May nakakuha na nitong pangalan.</string>
     <string name="all_fields_must_not_empty">All fields must not be empty.</string>
-    <string name="account_registered_for">\"Account registered for \"</string>
-    <string name="updating_profile_for">"Updating profile for "</string>
-    <string name="failed_to_save_iamge">Failed to Save Image</string>
+    <string name="account_registered_for">"Narehistro ang account para kay "</string>
+    <string name="registration_failed">Hindi pumasa ang pagrehistro!</string>
+    <string name="invalid_phone_number">Hindi sang-ayon ang numero!</string>
+    <string name="field_should_have">Dapat punan ang patlang ng hindi kukulang sa 8 titik: isang malaking letra, isang maliit na letra, isang numero, at isang simbolo.</string>
+    <string name="invalid_email">Hindi sang-ayon ang email!</string>
+    <string name="updating_profile_for">"Isinasaayos ang profile para kay "</string>
+    <string name="failed_to_save_image">Failed to Save Image</string>
+    <string name="uploading">Nag-a-upload</string>
+    <string name="total_carbon">Kabuuan</string>
+    <string name="your_food_carbon_footprint">Ang iyong carbon footprint para sa pagkain ay </string>
+    <string name="your_electricity_carbon_footprint">Ang iyong carbon footprint para sa kuryente ay </string>
+    <string name="your_transport_carbon_footprint">Ang iyong carbon footprint para sa transportasyon ay </string>
+    <string name="invalid_input">Hindi pwede ang naisulat:\nNumerikong halaga lamang ang dapat ilagay.</string>
+    <string name="saving_image">Nag-a-upload ng litrato…</string>
+    <string name="please_wait">Maghinay muna ng sandali…</string>
+    <string name="saved_image">Na-upload na ang Litrato</string>
 </resources>

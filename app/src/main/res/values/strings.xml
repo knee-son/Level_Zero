@@ -87,10 +87,11 @@
     <string name="saving_image">Saving image…</string>
     <string name="please_wait">Please wait…</string>
     <string name="saved_image">Saved Image</string>
-    <string name="failed_to_save_iamge">Failed to Save Image</string>
+    <string name="failed_to_save_image">Failed to Save Image</string>
     <string name="uploading">" Uploading "</string>
     <string name="total_carbon">Total Carbon</string>
-    <string name="your_food_carbon_footprint">Your food carbon footprint is</string>
-    <string name="your_electricity_carbon_footprint">Your electricity carbon footprint is</string>
-    <string name="your_transport_carbon_footprint">Your transport carbon footprint is</string>
+    <string name="your_food_carbon_footprint">Your food carbon footprint is </string>
+    <string name="your_electricity_carbon_footprint">Your electricity carbon footprint is </string>
+    <string name="your_transport_carbon_footprint">Your transport carbon footprint is </string>
+    <string name="invalid_input">Invalid input:\nPlease enter a numeric value.</string>
 </resources>

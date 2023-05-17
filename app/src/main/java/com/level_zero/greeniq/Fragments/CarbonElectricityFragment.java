@@ -123,7 +123,7 @@ public class CarbonElectricityFragment extends Fragment {
                     Toast.makeText(
                         thisActivity,
                         String.format(Locale.US,
-                        thisActivity.getString(R.string.your_electricity_carbon_footprint)+" %.2f Kg CO",
+                        thisActivity.getString(R.string.your_electricity_carbon_footprint)+"%.2f Kg CO",
                         valueElectricity),
                         Toast.LENGTH_SHORT).show();
                 }
@@ -152,9 +152,7 @@ public class CarbonElectricityFragment extends Fragment {
     private void displayErrorDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
         builder.setTitle("Error!");
-
-        builder.setMessage("Invalid input:\nPlease enter a numeric value.");
-
+        builder.setMessage(requireActivity().getString(R.string.invalid_input));
         builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
         builder.show();
     }

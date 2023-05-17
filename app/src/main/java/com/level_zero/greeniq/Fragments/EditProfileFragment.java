@@ -196,7 +196,7 @@ public class EditProfileFragment extends Fragment {
                         });
                         Toast.makeText(getActivity(), getString(R.string.saved_image), Toast.LENGTH_SHORT).show();
                     }else {
-                        Toast.makeText(getActivity(), getString(R.string.failed_to_save_iamge), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.failed_to_save_image), Toast.LENGTH_SHORT).show();
                     }
                     progressDialog.dismiss();
                 }).addOnProgressListener(snapshot -> {

@@ -138,7 +138,7 @@ public class CarbonFoodFragment extends Fragment {
                 }else {
                     Toast.makeText(thisActivity, String.format(
                         Locale.US,
-                        thisActivity.getString(R.string.your_food_carbon_footprint)+" %.2f Kg CO",
+                        thisActivity.getString(R.string.your_food_carbon_footprint)+"%.2f Kg CO",
                         valueFood),
                         Toast.LENGTH_SHORT).show();
                 }
@@ -172,9 +172,7 @@ public class CarbonFoodFragment extends Fragment {
     private void displayErrorDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Error!");
-
-        builder.setMessage("Invalid input:\nPlease enter a numeric value.");
-
+        builder.setMessage(requireActivity().getString(R.string.invalid_input));
         builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
         builder.show();
     }
